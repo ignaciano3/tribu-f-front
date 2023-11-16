@@ -1,3 +1,8 @@
+Elegí usar typescript y tailwind, si alguno quiere usar javascript en vez de typescript o usar otro framework de ui que lo diga
+
+Bajense las extensiones de prettier y eslint si usan vscode.
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
