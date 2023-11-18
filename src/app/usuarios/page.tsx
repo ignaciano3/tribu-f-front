@@ -1,22 +1,18 @@
-import { useEffect, useState } from "react"
 import UserGridRow from "@/components/userGridRow"
+import { Usuario } from "@/types/types"
+
+const getUsuarios = async () => {
+    const response = await fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos")
+    const data = await response.json()
+    return data
+}
 
 function HeaderItem({ title }: { title: string }) {
   return <th className="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">{title}</th>
 }
 
-export default function Usuarios() {
-  const [list, setList] = useState([])
-
-  useEffect(() => {
-    fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos")
-      .then((res) => {
-        return res.json()
-      })
-      .then((data) => {
-        setList(data)
-      })
-  }, [])
+const UserGrid = async () => {
+    const usuarios = await getUsuarios();
 
   return (
     <>
@@ -40,7 +36,7 @@ export default function Usuarios() {
                 </thead>
 
                 <tbody>
-                  {list.map((usuario) => (
+                  {usuarios.map((usuario : Usuario) => (
                     <UserGridRow key={usuario['legajo']} usuario={usuario} />
                   ))}
                 </tbody>
@@ -52,3 +48,5 @@ export default function Usuarios() {
     </>
   )
 }
+
+export default UserGrid;

@@ -1,27 +1,22 @@
 import {useEffect, useState} from "react";
 import ClientGridRow from "@/components/clientGridRow";
+import { Cliente } from "@/types/types";
+
+const getClientes = async () => {
+    const response = await fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/clientes-psa/1.0.0/m/api/clientes")
+    const data = await response.json()
+    return data
+}
 
 function HeaderItem({ title }: { title: string }) {
     return <th className="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">{title}</th>
 }
 
-export default function Clientes() {
-    const [list, setList] = useState([])
-
-    useEffect(() => {
-        fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/clientes-psa/1.0.0/m/api/clientes")
-            .then((res) => {
-                return res.json()
-            })
-            .then((data) => {
-                setList(data)
-            })
-    }, [])
+const ClientGrid = async () => {
+    const list = await getClientes();
 
     return (
         <>
-            {/* ACA EMPIEZA LA GRILLA */}
-
             <div className="container max-w-7xl mx-auto mt-8">
                 <div className="mb-4">
                     <h1 className="text-3xl font-bold decoration-gray-400">Clientes</h1>
@@ -39,8 +34,8 @@ export default function Clientes() {
                                 </thead>
 
                                 <tbody>
-                                {list.map((cliente) => (
-                                    <ClientGridRow key={cliente['razon_social']} cliente={cliente} />
+                                {list.map((cliente : Cliente) => (
+                                    <ClientGridRow key={cliente.razon_social} cliente={cliente} />
                                 ))}
                                 </tbody>
                             </table>
@@ -51,3 +46,5 @@ export default function Clientes() {
         </>
     )
 }
+
+export default ClientGrid;
