@@ -1,5 +1,3 @@
-import Link from "next/link"
-import { useRouter } from "next/router"
 import SideBarItem from "./SidebarItem"
 import { ISidebarItem } from "./types"
 
