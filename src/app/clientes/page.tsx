@@ -1,4 +1,3 @@
-import {useEffect, useState} from "react";
 import ClientGridRow from "@/components/clientGridRow";
 import { Cliente } from "@/types/types";
 
