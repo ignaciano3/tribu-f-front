@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "@/styles/globals.css";
+import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Titulo de la pagina",
@@ -12,7 +13,10 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="es">
-      <body className={inter.className}>{children}</body>
+      <body className={montserrat.className}>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 };
