@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Detalle del Ticket #10258</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #e7e7e7;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    width: 80%;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  .ticket-header {
+    margin-bottom: 20px;
+    padding-top: 20px;
+  }
+  .ticket-header h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    text-align: center;
+  }
+  .actions {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+  }
+  .user-info, .ticket-info, .tasks {
+    background-color: #f2f2f2;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  .tasks table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .tasks table, .tasks th, .tasks td {
+    border: 1px solid black;
+  }
+  .tasks th, .tasks td {
+    padding: 8px;
+    text-align: left;
+  }
+  .tasks th {
+    background-color: #ddd;
+  }
+  .back-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="back-button">&larr; Volver</div>
+    <div class="ticket-header">
+      <h1>Ticket #10258</h1>
+      <div class="actions">
+        <button onclick="window.print()">Imprimir</button>
+        <button>Editar</button>
+      </div>
+    </div>
+    <div class="user-info">
+      <strong>Información del usuario</strong><br>
+      Nombre: Pepe<br>
+      Email: Pepe@gmail.com
+    </div>
+    <div class="ticket-info">
+      <strong>Información básica del ticket</strong><br>
+      Estado del ticket: En proceso<br>
+      Prioridad: Alta<br>
+      Severidad: S1<br>
+      Comentario: En la pantalla de edición de perfiles pongo guardar y no se guarda
+    </div>
+    <div class="tasks">
+      <strong>Tareas asociadas</strong>
+      <table>
+        <tr>
+          <th>ID Tarea</th>
+          <th>Descripción</th>
+          <th>Estado</th>
+          <th>Fecha de Vencimiento</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Corregir error en pantalla de login</td>
+          <td>En Progreso</td>
+          <td>2023-12-01</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+<script>
+</script>
+</body>
+</html>

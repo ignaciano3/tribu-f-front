@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Crear Ticket</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #e7e7e7;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    width: 80%;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  header nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  header nav ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+  header h1 {
+    margin: 0;
+  }
+  form {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  form div {
+    margin-bottom: 10px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  input[type=text], input[type=email], textarea, select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  input[type=submit], button {
+    width: auto;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  .buttons {
+    text-align: center;
+  }
+  .cancel-button {
+    background-color: #ff0000;
+  }
+  .create-button {
+    background-color: #4CAF50;
+  }
+  .input-group { margin-bottom: 10px; }
+  label { display: block; margin-bottom: 5px; }
+  .select2 { width: 100% !important; }
+
+  .select2-container--default .select2-selection--multiple {
+    border-radius: 4px;
+    cursor: text;
+  }
+  .select2-container .select2-selection--multiple {
+    min-height: 38px;
+  }
+  .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #e4e4e4;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    cursor: default;
+    float: left;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 0 5px;
+  }
+  .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: #999;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 2px;
+  }
+  .create-task-button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #d3d3d3;
+    color: #000;
+    border: 1px solid #c0c0c0;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.9em;
+  }
+
+  .create-task-button:hover {
+    background-color: #c0c0c0;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Crear Ticket</h1>
+      <!-- Navegación -->
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/tickets">Tickets</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <form action="/submit-ticket" method="post">
+        <div>
+          <label for="title">Título</label>
+          <input type="text" id="title" name="title" placeholder="No funciona el botón de guardar">
+        </div>
+        <div>
+          <label for="description">Descripción</label>
+          <textarea id="description" name="description" rows="4" placeholder="Describe el problema"></textarea>
+        </div>
+        <div>
+          <label for="severity">Severidad</label>
+          <select id="severity" name="severity">
+            <option value="S1">S1</option>
+            <option value="S2">S2</option>
+            <option value="S3">S3</option>
+            <option value="S4">S4</option>
+          </select>
+        </div>
+        <div>
+          <label for="priority">Prioridad</label>
+          <select id="priority" name="priority">
+            <option value="alta">Alta</option>
+            <option value="media">Media</option>
+            <option value="baja">Baja</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="tareasAsociadas">Tareas Asociadas</label>
+          <select id="tareasAsociadas" name="tareasAsociadas[]" multiple="multiple" style="width: 100%">
+            <!-- Las opciones se generan dinámicamente con JavaScript -->
+          </select>
+          <button type="button" class="create-task-button">Crear tarea</button>
+        </div>
+        <div>
+          <label for="user-email">Email usuario</label>
+          <input type="email" id="user-email" name="user-email" placeholder="name@example.com">
+        </div>
+        <!-- Botones de acción -->
+        <div class="buttons">
+          <button type="button" class="cancel-button">Cancelar</button>
+          <button type="submit" class="create-button">Crear</button>
+        </div>
+      </form>
+    </main>
+  </div>
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script>
+  $(document).ready(function() {
+    for (let i = 1; i <= 100; i++) {
+      $('#tareasAsociadas').append(new Option('Tarea ' + i, 'tarea' + i));
+    }
+
+    $('#tareasAsociadas').select2({
+      placeholder: "Seleccionar tareas",
+      allowClear: true
+    });
+  });
+</script>
+</body>
+</html>

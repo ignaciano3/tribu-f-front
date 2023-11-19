@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sistema de Asignación de Tareas</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #e7e7e7;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .assignment-panel {
+    display: flex;
+    justify-content: space-between;
+  }
+  .task-form, .message-area {
+    width: 48%;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  select, input, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+  .message-area textarea {
+    height: 300px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Sistema de Asignación de Tareas</h1>
+    <div class="assignment-panel">
+      <div class="task-form">
+        <div class="form-group">
+          <label for="assigned-to">Asignado a</label>
+          <select id="assigned-to" name="assigned-to">
+            <option value="martina">Martina</option>
+            <option value="ignacio">Ignacio</option>
+            <option value="facundo">Facundo</option>
+            <option value="victoria">Victoria</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="priority">Prioridad</label>
+          <select id="priority" name="priority">
+            <option value="alta">Alta</option>
+            <option value="media">Media</option>
+            <option value="baja">Baja</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cc">CC</label>
+          <input type="text" id="cc" name="cc">
+        </div>
+        <button type="submit">Guardar</button>
+      </div>
+      <div class="message-area">
+        <textarea readonly>
+Hola, Martina So y estoy experimentando un problema en la plataforma. Al intentar guardar cambios en la pantalla de edición de perfiles, observo que las modificaciones no se aplican. He seguido los pasos habituales para guardar, pero el sistema parece no registrar los cambios. Agradecería su asistencia para resolver este inconveniente.
+
+Saludos cordiales,
+
+Martina So
+        </textarea>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

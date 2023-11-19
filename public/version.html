@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bienvenido</title>
+<style>
+  body { 
+    font-family: Arial, sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; /* Altura completa de la ventana */
+  }
+  .container { 
+    padding: 40px; /* Aumentado para más espacio */
+    text-align: center; 
+    border: 1px solid #000;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    border-radius: 10px; /* Bordes más redondeados */
+    max-width: 600px; /* Ancho máximo para acomodar más opciones */
+    width: 80%; /* Ancho en porcentaje para responsividad */
+  }
+  select { 
+    padding: 10px; 
+    margin-bottom: 20px; /* Espacio después del select */
+    width: 100%; /* Ancho completo dentro del contenedor */
+  }
+  .btn { 
+    padding: 15px 30px;
+    text-decoration: none; 
+    background-color: #f0f0f0; 
+    color: black; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    margin-bottom: 20px;
+  }
+  .btn:hover { background-color: #ddd; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Bienvenido</h2>
+  <p>Seleccione el proyecto y la versión que desea utilizar:</p>
+  
+  <select id="productVersion">
+    <option value="url_a_proyecto1_v1.0">Proyecto 1 v1.0</option>
+    <option value="url_a_proyecto1_v1.1">Proyecto 1 v1.1</option>
+    <option value="url_a_proyecto1_v1.2">Proyecto 1 v1.2</option>
+
+    <option value="url_a_proyecto2_v2.0">Proyecto 2 v2.0</option>
+    <option value="url_a_proyecto2_v2.1">Proyecto 2 v2.1</option>
+    <option value="url_a_proyecto2_v2.2">Proyecto 2 v2.2</option>
+  </select>
+  
+  <button class="btn" onclick="goToProduct()">Acceder</button>
+</div>
+
+<script>
+  function goToProduct() {
+    var url = document.getElementById('productVersion').value;
+    window.location.href = url;
+  }
+</script>
+
+</body>
+</html>
