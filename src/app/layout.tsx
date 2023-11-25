@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import "@/styles/globals.css";
+//import "@/styles/globals.css";
 import Footer from "@/components/Footer";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
@@ -10,7 +10,11 @@ export const metadata: Metadata = {
   description: "Parte front de la aplicación de gestión de tareas",
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+export default function RootLayout({
+  children,
+} : {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="es">
       <body className={montserrat.className}>
@@ -19,6 +23,4 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       </body>
     </html>
   );
-};
-
-export default RootLayout;
+}
