@@ -10,3 +10,22 @@ export interface Cliente {
   cuit: number
 }
 
+export interface Product {
+  id: string;
+  name: string;
+  version: string;
+}
+
+export interface Ticket {
+  id: Number;
+  severity: string;
+  priority: string;
+  status: string;
+  client_id: Number;
+  product_id: Number;
+
+  // Posible a agregar
+  description?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
