@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 
-const getTicketInfo = async (id: string) => {
-    const response 
 
 const TicketPage = ({ id }: { id: string }) => {
+  // NO USAR USE EFFECT PARA FETCHING DE DATOS 
+  // DEL BACK. Asi se pierde lo bueno de los 
+  // server side components (que se guarda todo en el servidor)
+  // ver como lo hice en users o client
+
   const [ticket, setTicket] = useState<any>(null);
 
   useEffect(() => {

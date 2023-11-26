@@ -20,7 +20,7 @@ function HeaderItem({ title }: { title: string }) {
   );
 }
 
-const ProyectCard = ({proyect}) => {
+const ProyectCard = ({ proyect }) => {
   let project: Project = {
     id: 35135468,
     name: "Counter Strike 2",
