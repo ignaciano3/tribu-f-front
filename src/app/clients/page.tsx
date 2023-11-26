@@ -1,3 +1,4 @@
+import Table from "@/components/Table/Table";
 import ClientGridRow from "@/components/clientGridRow";
 import { Cliente } from "@/types/types";
 
@@ -9,20 +10,12 @@ const getClientes = async () => {
   return data;
 };
 
-function HeaderItem({ title }: { title: string }) {
-  return (
-    <th className="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">
-      {title}
-    </th>
-  );
-}
-
 const ClientGrid = async () => {
-  const list = await getClientes();
+  const data = await getClientes();
 
   return (
     <>
-      <Table HeaderItem={HeaderItem} data={list} RowItem={ClientGridRow} />
+      <Table data={data} />
     </>
   );
 };

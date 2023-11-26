@@ -1,16 +1,17 @@
-export default function ClientGridRow({ cliente }: { cliente: any }) {
+export default function ClientGridRow({ row }: { cliente: any }) {
+  console.log(row);
   return (
-    <tr key={`${cliente["razon social"]}`}>
+    <tr key={`${row["razon social"]}`}>
       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-        <div className="flex items-center">{cliente["id"]}</div>
+        <div className="flex items-center">{row["id"]}</div>
       </td>
 
       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-        <div className="flex items-center">{cliente["razon social"]}</div>
+        <div className="flex items-center">{row["razon social"]}</div>
       </td>
 
       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-        <div className="text-sm leading-5 text-gray-900">{cliente["CUIT"]}</div>
+        <div className="text-sm leading-5 text-gray-900">{row["CUIT"]}</div>
       </td>
     </tr>
   );

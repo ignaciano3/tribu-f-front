@@ -1,7 +1,7 @@
 import Link from "next/link"
-import { useRouter } from "next/router"
 import { ISidebarItem } from "./types"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 const SideBarItem = ({ href, title, children }: ISidebarItem) => {
   const router = useRouter()

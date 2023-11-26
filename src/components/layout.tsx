@@ -1,3 +1,4 @@
+"use client"
 import SideBarItem from "./SidebarItem"
 import { ISidebarItem } from "./types"
 
@@ -22,7 +23,7 @@ export default function Layout({ children }: { children: any }) {
   ]
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col dark:bg-white bg-gray-800">
       <header className="bg-black sticky top-0 h-14 flex justify-center items-center font-semibold uppercase text-white">
         Ejemplo pantalla
       </header>

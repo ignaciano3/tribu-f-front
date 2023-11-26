@@ -1,41 +1,14 @@
+import Table from "@/components/Table/Table";
 import fetchWithTimeOut from "@/helpers/fetchWithTimeout";
 
 async function getTickets() {
-  const wait = await setTimeout(() => console.log("esperando"), 30000);
-  
-  //const response = await fetchWithTimeOut("/tickets", {
-  //  method: "GET",
-  //  headers: {
-  //    "Content-Type": "application/json",
-  //  },
-  //});
-  //const data = await response.json();
-  //return data;
-  return [{id:1}]
+  return values;
 }
 
-const headers = [
-  "ID ticket",
-  "Título",
-  "Estado",
-  "Proyecto",
-  "Actualizado",
-  "Cliente",
-  "Prioridad",
-  "Severidad",
-  "Ver más",
-];
-
 const values = [
-  "#10258",
-  "Ticket 1",
-  "En proceso",
-  "Proyecto 1 v1.2",
-  "Hace 28 minutos",
-  "Ignacio",
-  "Alta",
-  "S1",
-  "Ver",
+  {id: "#10258", title: "Ticket 1", status: "En proceso", project: "Proyecto 1 v1.2", updated: "Hace 28 minutos", client: "Ignacio", priority: "Alta", severity: "S1"},
+  {id: "#10232", title: "Ticket 2", status: "Cerrado", project: "Proyecto 2 v2.1", updated: "Hace 5 minutos", client: "Facundo", priority: "Media", severity: "S2"},
+  {id: "#10267", title: "Ticket 3", status: "Abierto", project: "Proyecto 3 v1.2", updated: "Hace 15 minutos", client: "Martina", priority: "Baja", severity: "S4"},
 ];
 
 export default async function Tickets() {
@@ -44,7 +17,7 @@ export default async function Tickets() {
 
   return (
     <div>
-      <h2>Listado</h2>
+      <Table data={tickets} />
     </div>
   );
 }
