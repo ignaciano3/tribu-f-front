@@ -1,4 +1,5 @@
 import Table from "@/components/Table/Table";
+import Title from "@/components/Title";
 import fetchWithTimeOut from "@/helpers/fetchWithTimeout";
 
 async function getTickets() {
@@ -11,14 +12,17 @@ const values = [
   {id: "#10267", title: "Ticket 3", status: "Abierto", project: "Proyecto 3 v1.2", updated: "Hace 15 minutos", client: "Martina", priority: "Baja", severity: "S4"},
 ];
 
+const headers = ["ID", "Título", "Estado", "Proyecto", "Actualizado", "Cliente", "Prioridad", "Severidad"];
+
 export default async function Tickets() {
   //const product = getProduct();
   const tickets = await getTickets();
 
   return (
-    <div>
-      <Table data={tickets} />
-    </div>
+    <>
+      <Title title="Tickets" />
+      <Table data={tickets} headers={headers}/>
+    </>
   );
 }
 
