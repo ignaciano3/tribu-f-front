@@ -35,7 +35,7 @@ export default function Sidebar() {
 
         <div className="bg-gray-50 dark:bg-gray-800 min-h-screen w-80 fixed top-0 left-0">
           <button
-            className="ml-4 pt-3 mb-4 text-white"
+            className="ml-4 pt-3 mb-4 text-gray-800 dark:text-white"
             onClick={() => setOpen(!open)}
           >
             <svg
