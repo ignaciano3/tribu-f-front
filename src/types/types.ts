@@ -29,3 +29,13 @@ export interface Ticket {
   createdAt?: Date;
   updatedAt?: Date;
 }
+
+export interface Project{
+  id:Number;
+  name:string;
+  //createdAt:Date;
+  //leader: string;
+  //description: string;
+  //estimatedTime: Number;
+  state: string;
+}

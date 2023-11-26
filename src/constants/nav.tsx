@@ -37,7 +37,7 @@ export const items = [
         </svg>
       ),
       label: "Proyectos",
-      url: "/proyects",
+      url: "/projects",
     },
     {
       svg: (
