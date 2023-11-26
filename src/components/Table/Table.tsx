@@ -39,15 +39,15 @@ export default function Table(props: TableProps) {
             <table className="min-w-full">
               <thead>
                 <tr>
-                  {headers.map((title: string) => (
-                    <HeaderItem key={title} title={title} />
+                  {headers.map((title: string, index) => (
+                    <HeaderItem key={index} title={title} />
                   ))}
                 </tr>
               </thead>
 
-              <tbody>
-                {data.map((row) => (
-                  <RowItem row={row} />
+              <tbody className="bg-slate-100 text-center">
+                {data.map((row, index) => (
+                  <RowItem row={row} key={index+row.id}/>
                 ))}
               </tbody>
             </table>

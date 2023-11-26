@@ -1,3 +1,4 @@
+import Nuevo from "@/components/Nuevo";
 import Table from "@/components/Table/Table";
 import Title from "@/components/Title";
 import fetchWithTimeOut from "@/helpers/fetchWithTimeout";
@@ -7,12 +8,48 @@ async function getTickets() {
 }
 
 const values = [
-  {id: "#10258", title: "Ticket 1", status: "En proceso", project: "Proyecto 1 v1.2", updated: "Hace 28 minutos", client: "Ignacio", priority: "Alta", severity: "S1"},
-  {id: "#10232", title: "Ticket 2", status: "Cerrado", project: "Proyecto 2 v2.1", updated: "Hace 5 minutos", client: "Facundo", priority: "Media", severity: "S2"},
-  {id: "#10267", title: "Ticket 3", status: "Abierto", project: "Proyecto 3 v1.2", updated: "Hace 15 minutos", client: "Martina", priority: "Baja", severity: "S4"},
+  {
+    id: "#10258",
+    title: "Ticket 1",
+    status: "En proceso",
+    project: "Proyecto 1 v1.2",
+    updated: "Hace 28 minutos",
+    client: "Ignacio",
+    priority: "Alta",
+    severity: "S1",
+  },
+  {
+    id: "#10232",
+    title: "Ticket 2",
+    status: "Cerrado",
+    project: "Proyecto 2 v2.1",
+    updated: "Hace 5 minutos",
+    client: "Facundo",
+    priority: "Media",
+    severity: "S2",
+  },
+  {
+    id: "#10267",
+    title: "Ticket 3",
+    status: "Abierto",
+    project: "Proyecto 3 v1.2",
+    updated: "Hace 15 minutos",
+    client: "Martina",
+    priority: "Baja",
+    severity: "S4",
+  },
 ];
 
-const headers = ["ID", "Título", "Estado", "Proyecto", "Actualizado", "Cliente", "Prioridad", "Severidad"];
+const headers = [
+  "ID",
+  "Título",
+  "Estado",
+  "Proyecto",
+  "Actualizado",
+  "Cliente",
+  "Prioridad",
+  "Severidad",
+];
 
 export default async function Tickets() {
   //const product = getProduct();
@@ -20,8 +57,11 @@ export default async function Tickets() {
 
   return (
     <>
-      <Title title="Tickets" />
-      <Table data={tickets} headers={headers}/>
+      <div className="flex justify-between">
+        <Title title="Tickets" className="inline" />
+        <Nuevo title="Crear nuevo ticket" href="/tickets/create" />
+      </div>
+      <Table data={tickets} headers={headers} />
     </>
   );
 }

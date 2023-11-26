@@ -1,33 +1,15 @@
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
+async function getTicket(id: string) {
+  const response = await fetch(`/api/tickets/${id}`);
+  const data = await response.json();
+  return data;
+}
 
-const TicketPage = ({ id }: { id: string }) => {
-  // NO USAR USE EFFECT PARA FETCHING DE DATOS 
-  // DEL BACK. Asi se pierde lo bueno de los 
-  // server side components (que se guarda todo en el servidor)
-  // ver como lo hice en users o client
-
-  const [ticket, setTicket] = useState<any>(null);
-
-  useEffect(() => {
-    // Fetch ticket information based on the provided ID
-    const fetchTicket = async () => {
-      try {
-        const response = await fetch(`/api/tickets/${id}`);
-        const data = await response.json();
-        setTicket(data);
-      } catch (error) {
-        console.error('Error fetching ticket:', error);
-      }
-    };
-
-    fetchTicket();
-  }, [id]);
-
-  // Para esto esta el loading.tsx
-  if (!ticket) {
-    return <div>Loading...</div>;
-  }
+export default function TicketPage () {
+  const router = useRouter();
+  const id = router.query.id as string;
 
   return (
     <div>
@@ -35,9 +17,6 @@ const TicketPage = ({ id }: { id: string }) => {
       <p>ID: {ticket.id}</p>
       <p>Title: {ticket.title}</p>
       <p>Description: {ticket.description}</p>
-      {/* Add more ticket information here */}
     </div>
-  );
-};
-
-export default TicketPage;
+  )
+}
