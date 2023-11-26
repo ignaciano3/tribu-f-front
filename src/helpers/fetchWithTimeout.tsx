@@ -1,4 +1,4 @@
-const BASE_URL = process.env.API_URL;
+const BASE_URL = process.env.API_SOPORTE_URL;
 
 // Lo que hace este helper es que si la petición tarda más de 30 segundos, se aborta
 export default async function fetchWithTimeOut(resource, options) {

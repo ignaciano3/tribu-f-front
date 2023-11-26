@@ -1,14 +1,17 @@
 import fetchWithTimeOut from "@/helpers/fetchWithTimeout";
 
 async function getTickets() {
-  const response = await fetchWithTimeOut("/tickets", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const data = await response.json();
-  return data;
+  const wait = await setTimeout(() => console.log("esperando"), 30000);
+  
+  //const response = await fetchWithTimeOut("/tickets", {
+  //  method: "GET",
+  //  headers: {
+  //    "Content-Type": "application/json",
+  //  },
+  //});
+  //const data = await response.json();
+  //return data;
+  return [{id:1}]
 }
 
 const headers = [
@@ -37,7 +40,7 @@ const values = [
 
 export default async function Tickets() {
   //const product = getProduct();
-  //const tickets = await getTickets();
+  const tickets = await getTickets();
 
   return (
     <div>

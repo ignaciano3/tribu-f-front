@@ -21,6 +21,7 @@ const TicketPage = ({ id }: { id: string }) => {
     fetchTicket();
   }, [id]);
 
+  // Para esto esta el loading.tsx
   if (!ticket) {
     return <div>Loading...</div>;
   }
