@@ -1,4 +1,5 @@
 import Table from "@/components/Table/Table";
+import Title from "@/components/Title";
 import ClientGridRow from "@/components/clientGridRow";
 import { Cliente } from "@/types/types";
 
@@ -15,6 +16,7 @@ const ClientGrid = async () => {
 
   return (
     <>
+      <Title title="Clientes" />
       <Table data={data} />
     </>
   );
