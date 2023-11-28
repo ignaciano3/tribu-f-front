@@ -38,7 +38,13 @@ const ProjectCard = ({ proyect }: { proyect: Project }) => {
           <button className="kanban-button">Ver Kanban</button>
         </div>
         {/* Le meti una imagen random por si les gusta, en el ? poner tags, ejemplo: war */}
-      <img src={'https://source.unsplash.com/random/300x200/?' + 'soldiers,war,videogame,guns'}  alt='random' />"
+        <img
+          src={
+            "https://source.unsplash.com/random/300x200/?" +
+            "soldiers,war,videogame,guns"
+          }
+          alt="random"
+        />
 
         <style jsx>{`
           .project-card {

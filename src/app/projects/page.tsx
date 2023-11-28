@@ -5,7 +5,7 @@ import Button from "@/components/button";
 const getProjects = async () => {
   //poner nuestra base de datos
   const response = await fetch(
-    "https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/clientes-psa/1.0.0/m/api/clientes"
+    "https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/clientes-psa/1.0.0/m/api/clientes",
   ); //poner nuestra base de datos
   const data = await response.json();
   return data;
@@ -62,7 +62,7 @@ const ProjectGrid = async () => {
       <div className="flex justify-end mt-4">
         <div></div>
         <div>
-          <Button children="Nuevo proyecto" href="/projects/create" />
+          <Button href="/projects/create">Nuevo Proyecto</Button>
         </div>
       </div>
     </>

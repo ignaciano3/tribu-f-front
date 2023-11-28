@@ -1,11 +1,11 @@
-import Link from "next/link"
-import { ISidebarItem } from "./types"
-import { useState } from "react"
-import { useRouter } from "next/navigation"
+import Link from "next/link";
+import { ISidebarItem } from "./types";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const SideBarItem = ({ href, title, children }: ISidebarItem) => {
-  const router = useRouter()
-  const [open, setOpen] = useState(false)
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
 
   if (children && children.length > 0) {
     return (
@@ -18,7 +18,9 @@ const SideBarItem = ({ href, title, children }: ISidebarItem) => {
           onClick={() => setOpen(!open)}
         >
           <span
-            className={`flex-1 ml-2 text-left whitespace-nowrap ${router.asPath === href && "text-red-50"}`}
+            className={`flex-1 ml-2 text-left whitespace-nowrap ${
+              router.asPath === href && "text-red-50"
+            }`}
             sidebar-toggle-item="true"
           >
             {title}
@@ -38,14 +40,21 @@ const SideBarItem = ({ href, title, children }: ISidebarItem) => {
           </svg>
         </button>
         {open && (
-          <ul id={`dropdown-${title}`} className={`${open ? "" : "hidden"} pl-4 py-2 space-y-2`}>
+          <ul
+            id={`dropdown-${title}`}
+            className={`${open ? "" : "hidden"} pl-4 py-2 space-y-2`}
+          >
             {children.map((child) => (
-              <SideBarItem {...child} href={`${href}${child.href}`} key={`${href}${child.href}`} />
+              <SideBarItem
+                {...child}
+                href={`${href}${child.href}`}
+                key={`${href}${child.href}`}
+              />
             ))}
           </ul>
         )}
       </li>
-    )
+    );
   }
 
   return (
@@ -54,13 +63,17 @@ const SideBarItem = ({ href, title, children }: ISidebarItem) => {
         <div
           className={`flex items-center w-full p-2 transition duration-75 rounded-lg group hover:bg-amber-100 dark:text-white dark:hover:bg-amber-700`}
         >
-          <span className={`flex-1 ml-2 text-left whitespace-nowrap ${router.asPath === href && "font-bold"}`}>
+          <span
+            className={`flex-1 ml-2 text-left whitespace-nowrap ${
+              router.asPath === href && "font-bold"
+            }`}
+          >
             {title}
           </span>
         </div>
       </Link>
     </li>
-  )
-}
+  );
+};
 
-export default SideBarItem
+export default SideBarItem;

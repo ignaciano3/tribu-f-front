@@ -14,15 +14,18 @@ function DefaultHeaderItem({ title }: { title: string }) {
 }
 
 function DefaultRowItem({ row }: { row: any }) {
-    return (
-        <tr key={row["id"]}>
-            {Object.values(row).map((value: any) => (
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                    <div className="flex items-center">{value}</div>
-                </td>
-            ))}
-        </tr>
-    );
+  return (
+    <tr key={row["id"]}>
+      {Object.values(row).map((value: any, count) => (
+        <td
+          key={row["id"] + "_" + count}
+          className="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
+        >
+          <div className="flex items-center">{value}</div>
+        </td>
+      ))}
+    </tr>
+  );
 }
 
 export default function Table(props: TableProps) {
@@ -47,7 +50,7 @@ export default function Table(props: TableProps) {
 
               <tbody className="bg-slate-100 text-center">
                 {data.map((row, index) => (
-                  <RowItem row={row} key={index+row.id}/>
+                  <RowItem row={row} key={index + row.id} />
                 ))}
               </tbody>
             </table>

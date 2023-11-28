@@ -1,13 +1,13 @@
 export interface Usuario {
-  nombre: string
-  apellido: string
-  legajo: number
+  nombre: string;
+  apellido: string;
+  legajo: number;
 }
 
 export interface Cliente {
-  id: string
-  razon_social: string
-  cuit: number
+  id: string;
+  razon_social: string;
+  cuit: number;
 }
 
 export interface Product {
@@ -30,9 +30,9 @@ export interface Ticket {
   updatedAt?: Date;
 }
 
-export interface Project{
-  id:Number;
-  name:string;
+export interface Project {
+  id: Number;
+  name: string;
   //createdAt:Date;
   //leader: string;
   //description: string;

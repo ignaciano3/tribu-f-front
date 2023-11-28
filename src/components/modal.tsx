@@ -1,4 +1,4 @@
-import { ModalProps } from "./types"
+import { ModalProps } from "./types";
 
 export default function Modal({ modalOpen, setModalOpen, list }: ModalProps) {
   return (
@@ -6,20 +6,24 @@ export default function Modal({ modalOpen, setModalOpen, list }: ModalProps) {
       id="loguearHorasModal"
       tabIndex={-1}
       aria-hidden={!modalOpen}
-      className={`${modalOpen ? "" : "hidden"} absolute inset-0 h-screen flex justify-center items-center bg-black/25`}
+      className={`${
+        modalOpen ? "" : "hidden"
+      } absolute inset-0 h-screen flex justify-center items-center bg-black/25`}
     >
       <div className="relative p-4 w-full max-w-2xl h-full md:h-auto">
         {/* <!-- Modal content --> */}
         <div className="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
           {/* <!-- Modal header --> */}
           <div className="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Add Product</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              Add Product
+            </h3>
             <button
               type="button"
               className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
               data-modal-toggle="defaultModal"
               onClick={() => {
-                setModalOpen(false)
+                setModalOpen(false);
               }}
             >
               <svg
@@ -42,7 +46,10 @@ export default function Modal({ modalOpen, setModalOpen, list }: ModalProps) {
           <form action="#">
             <div className="grid gap-4 mb-4 sm:grid-cols-2">
               <div>
-                <label htmlFor="usuario" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label
+                  htmlFor="usuario"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
                   Usuario
                 </label>
                 <select
@@ -51,14 +58,20 @@ export default function Modal({ modalOpen, setModalOpen, list }: ModalProps) {
                 >
                   <option selected>Seleccione usuario</option>
                   {list.map((usuario) => (
-                    <option value={`${usuario.nombre}-${usuario.apellido}`} key={`${usuario.nombre}-${usuario.apellido}`}>
+                    <option
+                      value={`${usuario.nombre}-${usuario.apellido}`}
+                      key={`${usuario.nombre}-${usuario.apellido}`}
+                    >
                       {usuario.nombre} {usuario.apellido}
                     </option>
                   ))}
                 </select>
               </div>
               <div>
-                <label htmlFor="horas" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label
+                  htmlFor="horas"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
                   Horas
                 </label>
                 <input
@@ -77,7 +90,7 @@ export default function Modal({ modalOpen, setModalOpen, list }: ModalProps) {
               data-modal-toggle="loguearHorasModal"
               id="loguearHorasButton"
               onClick={() => {
-                setModalOpen(false)
+                setModalOpen(false);
               }}
             >
               Loguear horas
@@ -86,5 +99,5 @@ export default function Modal({ modalOpen, setModalOpen, list }: ModalProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

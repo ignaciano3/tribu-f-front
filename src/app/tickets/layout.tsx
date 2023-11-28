@@ -1,7 +1,7 @@
-export default function TicketsLayout ({ children }: { children: React.ReactNode }) {
-    return (
-        <div>
-        {children}
-        </div>
-    );
+export default function TicketsLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <div>{children}</div>;
 }

@@ -4,8 +4,12 @@ async function getTicket(id: string) {
   return data;
 }
 
-export default function TicketPage ({ params }: { params: { id: string } }) {
-  const ticket = { id: params.id, title: 'Ticket Title', description: 'Ticket Description' };
+export default function TicketPage({ params }: { params: { id: string } }) {
+  const ticket = {
+    id: params.id,
+    title: "Ticket Title",
+    description: "Ticket Description",
+  };
   return (
     <div>
       <h1>Ticket Information</h1>
@@ -13,5 +17,5 @@ export default function TicketPage ({ params }: { params: { id: string } }) {
       <p>Title: {ticket?.title}</p>
       <p>Description: {ticket.description}</p>
     </div>
-  )
+  );
 }

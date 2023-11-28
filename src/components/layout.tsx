@@ -1,6 +1,6 @@
-"use client"
-import SideBarItem from "./SidebarItem"
-import { ISidebarItem } from "./types"
+"use client";
+import SideBarItem from "./SidebarItem";
+import { ISidebarItem } from "./types";
 
 export default function Layout({ children }: { children: any }) {
   const menuItems: ISidebarItem[] = [
@@ -19,8 +19,8 @@ export default function Layout({ children }: { children: any }) {
     {
       href: "/projects",
       title: "Proyectos",
-    }
-  ]
+    },
+  ];
 
   return (
     <div className="min-h-screen flex flex-col dark:bg-white bg-gray-800">
@@ -40,5 +40,5 @@ export default function Layout({ children }: { children: any }) {
         <main className="flex-1">{children}</main>
       </div>
     </div>
-  )
+  );
 }
