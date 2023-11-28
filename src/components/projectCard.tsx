@@ -1,8 +1,6 @@
 //import Button from "@/components/button";
 // components/ProjectCard.js
 
-import { Project } from "@/types/types";
-import { create } from "domain";
 import React from "react";
 
 const ProjectCard = ({ project }: { project: any }) => {
