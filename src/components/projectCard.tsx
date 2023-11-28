@@ -1,6 +1,6 @@
 //import Button from "@/components/button";
 // components/ProjectCard.js
-
+import Button from "@/components/button";
 import React from "react";
 
 const ProjectCard = ({ project }: { project: any }) => {
@@ -24,11 +24,20 @@ const ProjectCard = ({ project }: { project: any }) => {
             <strong>Descripción:</strong> Descripcion
           </p>
         </div>
-        <div className="project-actions">
-          <button className="edit-button">Editar Proyecto</button>
-          <button className="delete-button">Borrar Proyecto</button>
-          <button className="tasks-button">Ver Tareas</button>
-          <button className="kanban-button">Ver Kanban</button>
+        <div className="project-actions flex">
+          <div>
+            <Button href={"/"}> Editar proyecto </Button>
+          </div>
+          <div>
+            <Button href={"/"}> Eliminar proyecto </Button>
+          </div>
+          <div>
+            <Button href={"/"}> Ver tareas </Button>
+          </div>
+          <div>
+            <Button href={"/"}> Ver kanban </Button>
+          </div>
+          
         </div>
         {/* Le meti una imagen random por si les gusta, en el ? poner tags, ejemplo: war */}
         <img
@@ -65,7 +74,7 @@ const ProjectCard = ({ project }: { project: any }) => {
             margin: 8px 0;
           }
 
-          .project-actions button {
+          .project-actions Button {
             background-color: #3498db;
             color: #fff;
             padding: 8px;
@@ -75,8 +84,12 @@ const ProjectCard = ({ project }: { project: any }) => {
             cursor: pointer;
           }
 
-          .project-actions button:hover {
+          .project-actions Button:hover {
             background-color: #2980b9;
+          }
+
+          .project-actions div {
+            margin: 4px;
           }
         `}</style>
       </div>
