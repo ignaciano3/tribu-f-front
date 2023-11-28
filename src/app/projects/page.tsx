@@ -5,7 +5,7 @@ import Button from "@/components/button";
 const getProjects = async () => {
   //poner nuestra base de datos
   const response = await fetch(
-    "https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/clientes-psa/1.0.0/m/api/clientes",
+    "http://127.0.0.1:8000/proyectos/get_proyectos",
   ); //poner nuestra base de datos
   const data = await response.json();
   return data;
@@ -20,15 +20,15 @@ function HeaderItem({ title }: { title: string }) {
 }
 
 const ProjectGrid = async () => {
-  //const list = await getProjects();
-  let list: Project[] = [
+  const list = await getProjects();
+  /*let list: Project[] = [
     { id: 35135468, name: "Counter Strike 2", state: "En proceso" },
     { id: 48733457, name: "Whatsapp Azul", state: "Bloqueado" },
     { id: 12578394, name: "GTA VI", state: "No iniciado" },
     { id: 99853785, name: "Ubuntu 23.00", state: "No iniciado" },
     { id: 15145789, name: "Wikipedia 2", state: "En proceso" },
     { id: 62350978, name: "Whatsapp Rojo", state: "En proceso" },
-  ];
+  ];*/
   //const list = [Project(1, "nombre", "estado")];
   return (
     <>
