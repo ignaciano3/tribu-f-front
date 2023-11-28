@@ -128,9 +128,7 @@ const ProjectForm = () => {
 
 // components/ProjectForm.js
 import Button from "@/components/button";
-
-import React, { useState } from "react";
-import { Cliente } from "@/types/types";
+import React, { FormEvent, useState } from "react";
 
 const getUsuarios = async () => {
   const response = await fetch(
@@ -150,15 +148,15 @@ const ProjectForm = () => {
     duration: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (props : any) => {
+    const { name, value } = props.target;
     setProjectData({
       ...projectData,
       [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e : FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Aquí puedes manejar la lógica para enviar los datos del proyecto
     console.log("Datos del proyecto:", projectData);
