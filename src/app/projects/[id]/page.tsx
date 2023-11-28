@@ -25,7 +25,7 @@ export default function ProyectCard() {
   //const id = router.query.id as string;
   //const { id } = router.query;
   const project: Project = {
-    id: 321654,
+    id: 1,
     name: "Counter Strike",
     state: "En proceso",
   };
@@ -33,11 +33,6 @@ export default function ProyectCard() {
   return (
     <>
       <ProjectCard project={project} />
-      <div className="container max-w-7xl mx-auto mt-8">
-        <div className="mb-4">
-          <h1 className="text-3xl font-bold decoration-gray-400">Proyectos</h1>
-        </div>
-      </div>
     </>
   );
 };

@@ -32,7 +32,7 @@ const ProjectCard = ({ project }: { project: any }) => {
             <Button href={"/"}> Eliminar proyecto </Button>
           </div>
           <div>
-            <Button href={"/"}> Ver tareas </Button>
+            <Button href={"/projects/" + project.id + "/tasks"}> Ver tareas </Button>
           </div>
           <div>
             <Button href={"/"}> Ver kanban </Button>

@@ -5,7 +5,7 @@ export default function TaskGridRow({ task }: { task: any }) {
     return (
       <tr key={`${task["name"]}`}>
         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-          <div className="flex items-center">{task["id"]}</div>
+          <div className="flex items-center">{"#"+task["id"]}</div>
         </td>
   
         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
