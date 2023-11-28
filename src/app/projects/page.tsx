@@ -21,6 +21,7 @@ function HeaderItem({ title }: { title: string }) {
 
 const ProjectGrid = async () => {
   const list = await getProjects();
+  console.log(list);
   /*let list: Project[] = [
     { id: 35135468, name: "Counter Strike 2", state: "En proceso" },
     { id: 48733457, name: "Whatsapp Azul", state: "Bloqueado" },

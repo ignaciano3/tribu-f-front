@@ -7,3 +7,13 @@ export default function Home() {
     </div>
   );
 }
+
+
+//   projects/[id]/page.tsx
+
+// /projects/1/page
+
+// /projects/1 
+
+// /projects/[id].tsx
+
