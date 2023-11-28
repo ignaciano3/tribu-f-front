@@ -2,7 +2,13 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export default function Button({ children, href, ...attributes }) {
+interface ButtonProps {
+  children: React.ReactNode;
+  href: string;
+  onClick?: () => void;
+}
+
+export default function Button({ children, href, ...attributes }: ButtonProps) {
   const router = useRouter();
   return (
     <Link href={href}>

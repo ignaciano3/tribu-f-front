@@ -50,7 +50,7 @@ export default function Table(props: TableProps) {
 
               <tbody className="bg-slate-100 text-center">
                 {data.map((row, index) => (
-                  <RowItem row={row} key={index + row.id} />
+                  <RowItem key={index} row={row} />
                 ))}
               </tbody>
             </table>
