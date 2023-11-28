@@ -39,3 +39,12 @@ export interface Project {
   //estimatedTime: Number;
   state: string;
 }
+
+
+export interface Task{
+  id:Number;
+  name:string;
+  //createdAt:Date;
+  //description: string;
+  state: string;
+}
