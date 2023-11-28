@@ -1,16 +1,16 @@
-
-"use client";
 import { Task } from "@/types/types";
 import Button from "@/components/button";
-import TaskCard from "@/components/taskCard";
+import TaskCard from "@/components/TaskCard";
 
-const getProject = async () => {
-  //poner nuestra base de datos
-  const response = await fetch(
-    "https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/clientes-psa/1.0.0/m/api/clientes",
-  ); //poner nuestra base de datos
-  const data = await response.json();
-  return data;
+const getTask = async (id : string) => {
+  const url = process.env.proyectosApiUrl + "tareas/get_tareas/" + id;
+  const response = await fetch(url);
+  
+  if (response.ok){
+    return await response.json();
+  } else {
+    throw new Error("Hubo un error al obtener los datos");
+  }
 };
 
 function HeaderItem({ title }: { title: string }) {
@@ -21,12 +21,15 @@ function HeaderItem({ title }: { title: string }) {
   );
 }
 
-const taskCard = ({ task }: {task: Task}) => {
-  let task: Task = {
-    id: 35135468,
-    name: "Counter Strike 2",
-    state: "En proceso"
-  };
+export default async function TaskCardPage({
+  params,
+}: {
+  params: { id: string; taskId: string };
+}) {
+  console.log("ID: ", params.id);
+  console.log("TASK ID: ", params.taskId);
+  const task = await getTask(params.id);
+  //console.log("TASK: ", task);
   return (
     <>
       <TaskCard task={task} />
@@ -37,6 +40,4 @@ const taskCard = ({ task }: {task: Task}) => {
       </div>
     </>
   );
-};
-
-export default TaskCard;
+}

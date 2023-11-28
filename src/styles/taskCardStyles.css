@@ -1,0 +1,38 @@
+.project-card {
+  max-width: 700px;
+  min-width: 1000px;
+  min-height: 500px;
+  max-height: 700px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.project-name {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.project-details {
+  margin-bottom: 20px;
+}
+
+.project-details p {
+  margin: 8px 0;
+}
+
+.project-actions button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 8px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.project-actions button:hover {
+  background-color: #2980b9;
+}

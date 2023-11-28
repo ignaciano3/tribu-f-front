@@ -11,7 +11,10 @@ export default function Home() {
 
 //   projects/[id]/page.tsx
 
-// /projects/1/page
+//  /projects/1/page
+
+
+
 
 // /projects/1 
 

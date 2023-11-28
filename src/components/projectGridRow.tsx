@@ -2,10 +2,10 @@ import Button from "@/components/button";
 
 export default function ProjectGridRow({ project }: { project: any }) {
   const path = "/projects/" + project["id"];
-  const href = {pathname: path, query: {id: project.id}};
+  const href = { pathname: path, query: { id: project.id } };
 
   return (
-    <tr key={`${project["nombre"]}`}>
+    <tr key={`${project["id"]}`}>
       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
         <div className="flex items-center">{project["id"]}</div>
       </td>

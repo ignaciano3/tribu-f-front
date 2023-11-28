@@ -1,9 +1,6 @@
-"use client"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
 
-export default function Button({ children,  href, ...attributes}) {
-    const router = useRouter();
+export default function Button({ children,  href, ...attributes} : any) {
     return (
         <Link href={href}>
           <button

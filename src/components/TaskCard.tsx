@@ -1,54 +1,53 @@
-//import Button from "@/components/button";
-// components/ProjectCard.js
-import Button from "@/components/button";
-import { Project } from "@/types/types";
+import { Task } from "@/types/types";
+import { create } from "domain";
+import React from "react";
 
-export default function ProjectCard(props) {
-  const { project } = props;
+/*
+const func = (param1, param2) => {
+    ....
+}
+
+export default function func(param1, param2) {
+    ...
+}
+*/
+
+export default function TaskCard({ task }: { task: any }) {
   //const { name, createdAt, estimatedTime, leader, description } = project;
-  console.log("PROYECTO: ", project);
-  //return 0;
+  /*
+  nombre: str
+description: str
+fecha_inicio: date  # creacion o de inicio del trabajo? TODO definir
+fecha_fin: Optional[date] = None
+estados: str  # Posibles estados: Iniciada, no iniciada, finalizada
+id_proyecto: Optional[int] = Field(default=None, foreign_key="proyectos.id")
+  */
+  console.log("TASK: ", task);
   return (
     <div className="flex justify-around">
       <div className="project-card bg-gray-200 ">
-        <h2 className="project-name">{project.nombre}</h2>
+        <h2 className="project-name">{task.nombre}</h2>
         <div className="project-details">
           <p>
-            <strong>Fecha de Inicio:</strong> {project.fecha_inicio || ""}
+            <strong>Fecha de Inicio:</strong> {task.fecha_inicio}
           </p>
           <p>
             <strong>Duración Estimada:</strong>
-            {project.fecha_fin || ""}
+            {task.fecha_fin}
           </p>
           <p>
-            <strong>Líder de Proyecto:</strong> {project.state}
-          </p>
-          <p>
-            <strong>Descripción:</strong> {project.description}
+            <strong>Descripción:</strong> {task.description}
           </p>
         </div>
-        <div className="project-actions flex">
-          <div>
-            <Button href={"/"}> Editar proyecto </Button>
-          </div>
-          <div>
-            <Button href={"/"}> Eliminar proyecto </Button>
-          </div>
-          <div>
-            <Button href={"/projects/" + project.id + "/tasks"}>
-              {" "}
-              Ver tareas{" "}
-            </Button>
-          </div>
-          <div>
-            <Button href={"/"}> Ver kanban </Button>
-          </div>
+        <div className="project-actions">
+          <button className="edit-button">Editar tarea</button>
+          <button className="delete-button">Borrar tarea</button>
         </div>
         {/* Le meti una imagen random por si les gusta, en el ? poner tags, ejemplo: war */}
         <img
           src={
             "https://source.unsplash.com/random/300x200/?" +
-            "soldiers,war,videogame,guns"
+            "messi,war,videogame,guns"
           }
           alt="random"
         />
@@ -58,7 +57,7 @@ export default function ProjectCard(props) {
 }
 
 /*
-<style jsx>{`
+        <style jsx>{`
           .project-card {
             max-width: 700px;
             min-width: 1000px;
@@ -84,7 +83,7 @@ export default function ProjectCard(props) {
             margin: 8px 0;
           }
 
-          .project-actions Button {
+          .project-actions button {
             background-color: #3498db;
             color: #fff;
             padding: 8px;
@@ -94,12 +93,7 @@ export default function ProjectCard(props) {
             cursor: pointer;
           }
 
-          .project-actions Button:hover {
+          .project-actions button:hover {
             background-color: #2980b9;
           }
-
-          .project-actions div {
-            margin: 4px;
-          }
-        `}</style>
-        */
+        `}</style>*/

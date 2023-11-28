@@ -33,9 +33,12 @@ export interface Ticket {
 export interface Project {
   id: Number;
   name: string;
-  //createdAt:Date;
+  description: string;
+  createdAt:Date;
+  finishEstimatedAt:Date;
+  finishAt:Date;
   //leader: string;
-  //description: string;
+  
   //estimatedTime: Number;
   state: string;
 }
