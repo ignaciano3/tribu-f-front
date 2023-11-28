@@ -3,7 +3,7 @@
 import Button from "@/components/button";
 import { Project } from "@/types/types";
 
-export default function ProjectCard(props) {
+export default function ProjectCard(props: any) {
   const { project } = props;
   //const { name, createdAt, estimatedTime, leader, description } = project;
   console.log("PROYECTO: ", project);
