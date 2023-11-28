@@ -5,14 +5,9 @@ import { Project } from "@/types/types";
 import { create } from "domain";
 import React from "react";
 
-const ProjectCard = ({ proyect }: { proyect: Project }) => {
+const ProjectCard = ({ project }: { project: any }) => {
   //const { name, createdAt, estimatedTime, leader, description } = project;
-  console.log(proyect);
-  let project: Project = {
-    id: 35135468,
-    name: "Counter Strike 2",
-    state: "En proceso",
-  };
+  console.log(project);
   return (
     <div className="flex justify-around">
       <div className="project-card bg-gray-200 ">

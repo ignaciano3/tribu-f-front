@@ -20,10 +20,10 @@ function HeaderItem({ title }: { title: string }) {
   );
 }
 
-const ProyectCard = ({ proyect }) => {
-  let project: Project = {
-    id: 35135468,
-    name: "Counter Strike 2",
+export default function ProyectCard() {
+  const project: Project = {
+    id: 321654,
+    name: "Counter Strike",
     state: "En proceso",
   };
   return (
@@ -36,6 +36,4 @@ const ProyectCard = ({ proyect }) => {
       </div>
     </>
   );
-};
-
-export default ProjectCard;
+}
