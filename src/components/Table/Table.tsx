@@ -2,7 +2,7 @@ interface TableProps {
   HeaderItem?: any;
   headers?: string[];
   RowItem?: any;
-  data: object[];
+  data: any[];
 }
 
 function DefaultHeaderItem({ title }: { title: string }) {
