@@ -1,13 +1,13 @@
 "use client";
 import { Project } from "@/types/types";
-import Button from "@/components/button";
+import { useRouter } from 'next/navigation';
 import ProjectCard from "@/components/projectCard";
+import Button from "@/components/button";
 
-const getProject = async () => {
+
+const getProject = async ({id}: {id: string}) => {
   //poner nuestra base de datos
-  const response = await fetch(
-    "https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/clientes-psa/1.0.0/m/api/clientes",
-  ); //poner nuestra base de datos
+  const response = await fetch(`http://127.0.0.1:8000/proyectos/get_proyecto/${id}`); //poner nuestra base de datos
   const data = await response.json();
   return data;
 };
@@ -21,11 +21,15 @@ function HeaderItem({ title }: { title: string }) {
 }
 
 export default function ProyectCard() {
+  //const router = useRouter();
+  //const id = router.query.id as string;
+  //const { id } = router.query;
   const project: Project = {
     id: 321654,
     name: "Counter Strike",
     state: "En proceso",
   };
+  //const project: Project = getProject(id);
   return (
     <>
       <ProjectCard project={project} />
@@ -36,4 +40,4 @@ export default function ProyectCard() {
       </div>
     </>
   );
-}
+};
