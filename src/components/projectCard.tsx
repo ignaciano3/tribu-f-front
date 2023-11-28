@@ -6,7 +6,6 @@ import { Project } from "@/types/types";
 export default function ProjectCard(props: any) {
   const { project } = props;
   //const { name, createdAt, estimatedTime, leader, description } = project;
-  console.log("PROYECTO: ", project);
   //return 0;
   return (
     <div className="flex justify-around">
