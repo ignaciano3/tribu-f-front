@@ -4,9 +4,8 @@ import Button from "@/components/button";
 
 const getProjects = async () => {
   //poner nuestra base de datos
-  const response = await fetch(
-    "http://127.0.0.1:8000/proyectos/get_proyectos",
-  ); //poner nuestra base de datos
+  const url = process.env.proyectosApiUrl + "proyectos/get_proyectos";
+  const response = await fetch(url); //poner nuestra base de datos
   const data = await response.json();
   return data;
 };
