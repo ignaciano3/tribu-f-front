@@ -47,7 +47,7 @@ export interface Project {
 export interface Task{
   id:Number;
   name:string;
-  //createdAt:Date;
-  //description: string;
+  createdAt:Date;
+  description: string;
   state: string;
 }
