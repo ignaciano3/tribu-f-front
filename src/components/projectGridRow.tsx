@@ -11,12 +11,12 @@ export default function ProjectGridRow({ project }: { project: any }) {
       </td>
 
       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-        <div className="flex items-center">{project["nombre"]}</div>
+        <div className="flex items-center">{project["name"]}</div>
       </td>
 
       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
         <div className="text-sm leading-5 text-gray-900">
-          {project["fecha_fin"]}
+          {project["state"]}
         </div>
       </td>
 

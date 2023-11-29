@@ -34,20 +34,19 @@ export interface Project {
   id: Number;
   name: string;
   description: string;
-  createdAt:Date;
-  finishEstimatedAt:Date;
-  finishAt:Date;
-  //leader: string;
-  
+  createdAt: Date;
+  finishEstimatedAt: Date;
+  finishAt: Date;
+  id_project_leader: Number;
+
   //estimatedTime: Number;
   state: string;
 }
 
-
-export interface Task{
-  id:Number;
-  name:string;
-  createdAt:Date;
+export interface Task {
+  id: Number;
+  name: string;
+  createdAt: Date;
   description: string;
   state: string;
 }

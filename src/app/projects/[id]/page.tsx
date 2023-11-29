@@ -3,7 +3,7 @@ import { Project } from "@/types/types";
 
 const getProject = async (id: string): Promise<Project> => {
   //poner nuestra base de datos
-  const url = process.env.proyectosApiUrl + "proyectos/get_proyecto/" + id;
+  const url = process.env.proyectosApiUrl + "projects/get_project/" + id;
 
   const response = await fetch(url); //poner nuestra base de datos
   if (response.ok) {

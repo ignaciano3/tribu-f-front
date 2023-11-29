@@ -6,7 +6,7 @@ import Title from "@/components/Title";
 
 const getProjects = async () => {
   //poner nuestra base de datos
-  const url = process.env.proyectosApiUrl + "proyectos/get_proyectos";
+  const url = process.env.proyectosApiUrl + "projects/get_projects";
   const response = await fetch(url); //poner nuestra base de datos
   const data = await response.json();
   return data;

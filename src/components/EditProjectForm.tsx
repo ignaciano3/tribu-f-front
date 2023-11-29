@@ -1,5 +1,7 @@
 import Button from "@/components/button";
+import { Project } from "@/types/types";
 import React, { FormEvent, useState } from "react";
+import axios from "axios";
 
 const getUsuarios = async () => {
   const response = await fetch(
@@ -9,15 +11,18 @@ const getUsuarios = async () => {
   return data;
 };
 
-const EditProjectForm = () => {
+const EditProjectForm = (props: any) => {
+  const { project } = props;
   //const leaders = getUsuarios();
-
+  console.log("EditProjectForm props: ", props);
+  console.log("project.name", project.name);
   const [projectData, setProjectData] = useState({
-    name: "Counter Strike 2",
-    leader: "Ignacio",
-    description: "Remasterizacion del counter",
-    duration: "3000 dias",
-    state: "Bloqueado",
+    name: project.name,
+    leader: project.id_project_leader,
+    description: project.description,
+
+    //duration: "3000 dias",
+    state: project.state,
   });
 
   const handleChange = (props: any) => {
@@ -28,8 +33,34 @@ const EditProjectForm = () => {
     });
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    /*fetch(process.env.proyectosApiUrl + "/projects/create_project", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        parameterOne: projectData,
+      }),
+    });
+    */
+    try {
+      // Envia una solicitud POST al backend para crear un nuevo proyecto
+      const response = await axios.patch(
+        process.env.proyectosApiUrl + "projects/update_project/" + project.id,
+        projectData
+      );
+
+      // Maneja la respuesta del backend según sea necesario
+      console.log("Respuesta del backend:", response.data);
+
+      // Puedes realizar otras acciones después de crear el proyecto, como redireccionar a una página de éxito, etc.
+    } catch (error) {
+      // Maneja los errores de la solicitud
+      console.error("Error al crear el proyecto:", error);
+    }
     // Aquí puedes manejar la lógica para enviar los datos del proyecto
     console.log("Datos del proyecto:", projectData);
   };
@@ -49,12 +80,13 @@ const EditProjectForm = () => {
           <input
             type="text"
             name="name"
+            defaultValue={project.name}
             value={projectData.name}
             onChange={handleChange}
             required
           />
         </label>
-
+        {/*
         <label>
           Líder del proyecto:
           <select
@@ -69,10 +101,10 @@ const EditProjectForm = () => {
             <option value="lider1">Ignacio García</option>
             <option value="lider2">Nico Ronchese</option>
             <option value="lider3">Saul Goodman</option>
-            {/* Puedes agregar más opciones según sea necesario */}
+           
           </select>
         </label>
-
+  */}
         <label>
           Estado del proyecto:
           <select
@@ -100,7 +132,7 @@ const EditProjectForm = () => {
             required
           />
         </label>
-
+        {/*
         <label>
           Duración estimada del proyecto:
           <input
@@ -111,7 +143,7 @@ const EditProjectForm = () => {
             required
           />
         </label>
-
+*/}
         <div className="flex justify-between">
           <Button href="/projects/1">
             {" "}
