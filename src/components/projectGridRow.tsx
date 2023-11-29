@@ -3,7 +3,7 @@ import Button from "@/components/button";
 export default function ProjectGridRow({ project }: { project: any }) {
   const path = "/projects/" + project["id"];
   const href = { pathname: path, query: { id: project.id } };
-
+  console.log("projectGridRow: ", project);
   return (
     <tr key={`${project["id"]}`}>
       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">

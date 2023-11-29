@@ -34,12 +34,10 @@ export interface Project {
   id: Number;
   name: string;
   description: string;
-  createdAt: Date;
-  finishEstimatedAt: Date;
-  finishAt: Date;
-  id_project_leader: Number;
-
-  //estimatedTime: Number;
+  creation_date: Date;
+  expected_duration_days: Number;
+  end_date: Date;
+  project_id_leader: Number;
   state: string;
 }
 

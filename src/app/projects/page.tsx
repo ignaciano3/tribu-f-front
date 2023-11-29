@@ -6,9 +6,10 @@ import Title from "@/components/Title";
 
 const getProjects = async () => {
   //poner nuestra base de datos
-  const url = process.env.proyectosApiUrl + "projects/get_projects";
+  const url = process.env.proyectosApiUrl + "projects/get_projects/";
   const response = await fetch(url); //poner nuestra base de datos
   const data = await response.json();
+  console.log("PROJECTS: ", data);
   return data;
 };
 
@@ -23,15 +24,6 @@ function HeaderItem({ title }: { title: string }) {
 const ProjectGrid = async () => {
   const list = await getProjects();
   console.log(list);
-  /*let list: Project[] = [
-    { id: 35135468, name: "Counter Strike 2", state: "En proceso" },
-    { id: 48733457, name: "Whatsapp Azul", state: "Bloqueado" },
-    { id: 12578394, name: "GTA VI", state: "No iniciado" },
-    { id: 99853785, name: "Ubuntu 23.00", state: "No iniciado" },
-    { id: 15145789, name: "Wikipedia 2", state: "En proceso" },
-    { id: 62350978, name: "Whatsapp Rojo", state: "En proceso" },
-  ];*/
-  //const list = [Project(1, "nombre", "estado")];
   return (
     <>
       <div className="container max-w-7xl mx-auto mt-8">

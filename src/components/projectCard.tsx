@@ -64,16 +64,17 @@ export default function ProjectCard(props: any) {
   return (
     <div className="max-w-4xl min-h-screen mx-auto mt-8 relative">
       <div className="bg-gray-200 p-8 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-4">{project.nombre}</h2>
+        <h2 className="text-2xl font-bold mb-4">{project.name}</h2>
         <div className="project-details mb-6">
           <p>
-            <strong>Fecha de Inicio:</strong> {project.fecha_inicio || ""}
+            <strong>Fecha de Inicio:</strong> {project.creation_date || ""}
           </p>
           <p>
-            <strong>Duración Estimada:</strong> {project.fecha_fin || ""}
+            <strong>Duración Estimada:</strong>{" "}
+            {project.expected_duration_days || ""}
           </p>
           <p>
-            <strong>Líder de Proyecto:</strong> {project.state}
+            <strong>Estado:</strong> {project.state}
           </p>
           <p>
             <strong>Descripción:</strong> {project.description}

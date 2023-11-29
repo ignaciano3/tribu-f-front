@@ -18,10 +18,9 @@ const EditProjectForm = (props: any) => {
   console.log("project.name", project.name);
   const [projectData, setProjectData] = useState({
     name: project.name,
-    leader: project.id_project_leader,
+    project_id_leader: project.project_id_leader,
     description: project.description,
-
-    //duration: "3000 dias",
+    expected_duration_days: project.expected_duration_days,
     state: project.state,
   });
 
@@ -86,7 +85,7 @@ const EditProjectForm = (props: any) => {
             required
           />
         </label>
-        {/*
+
         <label>
           Líder del proyecto:
           <select
@@ -98,13 +97,11 @@ const EditProjectForm = (props: any) => {
             <option value="" disabled>
               Seleccionar líder
             </option>
-            <option value="lider1">Ignacio García</option>
-            <option value="lider2">Nico Ronchese</option>
-            <option value="lider3">Saul Goodman</option>
-           
+            <option value={1}>Ignacio García</option>
+            <option value={2}>Nico Ronchese</option>
+            <option value={3}>Saul Goodman</option>
           </select>
         </label>
-  */}
         <label>
           Estado del proyecto:
           <select
@@ -132,7 +129,7 @@ const EditProjectForm = (props: any) => {
             required
           />
         </label>
-        {/*
+
         <label>
           Duración estimada del proyecto:
           <input
@@ -143,7 +140,7 @@ const EditProjectForm = (props: any) => {
             required
           />
         </label>
-*/}
+
         <div className="flex justify-between">
           <Button href="/projects/1">
             {" "}

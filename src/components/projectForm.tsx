@@ -17,12 +17,11 @@ const ProjectForm = () => {
   //const leaders = getUsuarios();
 
   const [projectData, setProjectData] = useState({
-    name: "nombre",
-    state: "no iniciado",
-    description: "descr",
-    id_proyect_leader: 1,
-
-    // duration: "",
+    name: "",
+    state: "",
+    description: "",
+    project_id_leader: null,
+    expected_duration_days: null,
   });
 
   const handleChange = (props: any) => {
@@ -84,25 +83,24 @@ const ProjectForm = () => {
             required
           />
         </label>
-        {/*
+
         <label>
           Líder del proyecto:
           <select
-            name="leader"
-            value={projectData.leader}
+            type="number"
+            name="project_id_leader"
+            value={projectData.project_id_leader}
             onChange={handleChange}
             required
           >
             <option value="" disabled>
               Seleccionar líder
             </option>
-            <option value="1">Ignacio García</option>
-            <option value="2">Nico Ronchese</option>
-            <option value="2">Saul Goodman</option>
-            
+            <option value={1}>Ignacio García</option>
+            <option value={2}>Nico Ronchese</option>
+            <option value={3}>Saul Goodman</option>
           </select>
         </label>
-        */}
 
         <label>
           Descripción del proyecto:
@@ -113,18 +111,18 @@ const ProjectForm = () => {
             required
           />
         </label>
-        {/*}
+
         <label>
           Duración estimada del proyecto:
           <input
-            type="text"
-            name="duration"
-            value={projectData.duration}
+            type="number"
+            name="expected_duration_days"
+            value={projectData.expected_duration_days}
             onChange={handleChange}
             required
           />
         </label>
-      */}
+
         <div className="flex justify-between">
           <Button href="/projects">
             {" "}
