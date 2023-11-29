@@ -1,6 +1,8 @@
 import { Project } from "@/types/types";
 import ProjectGridRow from "@/components/projectGridRow";
 import Button from "@/components/button";
+import Nuevo from "@/components/Nuevo";
+import Title from "@/components/Title";
 
 const getProjects = async () => {
   //poner nuestra base de datos
@@ -33,8 +35,9 @@ const ProjectGrid = async () => {
   return (
     <>
       <div className="container max-w-7xl mx-auto mt-8">
-        <div className="mb-4">
-          <h1 className="text-3xl font-bold decoration-gray-400">Proyectos</h1>
+        <div className="flex justify-between mb-8">
+          <Title title="Proyectos" className="inline" />
+          <Nuevo title="Crear nuevo proyecto" href="/projects/create" />
         </div>
         <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -61,9 +64,9 @@ const ProjectGrid = async () => {
       </div>
       <div className="flex justify-end mt-4">
         <div></div>
-        <div>
+        {/*<div>
           <Button href="/projects/create">Nuevo Proyecto</Button>
-        </div>
+                  </div>*/}
       </div>
     </>
   );

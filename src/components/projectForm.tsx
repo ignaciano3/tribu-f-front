@@ -132,7 +132,7 @@ import React, { FormEvent, useState } from "react";
 
 const getUsuarios = async () => {
   const response = await fetch(
-    "https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos",
+    "https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos"
   );
   const data = await response.json();
   return data;
@@ -148,7 +148,7 @@ const ProjectForm = () => {
     duration: "",
   });
 
-  const handleChange = (props : any) => {
+  const handleChange = (props: any) => {
     const { name, value } = props.target;
     setProjectData({
       ...projectData,
@@ -156,7 +156,7 @@ const ProjectForm = () => {
     });
   };
 
-  const handleSubmit = (e : FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Aquí puedes manejar la lógica para enviar los datos del proyecto
     console.log("Datos del proyecto:", projectData);
@@ -171,7 +171,7 @@ const ProjectForm = () => {
           </h1>
         </div>
       </div>
-      <form className="project-form" onSubmit={handleSubmit}>
+      <form className="project-form bg-gray-100" onSubmit={handleSubmit}>
         <label>
           Nombre del proyecto:
           <input
@@ -194,8 +194,9 @@ const ProjectForm = () => {
             <option value="" disabled>
               Seleccionar líder
             </option>
-            <option value="lider1">lider 1</option>
-            <option value="lider2">lider 2</option>
+            <option value="lider1">Ignacio García</option>
+            <option value="lider2">Nico Ronchese</option>
+            <option value="lider3">Saul Goodman</option>
             {/* Puedes agregar más opciones según sea necesario */}
           </select>
         </label>
@@ -222,13 +223,12 @@ const ProjectForm = () => {
         </label>
 
         <div className="flex justify-between">
-          <button type="submit">Crear proyecto</button>
-
           <Button href="/projects">
             {" "}
             {/*IMPORTANTE: NO PASAR CHILDREN COMO PROP*/}
             Volver
           </Button>
+          <button type="submit">Crear proyecto</button>
         </div>
         <style jsx>{`
           .project-form {

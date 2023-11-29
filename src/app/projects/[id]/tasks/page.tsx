@@ -2,6 +2,8 @@ import { Task } from "@/types/types";
 import TaskGridRow from "@/components/taskGridRow";
 import Button from "@/components/button";
 import Table from "@/components/Table/Table";
+import Title from "@/components/Title";
+import Nuevo from "@/components/Nuevo";
 
 const getTasks = async () => {
   //poner nuestra base de datos
@@ -12,16 +14,31 @@ const getTasks = async () => {
   return data;
 };
 
-const headers = ["Nombre", "Descripcion", "Fecha Inicio", "Fecha Fin", "Estados", "ID proyecto", "Id tarea", ""]
+const headers = [
+  "Nombre",
+  "Descripcion",
+  "Fecha Inicio",
+  "Fecha Fin",
+  "Estados",
+  "ID proyecto",
+  "Id tarea",
+  "",
+];
 
 export default async function TaskGrid({ params }: { params: { id: string } }) {
   const list = await getTasks();
+  const id = params.id;
+  const href = "/projects/" + { id } + "/tasks/create";
   return (
     <>
+      <div className="flex justify-between">
+        <Title title="Tareas" className="inline" />
+        <Nuevo title="Crear nueva tarea" href={"/"} />
+      </div>
       <Table data={list} headers={headers} RowItem={TaskGridRow} />
     </>
   );
-};
+}
 
 /*
 
