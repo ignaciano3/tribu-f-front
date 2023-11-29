@@ -2,14 +2,13 @@
 // components/ProjectCard.js
 import Button from "@/components/button";
 import { Project } from "@/types/types";
-
+/*
 export default function ProjectCard(props: any) {
   const { project } = props;
-  //const { name, createdAt, estimatedTime, leader, description } = project;
-  //return 0;
+
   return (
     <div className="flex justify-around">
-      <div className="project-card bg-gray-200 ">
+      <div className="wbg-gray-200 ">
         <h2 className="project-name">{project.nombre}</h2>
         <div className="project-details">
           <p>
@@ -43,7 +42,7 @@ export default function ProjectCard(props: any) {
             <Button href={"/"}> Ver kanban </Button>
           </div>
         </div>
-        {/* Le meti una imagen random por si les gusta, en el ? poner tags, ejemplo: war */}
+        
         <img
           src={
             "https://source.unsplash.com/random/300x200/?" +
@@ -55,50 +54,44 @@ export default function ProjectCard(props: any) {
     </div>
   );
 }
+*/
 
-/*
-<style jsx>{`
-          .project-card {
-            max-width: 700px;
-            min-width: 1000px;
-            min-height: 500px;
-            max-height: 700px;
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-          }
+import { FaEdit, FaTrash } from "react-icons/fa";
 
-          .project-name {
-            font-size: 24px;
-            margin-bottom: 10px;
-          }
+export default function ProjectCard(props: any) {
+  const { project } = props;
 
-          .project-details {
-            margin-bottom: 20px;
-          }
-
-          .project-details p {
-            margin: 8px 0;
-          }
-
-          .project-actions Button {
-            background-color: #3498db;
-            color: #fff;
-            padding: 8px;
-            margin-right: 8px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-          }
-
-          .project-actions Button:hover {
-            background-color: #2980b9;
-          }
-
-          .project-actions div {
-            margin: 4px;
-          }
-        `}</style>
-        */
+  return (
+    <div className="max-w-4xl min-h-screen mx-auto mt-8 relative">
+      <div className="bg-gray-200 p-8 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-bold mb-4">{project.nombre}</h2>
+        <div className="project-details mb-6">
+          <p>
+            <strong>Fecha de Inicio:</strong> {project.fecha_inicio || ""}
+          </p>
+          <p>
+            <strong>Duración Estimada:</strong> {project.fecha_fin || ""}
+          </p>
+          <p>
+            <strong>Líder de Proyecto:</strong> {project.state}
+          </p>
+          <p>
+            <strong>Descripción:</strong> {project.description}
+          </p>
+        </div>
+        <div className="project-actions flex space-x-4 items-center">
+          <div className="mr-2 cursor-pointer">
+            <FaTrash size={20} />
+          </div>
+          <Button href={"/projects/" + project.id + "/tasks"}>
+            Ver tareas
+          </Button>
+          <Button href={"/"}>Ver kanban</Button>
+          <div className="absolute top-0 right-0 mt-2 mr-4 cursor-pointer ">
+            <FaEdit size={20} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
