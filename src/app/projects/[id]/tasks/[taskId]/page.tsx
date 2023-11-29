@@ -2,11 +2,11 @@ import { Task } from "@/types/types";
 import Button from "@/components/button";
 import TaskCard from "@/components/TaskCard";
 
-const getTask = async (id : string) => {
+const getTask = async (id: string) => {
   const url = process.env.proyectosApiUrl + "tareas/get_tareas/" + id;
   const response = await fetch(url);
-  
-  if (response.ok){
+
+  if (response.ok) {
     return await response.json();
   } else {
     throw new Error("Hubo un error al obtener los datos");
@@ -33,11 +33,6 @@ export default async function TaskCardPage({
   return (
     <>
       <TaskCard task={task} />
-      <div className="container max-w-7xl mx-auto mt-8">
-        <div className="mb-4">
-          <h1 className="text-3xl font-bold decoration-gray-400">Tareas</h1>
-        </div>
-      </div>
     </>
   );
 }
