@@ -57,11 +57,11 @@ const TaskCard = ({ task }: { task: any }) => {
           </p>
         </div>
         <div className="project-actions flex space-x-4 mt-8">
-          <Button href={`/projects/${task.project_id}/tasks/${task.id}/edit`}>
-            Editar tarea
+          <Button href={`/projects/${task.project_id}/tasks/`}>
+            Volver a tareas
           </Button>
 
-          <div className="mr-2 cursor-pointer" onClick={openModal}>
+          <div className="mr-2 cursor-pointer mt-2" onClick={openModal}>
             <FaTrash size={20} />
           </div>
         </div>

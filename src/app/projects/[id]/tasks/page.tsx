@@ -21,16 +21,7 @@ const getTasks = async (id: string) => {
   return data;
 };
 
-const headers = [
-  "Nombre",
-  "Descripcion",
-  "Fecha Inicio",
-  "Fecha Fin",
-  "Estados",
-  "ID proyecto",
-  "Id tarea",
-  "",
-];
+const headers = ["ID", "Nombre", "Fecha de creación", "Estado", ""];
 
 export default async function TaskGrid({ params }: { params: { id: string } }) {
   const id = params.id;

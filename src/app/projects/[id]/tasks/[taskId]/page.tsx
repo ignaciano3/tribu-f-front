@@ -1,6 +1,8 @@
+"use client";
 import { Task } from "@/types/types";
 import Button from "@/components/button";
 import TaskCard from "@/components/TaskCard";
+import React, { useState, useEffect } from "react";
 
 const getTask = async (id: string) => {
   const url = process.env.proyectosApiUrl + "tasks/get_task/" + id;
@@ -26,10 +28,28 @@ export default async function TaskCardPage({
 }: {
   params: { id: string; taskId: string };
 }) {
-  console.log("ID: ", params.id);
+  /*console.log("ID: ", params.id);
   console.log("TASK ID: ", params.taskId);
   const task = await getTask(params.taskId);
   console.log("TaskCardPage-> task: ", task);
+  */
+  const taskId = params.taskId;
+  const [task, setTask] = useState([]);
+  useEffect(() => {
+    // Función para cargar proyectos
+    const loadTask = async (id: string) => {
+      try {
+        const loadedTask = await getTask(id);
+        setTask(loadedTask);
+      } catch (error) {
+        console.error("Error al cargar proyectos:", error);
+      }
+    };
+
+    // Llamar a la función al cargar la página
+    loadTask(taskId);
+  }, [taskId]);
+  console.log("TaskCardPage, task: ", task);
   return (
     <>
       <TaskCard task={task} />

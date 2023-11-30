@@ -1,7 +1,7 @@
 "use client";
 import EditProjectForm from "@/components/EditProjectForm";
 import { Project } from "@/types/types";
-import React, { useState, useEffect } from "react";
+
 
 const getProject = async (id: string): Promise<Project> => {
   //poner nuestra base de datos
