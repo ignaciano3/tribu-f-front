@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Task } from "@/types/types";
+import Button from "@/components/button";
 
 const KanbanBoard = (props: any) => {
-  const { tasks } = props;
+  const { project_id, tasks } = props;
+  //const {project_id} = props; { tasks } = props;
   console.log("KANBAN BOARD -> tasks: ", tasks);
   const tareasNoIniciadas = tasks.filter(
     (task: any) => task.state === "no iniciada"
@@ -18,8 +20,9 @@ const KanbanBoard = (props: any) => {
 
   return (
     <div>
-      <div>
+      <div className="flex justify-between">
         <h1 className="text-3xl font-bold mb-4">Kanban</h1>
+        <Button href={"/projects/" + project_id}>Volver al proyecto</Button>
       </div>
 
       <div className="kanban-board flex m-20 ">

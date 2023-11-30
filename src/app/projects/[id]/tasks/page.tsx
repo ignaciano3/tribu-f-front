@@ -21,7 +21,15 @@ const getTasks = async (id: string) => {
   return data;
 };
 
-const headers = ["ID", "Nombre", "Fecha de creación", "Estado", ""];
+const headers = [
+  "Nombre",
+  "Estado",
+  "Descripcion",
+  "ID Proyecto",
+  "ID Tarea",
+  "Fecha de creacion",
+  "",
+];
 
 export default async function TaskGrid({ params }: { params: { id: string } }) {
   const id = params.id;
@@ -51,7 +59,11 @@ export default async function TaskGrid({ params }: { params: { id: string } }) {
     <>
       <div className="flex justify-between">
         <Title title="Tareas" className="inline" />
-        <Nuevo title="Crear nueva tarea" href={href} />
+        <div className="flex gap-4">
+          <Button href={"/projects/" + params.id}>Volver al proyecto</Button>
+
+          <Nuevo title="Crear nueva tarea" href={href} />
+        </div>
       </div>
       <Table data={tasks} headers={headers} RowItem={TaskGridRow} />
     </>

@@ -44,7 +44,7 @@ export default async function KanbanPage({
   //const tasks = await getTasks(params.id);
   return (
     <>
-      <KanbanBoard tasks={tasks} />
+      <KanbanBoard project_id={id} tasks={tasks} />
     </>
   );
 }

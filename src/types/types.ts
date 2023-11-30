@@ -46,7 +46,7 @@ export interface Task {
   state: string;
   description: string;
   project_id: Number;
-  id: Number;
+
   creation_date: Date;
   end_date: Date;
 }
