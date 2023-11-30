@@ -1,6 +1,7 @@
 import Button from "@/components/button";
 import React, { FormEvent, useState } from "react";
 import axios from "axios";
+import Link from "next/link";
 
 const getUsuarios = async () => {
   const response = await fetch(
@@ -29,17 +30,6 @@ const TaskForm = (props: any) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    /*fetch(process.env.proyectosApiUrl + "/projects/create_project", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        parameterOne: projectData,
-      }),
-    });
-    */
     try {
       // Envia una solicitud POST al backend para crear un nuevo proyecto
       const response = await axios.post(
@@ -108,7 +98,7 @@ const TaskForm = (props: any) => {
         </label>
 
         <div className="flex justify-between">
-          <Button href="/projects">
+          <Button href={"/projects/" + taskData.project_id + "/tasks"}>
             {" "}
             {/*IMPORTANTE: NO PASAR CHILDREN COMO PROP*/}
             Volver

@@ -87,7 +87,9 @@ export default function ProjectCard(props: any) {
           <Button href={"/projects/" + project.id + "/tasks"}>
             Ver tareas
           </Button>
-          <Button href={"/"}>Ver kanban</Button>
+          <Button href={"/projects/" + project.id + "/kanban"}>
+            Ver kanban
+          </Button>
           <Button href={"/projects/" + project.id + "/edit"}>
             Editar proyecto
           </Button>
