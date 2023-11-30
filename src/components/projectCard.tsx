@@ -5,6 +5,7 @@ import { useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Modal from "react-modal";
 import axios from "axios";
+import Link from "next/link";
 
 export default function ProjectCard(props: any) {
   const { project } = props;
@@ -37,32 +38,40 @@ export default function ProjectCard(props: any) {
 
   return (
     <div className="max-w-4xl min-h-screen mx-auto mt-8 relative">
-      <div className="bg-gray-200 p-8 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-4">{project.name}</h2>
+      <div className="bg-slate-100 p-8 rounded-lg shadow-lg">
+        <div className="flex">
+          <h2 className="text-3xl font-bold mb-8">{project.name}</h2>
+          <div className="mt-2 ml-5 cursor-pointer">
+            <Link href={`/projects/${project.id}/edit`}>
+              <FaEdit size={20} />
+            </Link>
+          </div>
+        </div>
+
         <div className="project-details mb-6">
-          <p>
-            <strong>Fecha de Inicio:</strong> {project.creation_date || ""}
+          <p className="mb-5">
+            <strong>Fecha de creación:</strong> {project.creation_date || ""}
           </p>
-          <p>
-            <strong>Duración Estimada:</strong>{" "}
-            {project.expected_duration_days || ""}
+          <p className="mb-5">
+            <strong>Duración estimada:</strong>{" "}
+            {project.expected_duration_days || ""} {"días"}
           </p>
-          <p>
+          <p className="mb-5">
             <strong>Estado:</strong> {project.state}
           </p>
-          <p>
+          <p className="mb-5 max-w-md">
             <strong>Descripción:</strong> {project.description}
           </p>
         </div>
         <div className="project-actions flex space-x-4 items-center">
+          <div className="flex space-x-4">
+            <Button href={`/projects/${project.id}/tasks`}>Ver tareas</Button>
+            <Button href={`/projects/${project.id}/kanban`}>Ver kanban</Button>
+            <Button href={`/projects/`}>Volver a proyectos</Button>
+          </div>
+
           <div className="mr-2 cursor-pointer" onClick={openModal}>
             <FaTrash size={20} />
-          </div>
-          <Button href={`/projects/${project.id}/tasks`}>Ver tareas</Button>
-          <Button href={`/projects/${project.id}/kanban`}>Ver kanban</Button>
-          <Button href={`/projects/${project.id}/edit`}>Editar proyecto</Button>
-          <div className="absolute top-0 right-0 mt-2 mr-4 cursor-pointer">
-            <FaEdit size={20} />
           </div>
         </div>
       </div>

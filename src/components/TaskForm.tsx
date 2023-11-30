@@ -18,6 +18,7 @@ const TaskForm = (props: any) => {
     state: "no iniciada",
     description: "",
     project_id: project_id,
+    priority: "",
   });
 
   const handleChange = (props: any) => {
@@ -84,6 +85,23 @@ const TaskForm = (props: any) => {
             <option value={1}>Ignacio García</option>
             <option value={2}>Nico Ronchese</option>
             <option value={3}>Saul Goodman</option>
+          </select>
+        </label>
+
+        <label>
+          Prioridad de la tarea:
+          <select
+            name="priority"
+            //value={taskData.project_id}
+            onChange={handleChange}
+            required
+          >
+            <option value="" disabled>
+              Seleccionar prioridad
+            </option>
+            <option value={"alta"}>Alta</option>
+            <option value={"media"}>Media</option>
+            <option value={"baja"}>Baja</option>
           </select>
         </label>
 

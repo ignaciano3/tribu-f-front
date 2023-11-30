@@ -33,12 +33,14 @@ const headers = [
 ];
 
 export default async function TaskGrid({ params }: { params: { id: string } }) {
+  const id = params.id;
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
     // Función para cargar tareas
-    const loadTasks = async () => {
+
+    const loadTasks = async (id: string) => {
       try {
-        const loadedTasks = await getTasks(params.id);
+        const loadedTasks = await getTasks(id);
         setTasks(loadedTasks);
       } catch (error) {
         console.error("Error al cargar proyectos:", error);
@@ -46,8 +48,8 @@ export default async function TaskGrid({ params }: { params: { id: string } }) {
     };
 
     // Llamar a la función al cargar la página
-    loadTasks();
-  }, []);
+    loadTasks(id);
+  }, [id]);
   /*const list = await getTasks(params.id);
   console.log("list: ", list);
   const id = params.id;

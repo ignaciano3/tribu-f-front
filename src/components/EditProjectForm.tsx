@@ -14,7 +14,7 @@ const getUsuarios = async () => {
 const EditProjectForm = (props: any) => {
   const { project } = props;
   //const leaders = getUsuarios();
-  console.log("EditProjectForm props: ", props);
+  console.log("Component EditProjectForm project: ", project);
   //console.log("project.name", project.name);
   const [projectData, setProjectData] = useState({
     name: project.name,
@@ -90,7 +90,7 @@ const EditProjectForm = (props: any) => {
           Líder del proyecto:
           <select
             name="leader"
-            value={projectData.leader}
+            defaultValue={projectData.project_id_leader}
             onChange={handleChange}
             required
           >
@@ -106,17 +106,17 @@ const EditProjectForm = (props: any) => {
           Estado del proyecto:
           <select
             name="state"
-            value={projectData.state}
+            defaultValue={projectData.state}
             onChange={handleChange}
             required
           >
             <option value="" disabled>
               Seleccionar estado
             </option>
-            <option value="1">No iniciado</option>
-            <option value="2">En proceso</option>
-            <option value="3">Bloqueado</option>
-            <option value="4">Finalizado</option>
+            <option value="no iniciado">No iniciado</option>
+            <option value="en proceso">En proceso</option>
+            <option value="bloqueado">Bloqueado</option>
+            <option value="finalizado">Finalizado</option>
           </select>
         </label>
 
@@ -124,7 +124,7 @@ const EditProjectForm = (props: any) => {
           Descripción del proyecto:
           <textarea
             name="description"
-            value={projectData.description}
+            defaultValue={projectData.description}
             onChange={handleChange}
             required
           />
@@ -133,16 +133,16 @@ const EditProjectForm = (props: any) => {
         <label>
           Duración estimada del proyecto:
           <input
-            type="text"
-            name="duration"
-            value={projectData.duration}
+            type="number"
+            name="expected_duration_days"
+            defaultValue={project.expected_duration_days}
             onChange={handleChange}
             required
           />
         </label>
 
         <div className="flex justify-between">
-          <Button href="/projects/1">
+          <Button href={`/projects/${project.id}`}>
             {" "}
             {/*IMPORTANTE: NO PASAR CHILDREN COMO PROP*/}
             Volver

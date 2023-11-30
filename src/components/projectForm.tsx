@@ -19,7 +19,7 @@ const ProjectForm = () => {
 
   const [projectData, setProjectData] = useState({
     name: "",
-    state: "",
+    state: "no iniciado",
     description: "",
     project_id_leader: null,
     expected_duration_days: null,

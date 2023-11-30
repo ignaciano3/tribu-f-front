@@ -1,5 +1,7 @@
+"use client";
 import ProjectCard from "@/components/projectCard";
 import { Project } from "@/types/types";
+import React, { useState, useEffect } from "react";
 
 const getProject = async (id: string): Promise<Project> => {
   //poner nuestra base de datos
@@ -19,27 +21,21 @@ export default async function ProjectPage({
 }: {
   params: { id: string };
 }) {
-  console.log("ID: ", params.id);
-  //const router = useRouter();
-  //const id = router.query;
-  //const router = useRouter();
+  const id = params.id;
+  const [project, setProject] = useState([]);
+  useEffect(() => {
+    // Función para cargar proyectos
+    const loadProject = async (id: string) => {
+      try {
+        const loadedProject = await getProject(id);
+        setProject(loadedProject);
+      } catch (error) {
+        console.error("Error al cargar proyectos:", error);
+      }
+    };
 
-  //const { id } = router.query;
-  const project = await getProject(params.id);
-  console.log("page/ PROYECTO: ", JSON.stringify(project, null, 2));
-  // const project: Project = {
-  //   id: 1,params
-  //   name: "Counter Strike",
-  //   state: "En proceso",
-  // };
-
-  // Check if id is available before calling getProject
-  //const project: Project | undefined = id ? getProject(id) : undefined;
-
-  // Check if project is undefined and handle accordingly
-  //  if (!project) {
-  //    return <p>Project not found</p>; // or render a loading state or redirect
-  //  }
+    loadProject(id);
+  }, [id]);
   return (
     <>
       <ProjectCard project={project} />

@@ -4,9 +4,13 @@ import { Task } from "@/types/types";
 
 const KanbanBoard = (props: any) => {
   const { tasks } = props;
-
-  const tareasNoIniciadas = tasks.filter((task: any) => task.state === "1");
-  const tareasIniciadas = tasks.filter((task: any) => task.state === "string");
+  console.log("KANBAN BOARD -> tasks: ", tasks);
+  const tareasNoIniciadas = tasks.filter(
+    (task: any) => task.state === "no iniciada"
+  );
+  const tareasEnProceso = tasks.filter(
+    (task: any) => task.state === "en proceso"
+  );
   const tareasEnTests = tasks.filter((task: any) => task.state === "en tests");
   const tareasFinalizadas = tasks.filter(
     (task: any) => task.state === "finalizada"
@@ -18,8 +22,8 @@ const KanbanBoard = (props: any) => {
         <h1 className="text-3xl font-bold mb-4">Kanban</h1>
       </div>
 
-      <div className="kanban-board flex m-20">
-        <div className="column w-1/4 bg-gray-200 p-4 rounded-lg mr-4">
+      <div className="kanban-board flex m-20 ">
+        <div className="column w-1/4 bg-slate-100 p-4 rounded-lg mr-4 shadow-lg">
           <h2 className="text-xl font-bold mb-2">No Iniciadas</h2>
           {tareasNoIniciadas.map((task: any) => (
             <Link
@@ -36,9 +40,9 @@ const KanbanBoard = (props: any) => {
           ))}
         </div>
 
-        <div className="column w-1/4 bg-gray-200 p-4 rounded-lg mr-4">
-          <h2 className="text-xl font-bold mb-2">Iniciadas</h2>
-          {tareasIniciadas.map((task: any) => (
+        <div className="column w-1/4 bg-slate-100 p-4 rounded-lg mr-4 shadow-lg">
+          <h2 className="text-xl font-bold mb-2">En proceso</h2>
+          {tareasEnProceso.map((task: any) => (
             <Link
               key={task.id}
               href={"/projects/" + task.project_id + "/tasks/" + task.id}
@@ -53,8 +57,8 @@ const KanbanBoard = (props: any) => {
           ))}
         </div>
 
-        <div className="column w-1/4 bg-gray-200 p-4 rounded-lg mr-4">
-          <h2 className="text-xl font-bold mb-2">En Tests</h2>
+        <div className="column w-1/4 bg-slate-100 p-4 rounded-lg mr-4 shadow-lg">
+          <h2 className="text-xl font-bold mb-2">En tests</h2>
           {tareasEnTests.map((task: any) => (
             <Link
               key={task.id}
@@ -70,7 +74,7 @@ const KanbanBoard = (props: any) => {
           ))}
         </div>
 
-        <div className="column w-1/4 bg-gray-200 p-4 rounded-lg">
+        <div className="column w-1/4 bg-slate-100 p-4 rounded-lg shadow-lg">
           <h2 className="text-xl font-bold mb-2">Finalizadas</h2>
           {tareasFinalizadas.map((task: any) => (
             <Link

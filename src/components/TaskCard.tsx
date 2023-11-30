@@ -2,9 +2,10 @@
 import { Task } from "@/types/types";
 import Button from "@/components/button";
 import React, { useState } from "react";
-import { FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import Modal from "react-modal";
 import axios from "axios";
+import Link from "next/link";
 
 const TaskCard = ({ task }: { task: any }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,20 +33,30 @@ const TaskCard = ({ task }: { task: any }) => {
 
   return (
     <div className="max-w-4xl mx-auto mt-8">
-      <div className="bg-gray-200 p-8 rounded-lg shadow-lg">
-        <h2 className="text-xl font-bold mb-4">{task.name}</h2>
+      <div className="bg-slate-100 p-8 rounded-lg shadow-lg">
+        <div className="flex">
+          <h2 className="text-2xl font-bold mb-4">{task.name}</h2>
+          <div className="mt-2 ml-5 cursor-pointer">
+            <Link href={`/projects/${task.project_id}/tasks/${task.id}/edit`}>
+              <FaEdit size={20} />
+            </Link>
+          </div>
+        </div>
         <div className="project-details mb-4">
-          <p>
+          <p className="mb-5">
             <strong>Fecha de creación:</strong> {task.creation_date}
           </p>
-          <p>
+          <p className="mb-5">
+            <strong>Estado:</strong> {task.state}
+          </p>
+          <p className="mb-5">
             <strong>Duración estimada:</strong> {task.expected_duration_days}
           </p>
-          <p>
+          <p className="mb-5">
             <strong>Descripción:</strong> {task.description}
           </p>
         </div>
-        <div className="project-actions flex space-x-4">
+        <div className="project-actions flex space-x-4 mt-8">
           <Button href={`/projects/${task.project_id}/tasks/${task.id}/edit`}>
             Editar tarea
           </Button>

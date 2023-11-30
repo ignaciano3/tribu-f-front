@@ -59,13 +59,13 @@ const EditTaskForm = (props: any) => {
       <div className="container max-w-7xl mx-auto mt-8">
         <div className="mb-4">
           <h1 className="text-3xl font-bold decoration-gray-400">
-            Editar proyecto
+            Editar tarea
           </h1>
         </div>
       </div>
       <form className="task-form bg-gray-100" onSubmit={handleSubmit}>
         <label>
-          Nombre del proyecto:
+          Nombre de la tarea:
           <input
             type="text"
             name="name"
@@ -77,7 +77,7 @@ const EditTaskForm = (props: any) => {
         </label>
 
         <label>
-          Líder de la tarea:
+          Responsable de la tarea:
           <select
             name="leader"
             value={taskData.leader}
@@ -85,7 +85,7 @@ const EditTaskForm = (props: any) => {
             required
           >
             <option value="" disabled>
-              Seleccionar líder
+              Seleccionar responsable
             </option>
             <option value={1}>Ignacio García</option>
             <option value={2}>Nico Ronchese</option>
@@ -93,7 +93,7 @@ const EditTaskForm = (props: any) => {
           </select>
         </label>
         <label>
-          Estado del proyecto:
+          Estado de la tarea:
           <select
             name="state"
             value={taskData.state}
@@ -103,16 +103,16 @@ const EditTaskForm = (props: any) => {
             <option value="" disabled>
               Seleccionar estado
             </option>
-            <option value="no iniciado">No iniciado</option>
+            <option value="no iniciada">No iniciada</option>
             <option value="en proceso">En proceso</option>
-            <option value="bloqueado">Bloqueado</option>
+            <option value="bloqueada">Bloqueada</option>
             <option value="en tests">En tests</option>
-            <option value="terminada">Terminada</option>
+            <option value="finalizada">Finalizada</option>
           </select>
         </label>
 
         <label>
-          Descripción del proyecto:
+          Descripción de la tarea:
           <textarea
             name="description"
             value={taskData.description}
