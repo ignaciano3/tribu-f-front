@@ -1,6 +1,6 @@
 import Button from "@/components/button";
 export default function rowGridRow({ row }: { row: any }) {
-  const path = `/projects/${row.id_proyecto}/tasks/${row.id}`;
+  const path = `/projects/${row.project_id}/tasks/${row.id}`;
   return (
     <tr key={`${row["id"]}`}>
       {Object.keys(row).map((key, index) => (
