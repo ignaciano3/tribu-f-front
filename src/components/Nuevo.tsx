@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function TopRightButton({
+export default function NuevoButton({
   title,
   href,
 }: {

@@ -13,7 +13,7 @@ const getUsuarios = async () => {
   return data;
 };
 
-export default async function CreateProjectPage() {
+export default function CreateProjectPage() {
   //const usuarios = await getUsuarios();
   //const usuarios =
   /*const usuarios: { nombre: string; apellido: string; legajo: number }[] = [
