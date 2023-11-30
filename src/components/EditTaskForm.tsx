@@ -1,5 +1,5 @@
 import Button from "@/components/button";
-import { Project } from "@/types/types";
+import { Task } from "@/types/types";
 import React, { FormEvent, useState } from "react";
 import axios from "axios";
 
@@ -11,45 +11,46 @@ const getUsuarios = async () => {
   return data;
 };
 
-const EditProjectForm = (props: any) => {
-  const { project } = props;
+const EditTaskForm = (props: any) => {
+  const { task } = props;
   //const leaders = getUsuarios();
-  console.log("EditProjectForm props: ", props);
-  //console.log("project.name", project.name);
-  const [projectData, setProjectData] = useState({
-    name: project.name,
-    project_id_leader: project.project_id_leader,
-    description: project.description,
-    expected_duration_days: project.expected_duration_days,
-    state: project.state,
+  console.log("EditTaskForm props: ", props);
+  console.log("task.name", task.name);
+  const [taskData, setTaskData] = useState({
+    name: task.name,
+    state: task.state,
+    description: task.description,
+    project_id: task.project_id,
+    end_date: task.end_date,
+    // agregar leader
   });
 
   const handleChange = (props: any) => {
     const { name, value } = props.target;
-    setProjectData({
-      ...projectData,
+    setTaskData({
+      ...taskData,
       [name]: value,
     });
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    /*fetch(process.env.proyectosApiUrl + "/projects/create_project", {
+    /*fetch(process.env.proyectosApiUrl + "/tasks/create_task", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        parameterOne: projectData,
+        parameterOne: taskData,
       }),
     });
     */
     try {
       // Envia una solicitud POST al backend para crear un nuevo proyecto
       const response = await axios.patch(
-        process.env.proyectosApiUrl + "projects/update_project/" + project.id,
-        projectData
+        process.env.proyectosApiUrl + "tasks/update_task/" + task.id,
+        taskData
       );
 
       // Maneja la respuesta del backend según sea necesario
@@ -61,7 +62,7 @@ const EditProjectForm = (props: any) => {
       console.error("Error al crear el proyecto:", error);
     }
     // Aquí puedes manejar la lógica para enviar los datos del proyecto
-    console.log("Datos del proyecto:", projectData);
+    console.log("Datos del proyecto:", taskData);
   };
 
   return (
@@ -73,14 +74,14 @@ const EditProjectForm = (props: any) => {
           </h1>
         </div>
       </div>
-      <form className="project-form bg-gray-100" onSubmit={handleSubmit}>
+      <form className="task-form bg-gray-100" onSubmit={handleSubmit}>
         <label>
           Nombre del proyecto:
           <input
             type="text"
             name="name"
-            defaultValue={project.name}
-            value={projectData.name}
+            defaultValue={task.name}
+            value={taskData.name}
             onChange={handleChange}
             required
           />
@@ -90,7 +91,7 @@ const EditProjectForm = (props: any) => {
           Líder del proyecto:
           <select
             name="leader"
-            value={projectData.leader}
+            value={taskData.leader}
             onChange={handleChange}
             required
           >
@@ -106,17 +107,18 @@ const EditProjectForm = (props: any) => {
           Estado del proyecto:
           <select
             name="state"
-            value={projectData.state}
+            value={taskData.state}
             onChange={handleChange}
             required
           >
             <option value="" disabled>
               Seleccionar estado
             </option>
-            <option value="1">No iniciado</option>
-            <option value="2">En proceso</option>
-            <option value="3">Bloqueado</option>
-            <option value="4">Finalizado</option>
+            <option value="no iniciado">No iniciado</option>
+            <option value="en proceso">En proceso</option>
+            <option value="bloqueado">Bloqueado</option>
+            <option value="en tests">En tests</option>
+            <option value="terminada">Terminada</option>
           </select>
         </label>
 
@@ -124,25 +126,25 @@ const EditProjectForm = (props: any) => {
           Descripción del proyecto:
           <textarea
             name="description"
-            value={projectData.description}
+            value={taskData.description}
             onChange={handleChange}
             required
           />
         </label>
-
-        <label>
+        {/*
+            <label>
           Duración estimada del proyecto:
           <input
             type="text"
             name="duration"
-            value={projectData.duration}
+            value={taskData.duration}
             onChange={handleChange}
             required
           />
         </label>
-
+        */}
         <div className="flex justify-between">
-          <Button href="/projects/1">
+          <Button href={`/projects/${task.project_id}/tasks/${task.id}`}>
             {" "}
             {/*IMPORTANTE: NO PASAR CHILDREN COMO PROP*/}
             Volver
@@ -150,7 +152,7 @@ const EditProjectForm = (props: any) => {
           <button type="submit">Guardar cambios</button>
         </div>
         <style jsx>{`
-          .project-form {
+          .task-form {
             max-width: 400px;
             margin: 0 auto;
             padding: 20px;
@@ -194,9 +196,9 @@ const EditProjectForm = (props: any) => {
   );
 };
 
-export default EditProjectForm;
+export default EditTaskForm;
 
-// //export default ProjectForm;
+// //export default taskForm;
 
 // async function enviarFormulario() {
 //   // Obtener referencias a los elementos del formulario
@@ -207,7 +209,7 @@ export default EditProjectForm;
 //   const nombre = nombreInput.value;
 //   const edad = parseInt(edadInput.value, 10);
 
-// const hola: Project = {
+// const hola: task = {
 //   nombre,
 //   edad,
 // };

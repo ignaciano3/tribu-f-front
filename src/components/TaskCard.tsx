@@ -13,6 +13,7 @@ estados: str  # Posibles estados: Iniciada, no iniciada, finalizada
 id_proyecto: Optional[int] = Field(default=None, foreign_key="proyectos.id")
   */
 export default function TaskCard({ task }: { task: any }) {
+  console.log("TaskCard -> task: ", task);
   return (
     <div className="max-w-4xl mx-auto mt-8">
       <div className="bg-gray-200 p-8 rounded-lg shadow-lg">
@@ -29,7 +30,14 @@ export default function TaskCard({ task }: { task: any }) {
           </p>
         </div>
         <div className="project-actions flex space-x-4">
-          <button className="edit-button">Editar tarea</button>
+          <Button
+            href={
+              "/projects/" + task.id_proyecto + "/tasks/" + task.id + "/edit"
+            }
+          >
+            Editar tarea
+          </Button>
+
           <button className="delete-button">Borrar tarea</button>
         </div>
       </div>
