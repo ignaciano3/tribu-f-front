@@ -30,20 +30,6 @@ export default function ProjectCard(props: any) {
       console.error("Error al crear el proyecto:", error);
     }
 
-    // Aquí debes realizar la lógica para enviar la solicitud DELETE al backend
-    // y luego cerrar el modal si la eliminación es exitosa
-    //poner nuestra base de datos
-    /*const url =
-      process.env.proyectosApiUrl + "projects/delete_project/" + project.id;
-    console.log("URL DELETE: ", url);
-    const response = await fetch(url); //poner nuestra base de datos
-    if (response.ok) {
-      const data = await response.json();
-      console.log("proyecto eliminado: ", data);
-    } else {
-      throw new Error("Hubo un error en el back");
-    }*/
-
     console.log("Eliminar proyecto:", project.id);
     // Simulación de éxito; deberías realizar la lógica del backend aquí
     closeModal();
