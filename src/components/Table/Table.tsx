@@ -33,7 +33,7 @@ export default function Table(props: TableProps) {
   const RowItem = props.RowItem ?? DefaultRowItem;
   const HeaderItem = props.HeaderItem ?? DefaultHeaderItem;
   const headers = props.headers ?? Object.keys(data[0]);
-
+  console.log("typeof data: ", typeof data);
   return (
     <div className="container max-w-7xl mx-auto mt-8">
       <div className="flex flex-col">

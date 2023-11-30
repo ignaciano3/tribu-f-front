@@ -5,9 +5,14 @@ import Table from "@/components/Table/Table";
 import Title from "@/components/Title";
 import Nuevo from "@/components/Nuevo";
 
-const getTasks = async () => {
+const getTasks = async (id: string) => {
+  console.log("id: ", id);
   //poner nuestra base de datos
-  const url = process.env.proyectosApiUrl + "tareas/get_tareas";
+  const url =
+    process.env.proyectosApiUrl +
+    "tasks/get_tasks_by_project_id/{id}?project_id=" +
+    id;
+  console.log("URL: ", url);
   //const response = await fetchProyectos(/tareas/get_tareas)
   const response = await fetch(url); //poner nuestra base de datos
   const data = await response.json();
@@ -26,8 +31,10 @@ const headers = [
 ];
 
 export default async function TaskGrid({ params }: { params: { id: string } }) {
-  const list = await getTasks();
+  const list = await getTasks(params.id);
+  console.log("list: ", list);
   const id = params.id;
+  console.log("id: ", id);
   const href = "/projects/" + { id } + "/tasks/create";
   return (
     <>
