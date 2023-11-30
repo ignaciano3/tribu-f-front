@@ -1,65 +1,82 @@
-export default function TicketForm() {
+"use server";
+import TextField from "./forms/TextField";
+import SelectField from "./forms/SelectField";
+import SubmitButton from "./forms/SubmitButton";
+import TextAreaField from "./forms/TextAreaField";
+import Title from "./Title";
+import ReturnButton from "./forms/ReturnButton";
+
+
+interface CreateTicket {
+  title: string;
+  severity: string;
+  priority: string;
+  state: string;
+  description: string;
+}
+
+
+const initialValues : CreateTicket = {
+  title: "",
+  description: "",
+  severity: "",
+  priority: "",
+  state: "",
+
+};
+
+const severities = [
+  { value: "S1", label: "S1" },
+  { value: "S2", label: "S2" },
+  { value: "S3", label: "S3" },
+  { value: "S4", label: "S4" },
+];
+
+const priorities = [
+  { value: "alta", label: "Alta" },
+  { value: "media", label: "Media" },
+  { value: "baja", label: "Baja" },
+];
+
+const state = [
+  { value: "abierto", label: "Abierto" },
+  { value: "en_proceso", label: "En proceso" },
+  { value: "cerrado", label: "Cerrado" },
+];
+
+export default async function TicketForm(action: any) {
   return (
-    <form action="/submit-ticket" method="post">
-      <div>
-        <label>Título</label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          placeholder="No funciona el botón de guardar"
-        />
+    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
+      <div className="w-full max-w-screen-sm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-4">
+        <div className="flex justify-between">
+          <Title title="Crear Ticket" />
+        </div>
+        <form action={action} className="space-y-2" >
+          <TextField
+            name="title"
+            label="Título"
+            placeholder="Nombre del ticket"
+          />
+          <TextAreaField name="description" label="Descripción" placeholder="Descripción del ticket" />
+          <div className="flex justify-between space-x-2 pb-4">
+            <SelectField
+              name="severity"
+              label="Severidad"
+              options={severities}
+            />
+            <SelectField
+              name="priority"
+              label="Prioridad"
+              options={priorities}
+            />
+            <SelectField name="state" label="Estado" options={state} />
+          </div>
+          <div className="flex justify-between space-x-2 pb-4">
+            <SubmitButton label="Crear" />
+            <ReturnButton href="/" />
+          </div>
+        </form>
       </div>
-      <div>
-        <label>Descripción</label>
-        <textarea
-          id="description"
-          name="description"
-          rows={4}
-          placeholder="Describe el problema"
-        />
-      </div>
-      <div>
-        <label htmlFor="severity">Severidad</label>
-        <select id="severity" name="severity">
-          <option value="S1">S1</option>
-          <option value="S2">S2</option>
-          <option value="S3">S3</option>
-          <option value="S4">S4</option>
-        </select>
-      </div>
-      <div>
-        <label htmlFor="priority">Prioridad</label>
-        <select id="priority" name="priority">
-          <option value="alta">Alta</option>
-          <option value="media">Media</option>
-          <option value="baja">Baja</option>
-        </select>
-      </div>
-      <div className="input-group">
-        <label htmlFor="tareasAsociadas">Tareas Asociadas</label>
-        <select id="tareasAsociadas" name="tareasAsociadas[]" multiple></select>
-        <button type="button" className="create-task-button">
-          Crear tarea
-        </button>
-      </div>
-      <div>
-        <label htmlFor="user-email">Email usuario</label>
-        <input
-          type="email"
-          id="user-email"
-          name="user-email"
-          placeholder="name@example.com"
-        />
-      </div>
-      <div className="buttons">
-        <button type="button" className="cancel-button">
-          Cancelar
-        </button>
-        <button type="submit" className="create-button">
-          Crear
-        </button>
-      </div>
-    </form>
+    </div>
   );
 }

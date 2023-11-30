@@ -18,14 +18,14 @@ export interface Product {
 
 export interface Ticket {
   id: Number;
+  title: String;
   severity: string;
   priority: string;
-  status: string;
+  state: string;
   client_id: Number;
   product_id: Number;
+  description: string;
 
-  // Posible a agregar
-  description?: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
