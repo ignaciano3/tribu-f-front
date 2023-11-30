@@ -17,13 +17,13 @@ export default function TaskCard({ task }: { task: any }) {
   return (
     <div className="max-w-4xl mx-auto mt-8">
       <div className="bg-gray-200 p-8 rounded-lg shadow-lg">
-        <h2 className="text-xl font-bold mb-4">{task.nombre}</h2>
+        <h2 className="text-xl font-bold mb-4">{task.name}</h2>
         <div className="project-details mb-4">
           <p>
-            <strong>Fecha de Inicio:</strong> {task.fecha_inicio}
+            <strong>Fecha de creación:</strong> {task.creation_date}
           </p>
           <p>
-            <strong>Duración Estimada:</strong> {task.fecha_fin}
+            <strong>Duración estimada:</strong> {task.expected_duration_days}
           </p>
           <p>
             <strong>Descripción:</strong> {task.description}
@@ -32,7 +32,7 @@ export default function TaskCard({ task }: { task: any }) {
         <div className="project-actions flex space-x-4">
           <Button
             href={
-              "/projects/" + task.id_proyecto + "/tasks/" + task.id + "/edit"
+              "/projects/" + task.project_id + "/tasks/" + task.id + "/edit"
             }
           >
             Editar tarea

@@ -3,7 +3,7 @@ import Button from "@/components/button";
 import TaskCard from "@/components/TaskCard";
 
 const getTask = async (id: string) => {
-  const url = process.env.proyectosApiUrl + "tareas/get_tareas/" + id;
+  const url = process.env.proyectosApiUrl + "tasks/get_task/" + id;
   const response = await fetch(url);
 
   if (response.ok) {
@@ -28,8 +28,8 @@ export default async function TaskCardPage({
 }) {
   console.log("ID: ", params.id);
   console.log("TASK ID: ", params.taskId);
-  const task = await getTask(params.id);
-  //console.log("TASK: ", task);
+  const task = await getTask(params.taskId);
+  console.log("TaskCardPage-> task: ", task);
   return (
     <>
       <TaskCard task={task} />

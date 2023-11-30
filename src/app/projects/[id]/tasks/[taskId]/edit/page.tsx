@@ -15,15 +15,15 @@ const getTask = async (id: string): Promise<Task> => {
   }
 };
 
-export default async function ProjectPage({
+export default async function TaskPage({
   params,
 }: {
-  params: { id: string };
+  params: { id: string; taskId: string };
 }) {
-  console.log("ID: ", params.id);
+  console.log("TaskPage, params.ID: ", params.id);
 
-  const task = await getTask(params.id);
-  console.log("page/ PROYECTO: ", JSON.stringify(task, null, 2));
+  const task = await getTask(params.taskId);
+  console.log("taskPage/ task: ", JSON.stringify(task, null, 2));
 
   return (
     <>

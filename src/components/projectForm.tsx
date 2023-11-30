@@ -4,6 +4,7 @@
 import Button from "@/components/button";
 import React, { FormEvent, useState } from "react";
 import axios from "axios";
+import Link from "next/link";
 
 const getUsuarios = async () => {
   const response = await fetch(
@@ -129,7 +130,9 @@ const ProjectForm = () => {
             {/*IMPORTANTE: NO PASAR CHILDREN COMO PROP*/}
             Volver
           </Button>
-          <button type="submit">Crear proyecto</button>
+          <Link href={`/projects`}>
+            <button type="submit">Crear proyecto</button>
+          </Link>
         </div>
         <style jsx>{`
           .project-form {

@@ -15,7 +15,7 @@ const EditTaskForm = (props: any) => {
   const { task } = props;
   //const leaders = getUsuarios();
   console.log("EditTaskForm props: ", props);
-  console.log("task.name", task.name);
+  console.log("EditTaskForm -> task.name: ", task.name);
   const [taskData, setTaskData] = useState({
     name: task.name,
     state: task.state,
@@ -35,17 +35,6 @@ const EditTaskForm = (props: any) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    /*fetch(process.env.proyectosApiUrl + "/tasks/create_task", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        parameterOne: taskData,
-      }),
-    });
-    */
     try {
       // Envia una solicitud POST al backend para crear un nuevo proyecto
       const response = await axios.patch(
@@ -88,7 +77,7 @@ const EditTaskForm = (props: any) => {
         </label>
 
         <label>
-          Líder del proyecto:
+          Líder de la tarea:
           <select
             name="leader"
             value={taskData.leader}
