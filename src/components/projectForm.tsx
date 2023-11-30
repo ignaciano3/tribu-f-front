@@ -130,9 +130,8 @@ const ProjectForm = () => {
             {/*IMPORTANTE: NO PASAR CHILDREN COMO PROP*/}
             Volver
           </Button>
-          <Link href={`/projects`}>
-            <button type="submit">Crear proyecto</button>
-          </Link>
+
+          <button type="submit">Crear proyecto</button>
         </div>
         <style jsx>{`
           .project-form {

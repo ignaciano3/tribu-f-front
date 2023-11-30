@@ -1,8 +1,10 @@
+"use client";
 import { Project } from "@/types/types";
 import ProjectGridRow from "@/components/projectGridRow";
 import Button from "@/components/button";
 import Nuevo from "@/components/Nuevo";
 import Title from "@/components/Title";
+import React, { useState, useEffect } from "react";
 
 const getProjects = async () => {
   //poner nuestra base de datos
@@ -20,10 +22,52 @@ function HeaderItem({ title }: { title: string }) {
     </th>
   );
 }
+/*
 
+const PaginaProyectos = () => {
+  const [proyectos, setProyectos] = useState([]);
+
+  useEffect(() => {
+    // Función para cargar proyectos
+    const cargarProyectos = async () => {
+      try {
+        const proyectosCargados = await obtenerProyectos();
+        setProyectos(proyectosCargados);
+      } catch (error) {
+        console.error("Error al cargar proyectos:", error);
+      }
+    };
+
+    // Llamar a la función al cargar la página
+    cargarProyectos();
+  }, []); // El segundo parámetro es una lista de dependencias, en este caso, vacía
+
+  return (
+    <div>
+      <h1>Lista de Proyectos</h1>
+      <ProyectoLista proyectos={proyectos} />
+    </div>
+  );
+};
+*/
 const ProjectGrid = async () => {
-  const list = await getProjects();
-  console.log(list);
+  const [projects, setProjects] = useState([]);
+  useEffect(() => {
+    // Función para cargar proyectos
+    const loadProjects = async () => {
+      try {
+        const loadedProjects = await getProjects();
+        setProjects(loadedProjects);
+      } catch (error) {
+        console.error("Error al cargar proyectos:", error);
+      }
+    };
+
+    // Llamar a la función al cargar la página
+    loadProjects();
+  }, []); // El segundo parámetro es una lista de dependencias, en este caso, vacía
+  //const list = await getProjects();
+  //console.log(list);
   return (
     <>
       <div className="container max-w-7xl mx-auto mt-8">
@@ -45,7 +89,7 @@ const ProjectGrid = async () => {
                 </thead>
 
                 <tbody>
-                  {list.map((project: Project) => (
+                  {projects.map((project: Project) => (
                     <ProjectGridRow key={project.name} project={project} />
                   ))}
                 </tbody>
