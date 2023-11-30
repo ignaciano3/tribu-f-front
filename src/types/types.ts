@@ -42,9 +42,11 @@ export interface Project {
 }
 
 export interface Task {
-  id: Number;
   name: string;
-  createdAt: Date;
-  description: string;
   state: string;
+  description: string;
+  project_id: Number;
+  id: Number;
+  creation_date: Date;
+  end_date: Date;
 }

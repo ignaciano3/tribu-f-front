@@ -35,12 +35,12 @@ export default async function TaskGrid({ params }: { params: { id: string } }) {
   console.log("list: ", list);
   const id = params.id;
   console.log("id: ", id);
-  const href = "/projects/" + { id } + "/tasks/create";
+  const href = "/projects/" + id + "/tasks/create";
   return (
     <>
       <div className="flex justify-between">
         <Title title="Tareas" className="inline" />
-        <Nuevo title="Crear nueva tarea" href={"/"} />
+        <Nuevo title="Crear nueva tarea" href={href} />
       </div>
       <Table data={list} headers={headers} RowItem={TaskGridRow} />
     </>
