@@ -3,17 +3,7 @@ import { Task } from "@/types/types";
 import Button from "@/components/button";
 import TaskCard from "@/components/TaskCard";
 import React, { useState, useEffect } from "react";
-
-const getTask = async (id: string) => {
-  const url = process.env.proyectosApiUrl + "tasks/get_task/" + id;
-  const response = await fetch(url);
-
-  if (response.ok) {
-    return await response.json();
-  } else {
-    throw new Error("Hubo un error al obtener los datos");
-  }
-};
+import { getTask } from "@/api/proyectos";
 
 function HeaderItem({ title }: { title: string }) {
   return (

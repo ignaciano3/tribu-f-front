@@ -19,6 +19,7 @@ const TaskForm = (props: any) => {
     description: "",
     project_id: project_id,
     priority: "",
+    responsible_id: "",
   });
 
   const handleChange = (props: any) => {
@@ -44,10 +45,10 @@ const TaskForm = (props: any) => {
       // Puedes realizar otras acciones después de crear el proyecto, como redireccionar a una página de éxito, etc.
     } catch (error) {
       // Maneja los errores de la solicitud
-      console.error("Error al crear el proyecto:", error);
+      console.error("Error al crear la tarea:", error);
     }
     // Aquí puedes manejar la lógica para enviar los datos del proyecto
-    console.log("Datos del proyecto:", taskData);
+    console.log("Datos de la tarea:", taskData);
   };
   return (
     <>
@@ -74,8 +75,8 @@ const TaskForm = (props: any) => {
           Responsable de la tarea:
           <select
             type="number"
-            name="project_id_leader"
-            value={taskData.project_id}
+            name="responsible_id"
+            value={taskData.responsible_id}
             onChange={handleChange}
             required
           >

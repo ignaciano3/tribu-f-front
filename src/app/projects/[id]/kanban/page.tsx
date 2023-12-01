@@ -6,18 +6,7 @@ import Title from "@/components/Title";
 import Nuevo from "@/components/Nuevo";
 import KanbanBoard from "@/components/KanbanBoard";
 import React, { useState, useEffect } from "react";
-
-const getTasks = async (id: string) => {
-  console.log("id: ", id);
-  const url =
-    process.env.proyectosApiUrl +
-    "tasks/get_tasks_by_project_id/{id}?project_id=" +
-    id;
-  console.log("URL: ", url);
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
-};
+import { getTasks } from "@/api/proyectos";
 
 export default async function KanbanPage({
   params,

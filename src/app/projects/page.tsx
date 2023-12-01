@@ -1,19 +1,13 @@
 "use client";
 import { Project } from "@/types/types";
 import ProjectGridRow from "@/components/projectGridRow";
+import { getProjects } from "@/api/proyectos";
 import Button from "@/components/button";
 import Nuevo from "@/components/Nuevo";
 import Title from "@/components/Title";
 import React, { useState, useEffect } from "react";
 
-const getProjects = async () => {
-  //poner nuestra base de datos
-  const url = process.env.proyectosApiUrl + "projects/get_projects/";
-  const response = await fetch(url); //poner nuestra base de datos
-  const data = await response.json();
-  console.log("PROJECTS: ", data);
-  return data;
-};
+
 
 function HeaderItem({ title }: { title: string }) {
   return (
