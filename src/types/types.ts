@@ -42,15 +42,16 @@ export interface Project {
 }
 
 export interface Task {
+  id: Number;
   name: string;
   state: string;
   description: string;
   project_id: Number;
-
+  priority: string;
+  responsible_id: Number;
   creation_date: Date;
   end_date: Date;
 }
-
 
 export interface CreateTicket {
   title: string;
