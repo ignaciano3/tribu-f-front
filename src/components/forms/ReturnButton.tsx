@@ -12,7 +12,7 @@ export default function ReturnButton({
   return (
     <Link
       href={href}
-      className={`py-2 px-4 rounded ${className} bg-yellow-400 hover:bg-yellow-600 text-white font-bold`}
+      className={`py-2 px-4 rounded ${className} bg-yellow-500 hover:bg-yellow-700 text-white font-bold`}
     >
       {label?.toUpperCase() ?? "VOLVER"}
     </Link>

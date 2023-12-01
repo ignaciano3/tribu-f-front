@@ -50,3 +50,12 @@ export interface Task {
   creation_date: Date;
   end_date: Date;
 }
+
+
+export interface CreateTicket {
+  title: string;
+  severity: string;
+  priority: string;
+  state: string;
+  description: string;
+}

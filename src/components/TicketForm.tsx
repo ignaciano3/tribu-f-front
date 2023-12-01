@@ -1,29 +1,11 @@
-"use server";
 import TextField from "./forms/TextField";
 import SelectField from "./forms/SelectField";
 import SubmitButton from "./forms/SubmitButton";
 import TextAreaField from "./forms/TextAreaField";
 import Title from "./Title";
 import ReturnButton from "./forms/ReturnButton";
+import { createTicket } from "@/api/soporte";
 
-
-interface CreateTicket {
-  title: string;
-  severity: string;
-  priority: string;
-  state: string;
-  description: string;
-}
-
-
-const initialValues : CreateTicket = {
-  title: "",
-  description: "",
-  severity: "",
-  priority: "",
-  state: "",
-
-};
 
 const severities = [
   { value: "S1", label: "S1" },
@@ -44,14 +26,14 @@ const state = [
   { value: "cerrado", label: "Cerrado" },
 ];
 
-export default async function TicketForm(action: any) {
+export default async function TicketForm() {
   return (
     <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
       <div className="w-full max-w-screen-sm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-4">
         <div className="flex justify-between">
           <Title title="Crear Ticket" />
         </div>
-        <form action={action} className="space-y-2" >
+        <form action={createTicket} className="space-y-2" >
           <TextField
             name="title"
             label="Título"
@@ -72,8 +54,8 @@ export default async function TicketForm(action: any) {
             <SelectField name="state" label="Estado" options={state} />
           </div>
           <div className="flex justify-between space-x-2 pb-4">
-            <SubmitButton label="Crear" />
             <ReturnButton href="/" />
+            <SubmitButton label="Crear" />
           </div>
         </form>
       </div>

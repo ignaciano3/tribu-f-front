@@ -1,5 +1,7 @@
 import { DAY } from "@/constants/constants";
-import { Ticket } from "@/types/types";
+import { sleep } from "@/helpers/utils";
+import { CreateTicket, Ticket } from "@/types/types";
+import { revalidatePath } from "next/cache";
 
 export async function getTickets(idProd: string) {
   const response = await fetch(
@@ -53,19 +55,24 @@ export async function getTicket(idProd : Number) {
 
 export async function createTicket(formData: FormData) {
   "use server";
-  console.log(formData);
+  const ticket : CreateTicket = {
+    title: formData.get("title") as string,
+    severity: formData.get("severity") as string,
+    priority: formData.get("priority") as string,
+    state: formData.get("state") as string,
+    description: formData.get("description") as string,
+  };
   const response = await fetch(process.env.soporteApiUrl + `ticket`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(ticket),
+    next: { tags: ["tickets"] },
   });
 
   if (response.ok) {
-    // Revisar si recibe algo
-    const data = await response.json();
-    return data;
+    revalidatePath("/producs/[id]/tickets");
   } else {
     throw new Error("Hubo un error en el back");
   }
