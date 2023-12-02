@@ -47,6 +47,7 @@ const EditTaskForm = (props: any) => {
           next: { tags: ["tasks"] },
         }
       );
+      window.location.href = "/projects/" + task.project_id+"/tasks/"+task.id;
       console.log("response.ok?", response.ok);
     } catch (error) {
       console.error("Error al editar tarea:", error);

@@ -6,7 +6,7 @@ import Modal from "react-modal";
 import Link from "next/link";
 import { getUsuario } from "@/api/proyectos";
 
-export default async function ProjectCard(props: any) {
+export default function ProjectCard(props: any) {
   const { project, employee } = props;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,6 +26,7 @@ export default async function ProjectCard(props: any) {
           next: { tags: ["projects"] },
         }
       );
+      window.location.href = "/projects";
       console.log("response.ok to createProject? ", response.ok);
     } catch (error) {
       console.error("Error al crear el proyecto:", error);
@@ -33,7 +34,7 @@ export default async function ProjectCard(props: any) {
 
     console.log("Eliminar proyecto:", project.id);
     // Simulación de éxito; deberías realizar la lógica del backend aquí
-    closeModal();
+    //closeModal();
   };
 
   return (

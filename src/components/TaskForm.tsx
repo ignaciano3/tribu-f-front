@@ -43,6 +43,7 @@ const TaskForm = (props: any) => {
           next: { tags: ["projects"] },
         }
       );
+      window.location.href = "/projects/"+project_id+"/tasks";
     } catch (error) {
       console.error("Error al crear la tarea:", error);
     }
