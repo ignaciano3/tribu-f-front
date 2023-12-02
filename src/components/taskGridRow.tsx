@@ -21,8 +21,7 @@ import Link from "next/link";
 */
 
 export default async function TaskGridRow({ task }: { task: any }) {
-  const path = "/projects/" + task["id"];
-  const href = { pathname: path, query: { id: task.id } };
+  const path = "/projects/" + task.project_id + "/tasks/" + task.id;
   const employee: any = await getUsuario(task.responsible_id);
   console.log("employee en TaskGridRow: ", employee);
   return (
@@ -33,7 +32,7 @@ export default async function TaskGridRow({ task }: { task: any }) {
 
       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
         <div className="flex items-center text-blue-600 font-semibold">
-          <Link href={href}>{task.name}</Link>
+          <Link href={path}>{task.name}</Link>
         </div>
       </td>
 
