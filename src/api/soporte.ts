@@ -1,11 +1,11 @@
 import { DAY } from "@/constants/constants";
 import { CreateTicket } from "@/types/types";
-import { revalidatePath } from "next/cache";
+import { revalidateTag } from "next/cache";
 
 export async function getTickets(idProd: string) {
   const response = await fetch(
     process.env.soporteApiUrl + `product/${idProd}/ticket`,
-    { next: { revalidate: DAY } }
+    { next: { revalidate: DAY, tags : ["tickets"] } }
   );
   if (response.ok) {
     const data = await response.json();
@@ -19,7 +19,7 @@ export async function getTickets(idProd: string) {
 export async function getVersionsOfProduct(idProd: string) {
   const response = await fetch(
     process.env.soporteApiUrl + `product/${idProd}/version`,
-    { next: { revalidate: DAY } }
+    { next: { revalidate: DAY, tags: ["versions"] } }
   );
   if (response.ok) {
     const data = await response.json();
@@ -31,7 +31,7 @@ export async function getVersionsOfProduct(idProd: string) {
 
 export async function getProducts() {
   const response = await fetch(process.env.soporteApiUrl + `product/`, {
-    next: { revalidate: DAY }
+    next: { revalidate: DAY, tags: ["products"] },
   });
   if (response.ok) {
     const data = await response.json();
@@ -64,26 +64,29 @@ export async function getTicket(idProd: Number) {
 
 export async function createTicket(product_id: string, formData: FormData) {
   "use server";
-
   const ticket: CreateTicket = {
     title: formData.get("title") as string,
     severity: formData.get("severity") as string,
     priority: formData.get("priority") as string,
     state: formData.get("state") as string,
     description: formData.get("description") as string,
-    product_id: product_id,
   };
-  const response = await fetch(process.env.soporteApiUrl + `ticket`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(ticket),
-    next: { tags: ["tickets"] },
-  });
+
+  const response = await fetch(
+    process.env.soporteApiUrl +
+      `product/${product_id}/version/${1}/ticket/client/${1}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(ticket),
+      next: { tags: ["tickets"] },
+    }
+  );
 
   if (response.ok) {
-    revalidatePath(`/producs/${product_id}/`);
+    revalidateTag("tickets");
   } else {
     throw new Error("Hubo un error en el back");
   }
