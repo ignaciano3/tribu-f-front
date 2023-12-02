@@ -4,6 +4,7 @@ import Link from "next/link";
 
 const ProjectForm = (props: any) => {
   const { employees } = props;
+  const [isProjectCreated, setIsProjectCreated] = useState(false);
   const [projectData, setProjectData] = useState({
     name: "",
     state: "no iniciado",
@@ -19,7 +20,6 @@ const ProjectForm = (props: any) => {
       [name]: value,
     });
   };
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
@@ -34,11 +34,15 @@ const ProjectForm = (props: any) => {
           next: { tags: ["projects"] },
         }
       );
+      const data = await response.json();
+      console.log("Data del proyecto creado: ", data);
+      window.location.href = "/projects/" + data.id;
     } catch (error) {
       console.error("Error al crear el proyecto:", error);
     }
     console.log("Datos del proyecto:", projectData);
   };
+
   return (
     <>
       <div className="container max-w-7xl mx-auto mt-8">
