@@ -41,3 +41,10 @@ export const getTask = async (id: string) => {
     throw new Error("Hubo un error al obtener los datos");
   }
 };
+
+export const getUsuarios = async () => {
+  const url = process.env.proyectosApiUrl + "employees/get_employees";
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+};
