@@ -22,6 +22,7 @@ const EditTaskForm = (props: any) => {
     description: task.description,
     project_id: task.project_id,
     end_date: task.end_date,
+    responsible_id: task.responsible_id,
     // agregar leader
   });
 
@@ -36,22 +37,23 @@ const EditTaskForm = (props: any) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      // Envia una solicitud POST al backend para crear un nuevo proyecto
-      const response = await axios.patch(
+      const response = await fetch(
         process.env.proyectosApiUrl + "tasks/update_task/" + task.id,
-        taskData
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(taskData),
+          next: { tags: ["tasks"] },
+        }
       );
-
-      // Maneja la respuesta del backend según sea necesario
-      console.log("Respuesta del backend:", response.data);
-
-      // Puedes realizar otras acciones después de crear el proyecto, como redireccionar a una página de éxito, etc.
+      console.log("response.ok?", response.ok);
     } catch (error) {
-      // Maneja los errores de la solicitud
-      console.error("Error al crear el proyecto:", error);
+      console.error("Error al editar tarea:", error);
     }
     // Aquí puedes manejar la lógica para enviar los datos del proyecto
-    console.log("Datos del proyecto:", taskData);
+    console.log("Nuevos datos de la tarea :", taskData);
   };
 
   return (
@@ -79,8 +81,8 @@ const EditTaskForm = (props: any) => {
         <label>
           Responsable de la tarea:
           <select
-            name="leader"
-            value={taskData.leader}
+            name="responsible_id"
+            value={taskData.responsible_id}
             onChange={handleChange}
             required
           >
