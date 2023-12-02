@@ -14,14 +14,15 @@ const getUsuarios = async () => {
   return data;
 };
 
-const ProjectForm = () => {
+const ProjectForm = (props: any) => {
   //const leaders = getUsuarios();
-
+  const { employees } = props;
+  console.log("employees en ProjectForm: ", employees);
   const [projectData, setProjectData] = useState({
     name: "",
     state: "no iniciado",
     description: "",
-    project_id_leader: null,
+    project_leader_id: "",
     expected_duration_days: null,
   });
 
@@ -88,18 +89,19 @@ const ProjectForm = () => {
         <label>
           Líder del proyecto:
           <select
-            type="number"
-            name="project_id_leader"
-            value={projectData.project_id_leader}
+            name="project_leader_id"
+            value={projectData.project_leader_id}
             onChange={handleChange}
             required
           >
             <option value="" disabled>
               Seleccionar líder
             </option>
-            <option value={1}>Ignacio García</option>
-            <option value={2}>Nico Ronchese</option>
-            <option value={3}>Saul Goodman</option>
+            {employees.map((employee: any) => (
+              <option key={employee.legajo} value={employee.legajo}>
+                {employee.name} {employee.last_name}
+              </option>
+            ))}
           </select>
         </label>
 
