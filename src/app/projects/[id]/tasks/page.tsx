@@ -5,7 +5,7 @@ import Button from "@/components/button";
 import Table from "@/components/Table/Table";
 import Title from "@/components/Title";
 import Nuevo from "@/components/Nuevo";
-import { getTasks } from "@/api/proyectos";
+import { getTasks, getUsuarios } from "@/api/proyectos";
 import React, { useState, useEffect } from "react";
 
 const headers = [
@@ -17,6 +17,14 @@ const headers = [
   "Fecha de creacion",
   "",
 ];
+
+function HeaderItem({ title }: { title: string }) {
+  return (
+    <th className="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">
+      {title}
+    </th>
+  );
+}
 
 export default async function TaskGrid({ params }: { params: { id: string } }) {
   const id = params.id;
@@ -46,13 +54,32 @@ export default async function TaskGrid({ params }: { params: { id: string } }) {
     <>
       <div className="flex justify-between">
         <Title title="Tareas" className="inline" />
-        <div className="flex gap-4">
+        <div className="flex gap-4 mb-8">
           <Button href={"/projects/" + params.id}>Volver al proyecto</Button>
 
           <Nuevo title="Crear nueva tarea" href={href} />
         </div>
       </div>
-      <Table data={tasks} headers={headers} RowItem={TaskGridRow} />
+      {/*<Table data={tasks} headers={headers} RowItem={TaskGridRow} />*/}
+      {/* pongo la grid de antes */}
+      <div className="flex flex-col rounded">
+        <table className="min-w-full shadow-lg">
+          <thead>
+            <tr>
+              <HeaderItem title="ID" />
+              <HeaderItem title="Nombre" />
+              <HeaderItem title="Estado" />
+              <HeaderItem title="Responsable" />
+              <HeaderItem title="Fecha de creación" />
+            </tr>
+          </thead>
+          <tbody>
+            {tasks.map((task: Task) => (
+              <TaskGridRow key={task.name} task={task} />
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }
