@@ -2,7 +2,6 @@ import { getProducts } from "@/api/soporte";
 import RowProduct from "@/components/Table/Rows/ProductRow";
 import Table from "@/components/Table/Table";
 import Title from "@/components/Title";
-import Link from "next/link";
 
 const headers = ["Nombre", "Versión", "N°"];
 

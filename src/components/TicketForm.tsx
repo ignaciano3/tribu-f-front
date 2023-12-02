@@ -28,8 +28,8 @@ const state = [
 
 export default async function TicketForm() {
   return (
-    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
-      <div className="w-full max-w-screen-sm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-4">
+    <div className="flex overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
+      <div className="w-full max-w-sm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-4">
         <div className="flex justify-between">
           <Title title="Crear Ticket" />
         </div>
