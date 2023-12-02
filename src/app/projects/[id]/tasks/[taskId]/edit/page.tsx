@@ -1,7 +1,7 @@
 "use client";
 import EditTaskForm from "@/components/EditTaskForm";
 import { Task } from "@/types/types";
-import { getTask } from "@/api/proyectos";
+import { getTask, getUsuarios } from "@/api/proyectos";
 
 export default async function EditTaskPage({
   params,
@@ -12,10 +12,10 @@ export default async function EditTaskPage({
 
   const task = await getTask(params.taskId);
   console.log("EditTaskPage/ task: ", JSON.stringify(task, null, 2));
-
+  const employees: any[] = await getUsuarios();
   return (
     <>
-      <EditTaskForm task={task}></EditTaskForm>
+      <EditTaskForm task={task} employees={employees}></EditTaskForm>
     </>
   );
 }

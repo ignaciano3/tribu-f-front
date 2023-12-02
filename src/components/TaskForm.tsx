@@ -11,8 +11,8 @@ const getUsuarios = async () => {
   return data;
 };
 const TaskForm = (props: any) => {
-  const { project_id } = props;
-  console.log("id en taskform: ", project_id);
+  const { project_id, employees } = props;
+
   const [taskData, setTaskData] = useState({
     name: "",
     state: "no iniciada",
@@ -83,9 +83,11 @@ const TaskForm = (props: any) => {
             <option value="" disabled>
               Seleccionar líder
             </option>
-            <option value={1}>Ignacio García</option>
-            <option value={2}>Nico Ronchese</option>
-            <option value={3}>Saul Goodman</option>
+            {employees.map((employee: any) => (
+              <option key={employee.legajo} value={employee.legajo}>
+                {employee.name} {employee.last_name}
+              </option>
+            ))}
           </select>
         </label>
 

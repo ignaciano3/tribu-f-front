@@ -12,7 +12,7 @@ const getUsuarios = async () => {
 };
 
 const EditTaskForm = (props: any) => {
-  const { task } = props;
+  const { task, employees } = props;
   //const leaders = getUsuarios();
   console.log("EditTaskForm props: ", props);
   console.log("EditTaskForm -> task.name: ", task.name);
@@ -23,7 +23,6 @@ const EditTaskForm = (props: any) => {
     project_id: task.project_id,
     end_date: task.end_date,
     responsible_id: task.responsible_id,
-    // agregar leader
   });
 
   const handleChange = (props: any) => {
@@ -89,9 +88,11 @@ const EditTaskForm = (props: any) => {
             <option value="" disabled>
               Seleccionar responsable
             </option>
-            <option value={1}>Ignacio García</option>
-            <option value={2}>Nico Ronchese</option>
-            <option value={3}>Saul Goodman</option>
+            {employees.map((employee: any) => (
+              <option key={employee.legajo} value={employee.legajo}>
+                {employee.name} {employee.last_name}
+              </option>
+            ))}
           </select>
         </label>
         <label>
