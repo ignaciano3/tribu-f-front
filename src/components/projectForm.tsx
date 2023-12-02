@@ -36,33 +36,22 @@ const ProjectForm = (props: any) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    /*fetch(process.env.proyectosApiUrl + "/projects/create_project", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        parameterOne: projectData,
-      }),
-    });
-    */
     try {
-      // Envia una solicitud POST al backend para crear un nuevo proyecto
-      const response = await axios.post(
+      const response = await fetch(
         process.env.proyectosApiUrl + "projects/create_project",
-        projectData
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(projectData),
+          next: { tags: ["projects"] },
+        }
       );
-
-      // Maneja la respuesta del backend según sea necesario
-      console.log("Respuesta del backend:", response.data);
-
-      // Puedes realizar otras acciones después de crear el proyecto, como redireccionar a una página de éxito, etc.
+      console.log("response to createProject: ", response.data);
     } catch (error) {
-      // Maneja los errores de la solicitud
       console.error("Error al crear el proyecto:", error);
     }
-    // Aquí puedes manejar la lógica para enviar los datos del proyecto
     console.log("Datos del proyecto:", projectData);
   };
   return (
