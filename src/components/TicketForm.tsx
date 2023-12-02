@@ -6,7 +6,6 @@ import Title from "./Title";
 import ReturnButton from "./forms/ReturnButton";
 import { createTicket } from "@/api/soporte";
 
-
 const severities = [
   { value: "S1", label: "S1" },
   { value: "S2", label: "S2" },
@@ -26,20 +25,26 @@ const state = [
   { value: "cerrado", label: "Cerrado" },
 ];
 
-export default async function TicketForm() {
+export default async function TicketForm({ idProd }: { idProd: string }) {
+  const createTicketOnProject = createTicket.bind(null, idProd);
+
   return (
     <div className="flex overflow-x-hidden overflow-y-auto outline-none focus:outline-none mt-8">
       <div className="w-full max-w-sm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-4">
         <div className="flex justify-between">
           <Title title="Crear Ticket" />
         </div>
-        <form action={createTicket} className="space-y-2" >
+        <form action={createTicketOnProject} className="space-y-2">
           <TextField
             name="title"
             label="Título"
             placeholder="Nombre del ticket"
           />
-          <TextAreaField name="description" label="Descripción" placeholder="Descripción del ticket" />
+          <TextAreaField
+            name="description"
+            label="Descripción"
+            placeholder="Descripción del ticket"
+          />
           <div className="flex justify-between space-x-2 pb-4">
             <SelectField
               name="severity"

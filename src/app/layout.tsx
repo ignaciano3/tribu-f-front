@@ -7,7 +7,7 @@ import SideBar from "@/components/layout/SideBar";
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Titulo de la pagina",
+  title: "PSA - Gestión de tareas",
   description: "Parte front de la aplicación de gestión de tareas",
 };
 

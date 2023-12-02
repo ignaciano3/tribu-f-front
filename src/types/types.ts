@@ -59,4 +59,5 @@ export interface CreateTicket {
   priority: string;
   state: string;
   description: string;
+  product_id: string;
 }

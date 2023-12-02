@@ -17,9 +17,22 @@ export async function getTickets(idProd: string) {
   }
 }
 
+export async function getVersionsOfProduct(idProd: string) {
+  const response = await fetch(
+    process.env.soporteApiUrl + `product/${idProd}/version`,
+    { next: { revalidate: DAY } }
+  );
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  } else {
+    throw new Error("Hubo un error en el back");
+  }
+}
+
 export async function getProducts() {
-  const response = await fetch(process.env.soporteApiUrl + `product`, {
-    next: { revalidate: DAY },
+  const response = await fetch(process.env.soporteApiUrl + `product/`, {
+    next: { revalidate: DAY }
   });
   if (response.ok) {
     const data = await response.json();
@@ -29,10 +42,9 @@ export async function getProducts() {
   }
 }
 
-export async function getProduct(idProd: Number) {
-  const response = await fetch(
-    process.env.soporteApiUrl + `product/${idProd}`,
-  );
+export async function getProduct(idProd: string) {
+  //Deberia ser no cache pero no lo pongo para evitar el caso que no este activo el back
+  const response = await fetch(process.env.soporteApiUrl + `product/${idProd}`);
   if (response.ok) {
     const data = await response.json();
     return data;
@@ -41,10 +53,8 @@ export async function getProduct(idProd: Number) {
   }
 }
 
-export async function getTicket(idProd : Number) {
-  const response = await fetch(
-    process.env.soporteApiUrl + `ticket/${idProd}`,
-  );
+export async function getTicket(idProd: Number) {
+  const response = await fetch(process.env.soporteApiUrl + `ticket/${idProd}`);
   if (response.ok) {
     const data = await response.json();
     return data;
@@ -53,14 +63,16 @@ export async function getTicket(idProd : Number) {
   }
 }
 
-export async function createTicket(formData: FormData) {
+export async function createTicket(product_id: string, formData: FormData) {
   "use server";
-  const ticket : CreateTicket = {
+
+  const ticket: CreateTicket = {
     title: formData.get("title") as string,
     severity: formData.get("severity") as string,
     priority: formData.get("priority") as string,
     state: formData.get("state") as string,
     description: formData.get("description") as string,
+    product_id: product_id,
   };
   const response = await fetch(process.env.soporteApiUrl + `ticket`, {
     method: "POST",
@@ -72,7 +84,7 @@ export async function createTicket(formData: FormData) {
   });
 
   if (response.ok) {
-    revalidatePath("/producs/[id]/tickets");
+    revalidatePath(`/producs/${product_id}/`);
   } else {
     throw new Error("Hubo un error en el back");
   }
