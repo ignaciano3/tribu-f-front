@@ -17,13 +17,13 @@ export interface Product {
 }
 
 export interface Ticket {
-  id: Number;
+  id: number;
   title: String;
   severity: string;
   priority: string;
   state: string;
-  client_id: Number;
-  product_id: Number;
+  client_id: number;
+  product_id: number;
   description: string;
 
   createdAt?: Date;
@@ -31,24 +31,24 @@ export interface Ticket {
 }
 
 export interface Project {
-  id: Number;
+  id: number;
   name: string;
   description: string;
   creation_date: Date;
-  expected_duration_days: Number;
+  expected_duration_days: number;
   end_date: Date;
-  project_id_leader: Number;
+  project_id_leader: string;
   state: string;
 }
 
 export interface Task {
-  id: Number;
+  id: number;
   name: string;
   state: string;
   description: string;
-  project_id: Number;
+  project_id: number;
   priority: string;
-  responsible_id: Number;
+  responsible_id: number;
   creation_date: Date;
   end_date: Date;
 }

@@ -10,8 +10,8 @@ export default async function ProjectPage({
   params: { id: string };
 }) {
   const id = params.id;
-  const [project, setProject] = useState([]);
-  useEffect(() => {
+  const [project, setProject] = useState<Project>(); // const projects = await loadProjects();
+  useEffect(() => { //No metan useEffect en un componente que es del servidor, no tiene sentido
     // Función para cargar proyectos
     const loadProject = async (id: string) => {
       try {
@@ -24,7 +24,7 @@ export default async function ProjectPage({
 
     loadProject(id);
   }, [id]);
-  const employee: any = await getUsuario(project.project_leader_id);
+  const employee: any = await getUsuario(project?.project_id_leader ?? "");
   return (
     <>
       <ProjectCard project={project} employee={employee} />
