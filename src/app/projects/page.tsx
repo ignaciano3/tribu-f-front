@@ -1,7 +1,7 @@
 "use client";
 import { Project } from "@/types/types";
 import ProjectGridRow from "@/components/projectGridRow";
-import { getProjects } from "@/api/proyectos";
+import { getProjects, getUsuario } from "@/api/proyectos";
 import Button from "@/components/button";
 import Nuevo from "@/components/Nuevo";
 import Title from "@/components/Title";
@@ -74,14 +74,13 @@ const ProjectGrid = () => {
             <Nuevo title="Crear nuevo proyecto" href="/projects/create" />
           </div>
         </div>
-        <div className="flex flex-col shadow sm:rounded-lg border-b">
+        <div className="flex flex-col">
           <table className="min-w-full">
             <thead>
               <tr>
                 <HeaderItem title="ID" />
                 <HeaderItem title="Nombre" />
                 <HeaderItem title="Estado" />
-                <HeaderItem title="Líder de proyecto" />
                 <HeaderItem title="Fecha de creación" />
               </tr>
             </thead>
