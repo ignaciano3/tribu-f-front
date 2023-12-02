@@ -5,19 +5,22 @@ import TicketForm from "@/components/TicketForm";
 import Title from "@/components/Title";
 import { ticketsHeaders } from "@/constants/headers";
 
-export default async function ProductDetails({params} : {params : {idProd : string}}) {
-    const tickets = await getTickets(params.idProd);
+export default async function ProductDetails({
+  params,
+}: {
+  params: { idProd: string };
+}) {
+  const tickets = await getTickets(params.idProd);
   return (
     <>
       <Title title="Detalles del producto" />
-      <>
-        <div className="flex justify-between">
-          <Title title="Tickets" className="inline" />
+      <Title title="Tickets" />
+      <section className="flex justify-between">
+        <div className="flex-1 mr-4">
+          <Table data={tickets} headers={ticketsHeaders} />
         </div>
-        <Table data={tickets} headers={ticketsHeaders} />
-        
-      </>
-      <TicketForm />
+        <TicketForm />
+      </section>
     </>
   );
 }
