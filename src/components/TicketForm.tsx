@@ -29,8 +29,8 @@ export default async function TicketForm({ idProd }: { idProd: string }) {
   const createTicketOnProject = createTicket.bind(null, idProd);
 
   return (
-    <div className="flex overflow-x-hidden overflow-y-auto outline-none focus:outline-none mt-8">
-      <div className="w-full max-w-sm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-4">
+    <div className="flex overflow-y-auto outline-none focus:outline-none mt-8">
+      <div className="w-full min-w-full max-w-sm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-4">
         <div className="flex justify-between">
           <Title title="Crear Ticket" />
         </div>
@@ -58,8 +58,7 @@ export default async function TicketForm({ idProd }: { idProd: string }) {
             />
             <SelectField name="state" label="Estado" options={state} />
           </div>
-          <div className="flex justify-between space-x-2 pb-4">
-            <ReturnButton href="/" />
+          <div className="float-right pb-4">
             <SubmitButton label="Crear" />
           </div>
         </form>
