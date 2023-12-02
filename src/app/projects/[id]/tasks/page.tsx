@@ -1,12 +1,10 @@
-"use client";
 import { Task } from "@/types/types";
 import TaskGridRow from "@/components/taskGridRow";
 import Button from "@/components/button";
-import Table from "@/components/Table/Table";
 import Title from "@/components/Title";
 import Nuevo from "@/components/Nuevo";
-import { getTasks, getUsuarios } from "@/api/proyectos";
-import React, { useState, useEffect } from "react";
+import { getTasks } from "@/api/proyectos";
+import React from "react";
 
 const headers = [
   "Nombre",
@@ -28,27 +26,8 @@ function HeaderItem({ title }: { title: string }) {
 
 export default async function TaskGrid({ params }: { params: { id: string } }) {
   const id = params.id;
-  const [tasks, setTasks] = useState([]);
-  useEffect(() => {
-    // Función para cargar tareas
+  const tasks = await getTasks(id);
 
-    const loadTasks = async (id: string) => {
-      try {
-        const loadedTasks = await getTasks(id);
-        setTasks(loadedTasks);
-      } catch (error) {
-        console.error("Error al cargar proyectos:", error);
-      }
-    };
-
-    // Llamar a la función al cargar la página
-    loadTasks(id);
-  }, [id]);
-  /*const list = await getTasks(params.id);
-  console.log("list: ", list);
-  const id = params.id;
-  console.log("id: ", id);
-  */
   const href = "/projects/" + params.id + "/tasks/create";
   return (
     <>

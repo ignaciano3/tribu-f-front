@@ -1,10 +1,8 @@
 "use client";
 import { Project } from "@/types/types";
 import ProjectGridRow from "@/components/projectGridRow";
-import { getProjects, getUsuario } from "@/api/proyectos";
-import Button from "@/components/button";
+import { getProjects } from "@/api/proyectos";
 import Nuevo from "@/components/Nuevo";
-import Title from "@/components/Title";
 import React, { useState, useEffect } from "react";
 
 function HeaderItem({ title }: { title: string }) {

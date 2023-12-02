@@ -1,4 +1,4 @@
-import { Project, Task } from "@/types/types";
+import { Project } from "@/types/types";
 
 export const getProjects = async () => {
   const url = process.env.proyectosApiUrl + "projects/get_projects/";

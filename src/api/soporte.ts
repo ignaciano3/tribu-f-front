@@ -1,6 +1,5 @@
 import { DAY } from "@/constants/constants";
-import { sleep } from "@/helpers/utils";
-import { CreateTicket, Ticket } from "@/types/types";
+import { CreateTicket } from "@/types/types";
 import { revalidatePath } from "next/cache";
 
 export async function getTickets(idProd: string) {

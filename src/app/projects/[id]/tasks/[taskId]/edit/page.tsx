@@ -1,6 +1,5 @@
 "use client";
 import EditTaskForm from "@/components/EditTaskForm";
-import { Task } from "@/types/types";
 import { getTask, getUsuarios } from "@/api/proyectos";
 
 export default async function EditTaskPage({

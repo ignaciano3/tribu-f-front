@@ -1,6 +1,5 @@
 "use client";
 import { Task } from "@/types/types";
-import Button from "@/components/button";
 import TaskCard from "@/components/TaskCard";
 import React, { useState, useEffect } from "react";
 import { getTask, getUsuario } from "@/api/proyectos";
@@ -24,8 +23,9 @@ export default async function TaskCardPage({
   console.log("TaskCardPage-> task: ", task);
   */
   const taskId = params.taskId;
-  const [task, setTask] = useState([]);
+  const [task, setTask] = useState<Task>(); // const task = await getTask(taskId);
   useEffect(() => {
+    // No metan useEffect en un componente que es del servidor, no tiene sentido
     // Función para cargar proyectos
     const loadTask = async (id: string) => {
       try {
@@ -40,7 +40,7 @@ export default async function TaskCardPage({
     loadTask(taskId);
   }, [taskId]);
   console.log("TaskCardPage, task: ", task);
-  const employee = await getUsuario(task.responsible_id);
+  const employee = await getUsuario(task?.responsible_id || "");
   return (
     <>
       <TaskCard task={task} employee={employee} />

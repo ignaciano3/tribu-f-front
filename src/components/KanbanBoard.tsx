@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { Task } from "@/types/types";
 import Button from "@/components/button";
 
 const KanbanBoard = (props: any) => {

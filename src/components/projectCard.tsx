@@ -1,10 +1,8 @@
 "use client";
 import Button from "@/components/button";
-import { Project } from "@/types/types";
 import { useState } from "react";
 import Modal from "react-modal";
 import Link from "next/link";
-import { getUsuario } from "@/api/proyectos";
 
 export default function ProjectCard(props: any) {
   const { project, employee } = props;

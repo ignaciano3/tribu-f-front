@@ -1,5 +1,4 @@
 import Button from "@/components/button";
-import { Project } from "@/types/types";
 import React, { FormEvent, useState } from "react";
 
 const getUsuarios = async () => {

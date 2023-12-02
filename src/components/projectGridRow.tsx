@@ -1,5 +1,3 @@
-import Button from "@/components/button";
-import { getUsuario } from "@/api/proyectos";
 import Link from "next/link";
 
 export default function ProjectGridRow({ project }: { project: any }) {

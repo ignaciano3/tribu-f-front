@@ -1,11 +1,9 @@
 import { getProduct, getTickets, getVersionsOfProduct } from "@/api/soporte";
-import NuevoButton from "@/components/Nuevo";
 import VersionRow from "@/components/Table/Rows/VersionRow";
 import Table from "@/components/Table/Table";
 import TicketForm from "@/components/TicketForm";
 import Title from "@/components/Title";
 import { ticketsHeaders } from "@/constants/headers";
-import { assert } from "console";
 
 export default async function ProductDetails({
   params,

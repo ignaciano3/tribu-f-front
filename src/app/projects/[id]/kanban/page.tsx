@@ -1,9 +1,4 @@
 "use client";
-import { Task } from "@/types/types";
-import TaskGridRow from "@/components/taskGridRow";
-import Button from "@/components/button";
-import Title from "@/components/Title";
-import Nuevo from "@/components/Nuevo";
 import KanbanBoard from "@/components/KanbanBoard";
 import React, { useState, useEffect } from "react";
 import { getTasks } from "@/api/proyectos";

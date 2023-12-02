@@ -1,6 +1,5 @@
 import Button from "@/components/button";
 import React, { FormEvent, useState } from "react";
-import Link from "next/link";
 
 const getUsuarios = async () => {
   const response = await fetch(

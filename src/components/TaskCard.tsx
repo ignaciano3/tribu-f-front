@@ -1,5 +1,4 @@
 "use client";
-import { Task } from "@/types/types";
 import Button from "@/components/button";
 import React, { useState } from "react";
 import Modal from "react-modal";

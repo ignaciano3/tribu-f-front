@@ -48,7 +48,7 @@ export interface Task {
   description: string;
   project_id: number;
   priority: string;
-  responsible_id: number;
+  responsible_id: string;
   creation_date: Date;
   end_date: Date;
 }

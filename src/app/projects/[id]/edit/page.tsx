@@ -1,6 +1,5 @@
 "use client";
 import EditProjectForm from "@/components/EditProjectForm";
-import { Project } from "@/types/types";
 import { getProject, getUsuarios } from "@/api/proyectos";
 
 export default async function EditProjectPage({
