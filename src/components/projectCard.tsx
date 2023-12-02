@@ -16,6 +16,19 @@ export default function ProjectCard(props: any) {
 
   const handleDelete = async () => {
     try {
+      const response = await fetch(
+        process.env.proyectosApiUrl + "projects/delete_project/" + project.id,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          next: { tags: ["projects"] },
+        }
+      );
+      console.log("response.ok to createProject? ", response.ok);
+    } catch (error) {
+      /*try {
       // Envia una solicitud POST al backend para crear un nuevo proyecto
       const response = await axios.delete(
         process.env.proyectosApiUrl + "projects/delete_project/" + project.id
@@ -25,8 +38,7 @@ export default function ProjectCard(props: any) {
       console.log("Respuesta del backend:", response.data);
 
       // Puedes realizar otras acciones después de crear el proyecto, como redireccionar a una página de éxito, etc.
-    } catch (error) {
-      // Maneja los errores de la solicitud
+    }*/ // Maneja los errores de la solicitud
       console.error("Error al crear el proyecto:", error);
     }
 

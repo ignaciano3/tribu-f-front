@@ -1,29 +1,15 @@
-// components/ProjectForm.js
-
-// components/ProjectForm.js
 import Button from "@/components/button";
 import React, { FormEvent, useState } from "react";
-import axios from "axios";
 import Link from "next/link";
 
-const getUsuarios = async () => {
-  const response = await fetch(
-    "https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos"
-  );
-  const data = await response.json();
-  return data;
-};
-
 const ProjectForm = (props: any) => {
-  //const leaders = getUsuarios();
   const { employees } = props;
-  console.log("employees en ProjectForm: ", employees);
   const [projectData, setProjectData] = useState({
     name: "",
     state: "no iniciado",
     description: "",
     project_leader_id: "",
-    expected_duration_days: null,
+    expected_duration_days: "",
   });
 
   const handleChange = (props: any) => {
