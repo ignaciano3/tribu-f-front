@@ -93,7 +93,7 @@ const TaskForm = (props: any) => {
           Prioridad de la tarea:
           <select
             name="priority"
-            //value={taskData.project_id}
+            value={taskData.priority}
             onChange={handleChange}
             required
           >

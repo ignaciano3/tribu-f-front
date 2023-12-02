@@ -7,8 +7,6 @@ import Nuevo from "@/components/Nuevo";
 import Title from "@/components/Title";
 import React, { useState, useEffect } from "react";
 
-
-
 function HeaderItem({ title }: { title: string }) {
   return (
     <th className="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">
@@ -173,6 +171,7 @@ const ProjectGrid = async () => {
   );
 };
 */
+
 const ProjectGrid = () => {
   const [originalProjects, setOriginalProjects] = useState([]);
   const [filteredProjects, setFilteredProjects] = useState([]);
@@ -192,7 +191,7 @@ const ProjectGrid = () => {
     loadProjects();
   }, []);
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: any) => {
     setSearch(e.target.value);
   };
 
