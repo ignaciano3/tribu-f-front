@@ -14,17 +14,17 @@ const TaskCard = ({ task }: { task: any }) => {
 
   const handleDelete = async () => {
     try {
-      // Envia una solicitud POST al backend para crear un nuevo proyecto
-      const response = await axios.delete(
-        process.env.proyectosApiUrl + "tasks/delete_task/" + task.id
+      const response = await fetch(
+        process.env.proyectosApiUrl + "tasks/delete_task/" + task.id,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          next: { tags: ["tasks"] },
+        }
       );
-
-      // Maneja la respuesta del backend según sea necesario
-      console.log("Respuesta del backend:", response.data);
-
-      // Puedes realizar otras acciones después de crear el proyecto, como redireccionar a una página de éxito, etc.
     } catch (error) {
-      // Maneja los errores de la solicitud
       console.error("Error al crear el proyecto:", error);
     }
     closeModal();
