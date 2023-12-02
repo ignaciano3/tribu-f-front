@@ -33,18 +33,18 @@ const TaskForm = (props: any) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      // Envia una solicitud POST al backend para crear un nuevo proyecto
-      const response = await axios.post(
+      const response = await fetch(
         process.env.proyectosApiUrl + "tasks/create_task",
-        taskData
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(taskData),
+          next: { tags: ["projects"] },
+        }
       );
-
-      // Maneja la respuesta del backend según sea necesario
-      console.log("Respuesta del backend:", response.data);
-
-      // Puedes realizar otras acciones después de crear el proyecto, como redireccionar a una página de éxito, etc.
     } catch (error) {
-      // Maneja los errores de la solicitud
       console.error("Error al crear la tarea:", error);
     }
     // Aquí puedes manejar la lógica para enviar los datos del proyecto
