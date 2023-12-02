@@ -48,3 +48,10 @@ export const getUsuarios = async () => {
   const data = await response.json();
   return data;
 };
+
+export const getUsuario = async (id: string) => {
+  const url = process.env.proyectosApiUrl + "employees/get_employee/" + id;
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+};

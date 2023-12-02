@@ -1,6 +1,6 @@
 "use client";
 import ProjectCard from "@/components/projectCard";
-import { getProject } from "@/api/proyectos";
+import { getProject, getUsuario } from "@/api/proyectos";
 import { Project } from "@/types/types";
 import React, { useState, useEffect } from "react";
 
@@ -24,9 +24,10 @@ export default async function ProjectPage({
 
     loadProject(id);
   }, [id]);
+  const employee: any = await getUsuario(project.project_leader_id);
   return (
     <>
-      <ProjectCard project={project} />
+      <ProjectCard project={project} employee={employee} />
     </>
   );
 }

@@ -3,7 +3,7 @@ import { Task } from "@/types/types";
 import Button from "@/components/button";
 import TaskCard from "@/components/TaskCard";
 import React, { useState, useEffect } from "react";
-import { getTask } from "@/api/proyectos";
+import { getTask, getUsuario } from "@/api/proyectos";
 
 function HeaderItem({ title }: { title: string }) {
   return (
@@ -40,9 +40,10 @@ export default async function TaskCardPage({
     loadTask(taskId);
   }, [taskId]);
   console.log("TaskCardPage, task: ", task);
+  const employee = await getUsuario(task.responsible_id);
   return (
     <>
-      <TaskCard task={task} />
+      <TaskCard task={task} employee={employee} />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import Button from "@/components/button";
 import { Project } from "@/types/types";
 import React, { FormEvent, useState } from "react";
-import axios from "axios";
+
 
 const getUsuarios = async () => {
   const response = await fetch(

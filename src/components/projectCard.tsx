@@ -3,11 +3,11 @@ import Button from "@/components/button";
 import { Project } from "@/types/types";
 import { useState } from "react";
 import Modal from "react-modal";
-import axios from "axios";
 import Link from "next/link";
+import { getUsuario } from "@/api/proyectos";
 
-export default function ProjectCard(props: any) {
-  const { project } = props;
+export default async function ProjectCard(props: any) {
+  const { project, employee } = props;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -28,17 +28,6 @@ export default function ProjectCard(props: any) {
       );
       console.log("response.ok to createProject? ", response.ok);
     } catch (error) {
-      /*try {
-      // Envia una solicitud POST al backend para crear un nuevo proyecto
-      const response = await axios.delete(
-        process.env.proyectosApiUrl + "projects/delete_project/" + project.id
-      );
-
-      // Maneja la respuesta del backend según sea necesario
-      console.log("Respuesta del backend:", response.data);
-
-      // Puedes realizar otras acciones después de crear el proyecto, como redireccionar a una página de éxito, etc.
-    }*/ // Maneja los errores de la solicitud
       console.error("Error al crear el proyecto:", error);
     }
 
@@ -48,7 +37,7 @@ export default function ProjectCard(props: any) {
   };
 
   return (
-    <div className="max-w-4xl min-h-screen mx-auto mt-8 relative">
+    <div className="max-w-6xl min-h-screen mx-auto mt-8 relative">
       <div className="bg-slate-100 p-8 rounded-lg shadow-lg">
         <div className="flex">
           <h2 className="text-3xl font-bold mb-8">{project.name}</h2>
@@ -69,14 +58,19 @@ export default function ProjectCard(props: any) {
 
         <div className="project-details mb-6">
           <p className="mb-5">
+            <strong>Estado:</strong> {project.state}
+          </p>
+
+          <p className="mb-5">
+            <strong>Líder de proyecto:</strong> {employee.name}{" "}
+            {employee.last_name}
+          </p>
+          <p className="mb-5">
             <strong>Fecha de creación:</strong> {project.creation_date || ""}
           </p>
           <p className="mb-5">
             <strong>Duración estimada:</strong>{" "}
             {project.expected_duration_days || ""} {"días"}
-          </p>
-          <p className="mb-5">
-            <strong>Estado:</strong> {project.state}
           </p>
           <p className="mb-5 max-w-md">
             <strong>Descripción:</strong> {project.description}

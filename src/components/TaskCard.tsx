@@ -3,10 +3,10 @@ import { Task } from "@/types/types";
 import Button from "@/components/button";
 import React, { useState } from "react";
 import Modal from "react-modal";
-import axios from "axios";
 import Link from "next/link";
 
-const TaskCard = ({ task }: { task: any }) => {
+const TaskCard = (props: any) => {
+  const { task, employee } = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -51,13 +51,15 @@ const TaskCard = ({ task }: { task: any }) => {
         </div>
         <div className="project-details mb-4">
           <p className="mb-5">
-            <strong>Fecha de creación:</strong> {task.creation_date}
-          </p>
-          <p className="mb-5">
             <strong>Estado:</strong> {task.state}
           </p>
           <p className="mb-5">
-            <strong>Duración estimada:</strong> {task.expected_duration_days}
+            <strong>Responsable:</strong> {employee.name}
+            {"  "}
+            {employee.last_name}
+          </p>
+          <p className="mb-5">
+            <strong>Fecha de creación:</strong> {task.creation_date}
           </p>
           <p className="mb-5">
             <strong>Descripción:</strong> {task.description}
