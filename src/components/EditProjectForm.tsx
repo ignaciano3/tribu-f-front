@@ -12,13 +12,10 @@ const getUsuarios = async () => {
 };
 
 const EditProjectForm = (props: any) => {
-  const { project } = props;
-  //const leaders = getUsuarios();
-  console.log("Component EditProjectForm project: ", project);
-  //console.log("project.name", project.name);
+  const { project, employees } = props;
   const [projectData, setProjectData] = useState({
     name: project.name,
-    project_id_leader: project.project_id_leader,
+    project_leader_id: project.project_leader_id,
     description: project.description,
     expected_duration_days: project.expected_duration_days,
     state: project.state,
@@ -89,17 +86,19 @@ const EditProjectForm = (props: any) => {
         <label>
           Líder del proyecto:
           <select
-            name="leader"
-            defaultValue={projectData.project_id_leader}
+            name="project_leader_id"
+            defaultValue={projectData.project_leader_id}
             onChange={handleChange}
             required
           >
             <option value="" disabled>
               Seleccionar líder
             </option>
-            <option value={1}>Ignacio García</option>
-            <option value={2}>Nico Ronchese</option>
-            <option value={3}>Saul Goodman</option>
+            {employees.map((employee: any) => (
+              <option key={employee.legajo} value={employee.legajo}>
+                {employee.name} {employee.last_name}
+              </option>
+            ))}
           </select>
         </label>
         <label>
