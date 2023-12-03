@@ -4,12 +4,13 @@ import SubmitButton from "./forms/SubmitButton";
 import TextAreaField from "./forms/TextAreaField";
 import Title from "./Title";
 import { CreateTicket } from "@/api/soporte";
+import { CreateTicketParams } from "@/types/types";
 
 const severities = [
-  { value: "S1", label: "S1" },
-  { value: "S2", label: "S2" },
-  { value: "S3", label: "S3" },
-  { value: "S4", label: "S4" },
+  { value: "s1", label: "S1" },
+  { value: "s2", label: "S2" },
+  { value: "s3", label: "S3" },
+  { value: "s4", label: "S4" },
 ];
 
 const priorities = [
@@ -24,8 +25,12 @@ const state = [
   { value: "cerrado", label: "Cerrado" },
 ];
 
-export default async function TicketForm({ idProd }: { idProd: string }) {
-  const createTicketOnProject = CreateTicket.bind(null, idProd);
+export default async function TicketForm({
+  params,
+}: {
+  params: CreateTicketParams;
+}) {
+  const createTicketOnProject = CreateTicket.bind(null, params);
 
   return (
     <div className="flex overflow-y-auto outline-none focus:outline-none mt-8">

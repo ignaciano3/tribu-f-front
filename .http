@@ -1,0 +1,9 @@
+POST https://backend-support.onrender.com/ticket/version/1/client/1 HTTP/1.1
+content-type: application/json
+
+{
+  "title": "string",
+  "severity": "s1",
+  "priority": "alta",
+  "description": "string"
+}
