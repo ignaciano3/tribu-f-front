@@ -11,9 +11,6 @@ export default function RowProduct({
         <Link href={`/products/${row.nroDeProducto}/`}>{row.name}</Link>
       </td>
       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-        {row.version}
-      </td>
-      <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
         {row.nroDeProducto}
       </td>
     </tr>
