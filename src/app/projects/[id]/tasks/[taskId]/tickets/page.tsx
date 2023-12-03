@@ -1,4 +1,4 @@
-import { getTickets } from "@/api/soporte";
+import { GetTickets } from "@/api/soporte";
 import { GetTask } from "@/api/proyectos";
 import Table from "@/components/Table/Table";
 import Title from "@/components/Title";
@@ -22,7 +22,7 @@ export default async function Tickets({
 }) {
   //const assignments = await getAssignmentByTask(params.task.id);
   //const tickets = getTicketsTask(assignments);
-  const tickets = await getTickets(params.taskId);
+  const tickets = await GetTickets(params.taskId);
   const task = await GetTask(params.taskId);
   //const tickets = {};
   return (
