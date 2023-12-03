@@ -7,7 +7,7 @@ export default async function TaskCardPage({
   params: { id: string; taskId: string };
 }) {
   const taskId = params.taskId;
-  const task = getTask(taskId);
+  const task = await getTask(taskId);
   const employee = await getUsuario(task?.responsible_id || "");
   return (
     <>

@@ -14,6 +14,7 @@ const getUsuarios = async () => {
 const EditProjectForm = (props: any) => {
   const { project, employees } = props;
   const [projectData, setProjectData] = useState({
+    id: project.id,
     name: project.name,
     project_leader_id: project.project_leader_id,
     description: project.description,
@@ -32,7 +33,8 @@ const EditProjectForm = (props: any) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const data = editProject(projectData);
+      console.log("editProject data: ", projectData);
+      const data = await editProject(projectData);
       console.log("editProject data: ", data);
       window.location.href = "/projects/" + project.id;
     } catch (error) {

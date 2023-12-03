@@ -8,6 +8,7 @@ export default async function ProjectPage({
 }) {
   const id = params.id;
   const project = await getProject(id);
+  console.log("project en ProjectPage: ", project);
   const employee = await getUsuario(project?.project_leader_id ?? "");
   return (
     <>
