@@ -1,23 +1,42 @@
 import { Project } from "@/types/types";
-import { revalidateTag, revalidatePath } from "next/cache";
 import useFetch from "@/hooks/useFetch";
 
-export async function getProjects() {
+export async function GetProjects() {
   const url = "projects/get_projects/";
   return await useFetch({
     url: url,
     soporte: false,
-    revalidate: true,
+    //revalidate: true,
     tags: ["projects"],
+    cache: "no-cache",
   });
 }
 
-export const getProject = async (id: string): Promise<Project> => {
+export const GetProject = async (id: string): Promise<Project> => {
   const url = "projects/get_project/" + id;
-  return await useFetch({ url: url, soporte: false });
+  return await useFetch({
+    url: url,
+    soporte: false,
+    //revalidate: true,
+    tags: ["projects"],
+    cache: "no-cache",
+  });
 };
 
-export const getTasks = async (id: string) => {
+export const DeleteProject = async (id: any) => {
+  const url = "projects/delete_project/" + id;
+  const data = await useFetch({
+    url: url,
+    soporte: false,
+    revalidate: true,
+    method: "DELETE",
+    //cache: "no-cache",
+    tags: ["projects"],
+  });
+  return data;
+};
+
+export const GetTasks = async (id: string) => {
   const url = "tasks/get_tasks_by_project_id/{id}?project_id=" + id;
   return await useFetch({
     url: url,
@@ -27,7 +46,7 @@ export const getTasks = async (id: string) => {
   });
 };
 
-export const getTask = async (id: string) => {
+export const GetTask = async (id: string) => {
   const url = "tasks/get_task/" + id;
   const data = await useFetch({
     url: url,
@@ -36,11 +55,11 @@ export const getTask = async (id: string) => {
     cache: "no-cache",
   });
 
-  revalidateTag("tasks");
+  //revalidateTag("tasks");
   return data;
 };
 
-export const getUsuarios = async () => {
+export const GetUsuarios = async () => {
   const url = "employees/get_employees";
   return await useFetch({
     url: url,
@@ -50,7 +69,7 @@ export const getUsuarios = async () => {
   });
 };
 
-export const getUsuario = async (id: string) => {
+export const GetUsuario = async (id: string) => {
   const url = "employees/get_employee/" + id;
   return await useFetch({
     url: url,
@@ -60,55 +79,74 @@ export const getUsuario = async (id: string) => {
   });
 };
 
-export const createProject = async (projectData: any) => {
+export const CreateProject = async (projectData: any) => {
   const url = "projects/create_project";
-  await useFetch({
+  const data = await useFetch({
     url: url,
     soporte: false,
+    revalidate: true,
     cache: "no-cache",
     tags: ["projects"],
     method: "POST",
     data: projectData,
   });
-  revalidateTag("projects");
+  //revalidateTag("projects");
+  return data;
 };
 
-export const editProject = async (projectData: any) => {
+export const EditProject = async (projectData: any) => {
   const url = "projects/update_project/" + projectData.id;
-  await useFetch({
+  const data = await useFetch({
     url: url,
     soporte: false,
     method: "PATCH",
+    revalidate: true,
     data: projectData,
     cache: "no-cache",
     tags: ["projects"],
   });
-  revalidateTag("projects");
-  revalidatePath(`/projects/${projectData.id}/`);
+  //revalidateTag("projects");
+  //revalidatePath(`/projects/${projectData.id}/`);
+  return data;
 };
 
-export const createTask = async (taskData: any) => {
+export const CreateTask = async (taskData: any) => {
   const url = "tasks/create_task/";
-  await useFetch({
+  const data = await useFetch({
     url: url,
     soporte: false,
     method: "POST",
+    revalidate: true,
     cache: "no-cache",
     tags: ["tasks"],
     data: taskData,
   });
-  revalidateTag("tasks");
+  //revalidateTag("tasks");
+  return data;
 };
 
-export const editTask = async (taskData: any) => {
-  const url = "tasks/update_tasks/" + taskData.id;
-  await useFetch({
+export const EditTask = async (taskData: any) => {
+  const url = "tasks/update_task/" + taskData.id;
+  const data = await useFetch({
     url: url,
     soporte: false,
+    revalidate: true,
     method: "PATCH",
     data: taskData,
     cache: "no-cache",
     tags: ["tasks"],
   });
-  revalidateTag("tasks");
+  return data;
+};
+
+export const DeleteTask = async (id: any) => {
+  const url = "tasks/delete_task/" + id;
+  const data = await useFetch({
+    url: url,
+    soporte: false,
+    revalidate: true,
+    method: "DELETE",
+    tags: ["tasks"],
+  });
+  return data;
 };

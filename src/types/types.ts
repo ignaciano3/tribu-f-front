@@ -37,7 +37,7 @@ export interface Project {
   creation_date: Date;
   expected_duration_days: number;
   end_date: Date;
-  project_id_leader: string;
+  project_leader_id: string;
   state: string;
 }
 

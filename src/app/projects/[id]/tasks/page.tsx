@@ -3,7 +3,7 @@ import TaskGridRow from "@/components/taskGridRow";
 import Button from "@/components/button";
 import Title from "@/components/Title";
 import Nuevo from "@/components/Nuevo";
-import { getTasks } from "@/api/proyectos";
+import { GetTasks } from "@/api/proyectos";
 import React from "react";
 
 const headers = [
@@ -26,7 +26,7 @@ function HeaderItem({ title }: { title: string }) {
 
 export default async function TaskGrid({ params }: { params: { id: string } }) {
   const id = params.id;
-  const tasks = await getTasks(id);
+  const tasks = await GetTasks(id);
 
   const href = "/projects/" + params.id + "/tasks/create";
   return (

@@ -1,15 +1,7 @@
+"use client";
 import Button from "@/components/button";
 import React, { FormEvent, useState } from "react";
-import { editTask } from "@/api/proyectos";
-
-
-const getUsuarios = async () => {
-  const response = await fetch(
-    "https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos"
-  );
-  const data = await response.json();
-  return data;
-};
+import { EditTask } from "@/api/proyectos";
 
 const EditTaskForm = (props: any) => {
   const { task, employees } = props;
@@ -17,6 +9,7 @@ const EditTaskForm = (props: any) => {
   console.log("EditTaskForm props: ", props);
   console.log("EditTaskForm -> task.name: ", task.name);
   const [taskData, setTaskData] = useState({
+    id: task.id,
     name: task.name,
     state: task.state,
     description: task.description,
@@ -36,20 +29,11 @@ const EditTaskForm = (props: any) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const data = await editTask(taskData);
-      // const response = await fetch(
-      //   process.env.proyectosApiUrl + "tasks/update_task/" + task.id,
-      //   {
-      //     method: "PATCH",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify(taskData),
-      //     next: { tags: ["tasks"] },
-      //   }
-      // );
-      window.location.href = "/projects/" + task.project_id+"/tasks/"+task.id;
-      //console.log("response.ok?", response.ok);
+      console.log("data en task data", taskData);
+      const data = await EditTask(taskData);
+      window.location.href =
+        "/projects/" + task.project_id + "/tasks/" + task.id;
+      console.log("respuesta del backend al editar una task", data);
     } catch (error) {
       console.error("Error al editar tarea:", error);
     }

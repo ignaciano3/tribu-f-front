@@ -1,8 +1,7 @@
 "use client";
 import Button from "@/components/button";
 import React, { FormEvent, useState } from "react";
-import { revalidateTag } from "next/cache";
-import { createProject } from "@/api/proyectos";
+import { CreateProject } from "@/api/proyectos";
 
 export default function ProjectForm(props: any) {
   const { employees } = props;
@@ -25,7 +24,7 @@ export default function ProjectForm(props: any) {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const data = await createProject(projectData);
+      const data = await CreateProject(projectData);
       console.log("Data del proyecto creado: ", data);
       window.location.href = "/projects/" + data.id;
     } catch (error) {

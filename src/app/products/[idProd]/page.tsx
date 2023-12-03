@@ -1,4 +1,4 @@
-import { getProduct, getTickets, getVersionsOfProduct } from "@/api/soporte";
+import { GetProduct, GetTickets, GetVersionsOfProduct } from "@/api/soporte";
 import VersionRow from "@/components/Table/Rows/VersionRow";
 import Table from "@/components/Table/Table";
 import TicketForm from "@/components/TicketForm";

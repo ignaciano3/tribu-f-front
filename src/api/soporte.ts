@@ -12,7 +12,7 @@ export async function getTickets(versionId: string) {
   });
 }
 
-export async function getVersionsOfProduct(idProd: string) {
+export async function GetVersionsOfProduct(idProd: string) {
   const url = `product/${idProd}/version`;
   return await useFetch({
     url: url,
@@ -22,7 +22,7 @@ export async function getVersionsOfProduct(idProd: string) {
   });
 }
 
-export async function getProducts() {
+export async function GetProducts() {
   const url = "product/";
   return await useFetch({
     url: url,
@@ -32,7 +32,7 @@ export async function getProducts() {
   });
 }
 
-export async function getProduct(idProd: string) {
+export async function GetProduct(idProd: string) {
   const url = `product/${idProd}`;
   return await useFetch({
     url: url,
@@ -43,7 +43,7 @@ export async function getProduct(idProd: string) {
   });
 }
 
-export async function getTicket(idProd: Number) {
+export async function GetTicket(idProd: Number) {
   const url = `ticket/${idProd}`;
   return await useFetch({
     url: url,
@@ -53,7 +53,7 @@ export async function getTicket(idProd: Number) {
   });
 }
 
-export async function createTicket(product_id: string, formData: FormData) {
+export async function CreateTicket(product_id: string, formData: FormData) {
   "use server";
   const url = `product/${product_id}/version/${1}/ticket/client/${1}`;
   const ticket: CreateTicket = {

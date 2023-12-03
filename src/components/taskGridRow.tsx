@@ -1,4 +1,4 @@
-import { getUsuario } from "@/api/proyectos";
+import { GetUsuario } from "@/api/proyectos";
 import Link from "next/link";
 
 /*export default function rowGridRow({ row }: { row: any }) {
@@ -21,7 +21,7 @@ import Link from "next/link";
 
 export default async function TaskGridRow({ task }: { task: any }) {
   const path = "/projects/" + task.project_id + "/tasks/" + task.id;
-  const employee: any = await getUsuario(task.responsible_id);
+  const employee: any = await GetUsuario(task.responsible_id);
   console.log("employee en TaskGridRow: ", employee);
   return (
     <tr key={`${task.id}`} className="bg-slate-100">

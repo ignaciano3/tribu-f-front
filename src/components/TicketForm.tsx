@@ -3,7 +3,7 @@ import SelectField from "./forms/SelectField";
 import SubmitButton from "./forms/SubmitButton";
 import TextAreaField from "./forms/TextAreaField";
 import Title from "./Title";
-import { createTicket } from "@/api/soporte";
+import { CreateTicket } from "@/api/soporte";
 
 const severities = [
   { value: "S1", label: "S1" },
@@ -25,7 +25,7 @@ const state = [
 ];
 
 export default async function TicketForm({ idProd }: { idProd: string }) {
-  const createTicketOnProject = createTicket.bind(null, idProd);
+  const createTicketOnProject = CreateTicket.bind(null, idProd);
 
   return (
     <div className="flex overflow-y-auto outline-none focus:outline-none mt-8">
