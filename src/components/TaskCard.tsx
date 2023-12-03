@@ -51,6 +51,9 @@ const TaskCard = (props: any) => {
             {employee.last_name}
           </p>
           <p className="mb-5">
+            <strong>Prioridad:</strong> {task.priority}
+          </p>
+          <p className="mb-5">
             <strong>Fecha de creación:</strong> {task.creation_date}
           </p>
           <p className="mb-5">

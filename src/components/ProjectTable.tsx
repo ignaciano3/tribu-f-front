@@ -84,7 +84,7 @@ export default function ProjectTable(props: any) {
             </thead>
             <tbody>
               {filteredProjects.map((project: Project) => (
-                <ProjectGridRow key={project.name} project={project} />
+                <ProjectGridRow key={project.id} project={project} />
               ))}
             </tbody>
           </table>

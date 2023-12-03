@@ -15,6 +15,7 @@ const EditTaskForm = (props: any) => {
     description: task.description,
     project_id: task.project_id,
     end_date: task.end_date,
+    priority: task.priority,
     responsible_id: task.responsible_id,
   });
 
@@ -97,6 +98,23 @@ const EditTaskForm = (props: any) => {
             <option value="bloqueada">Bloqueada</option>
             <option value="en tests">En tests</option>
             <option value="finalizada">Finalizada</option>
+          </select>
+        </label>
+
+        <label>
+          Prioridad de la tarea:
+          <select
+            name="priority"
+            value={taskData.priority}
+            onChange={handleChange}
+            required
+          >
+            <option value="" disabled>
+              Seleccionar prioridad
+            </option>
+            <option value={"alta"}>Alta</option>
+            <option value={"media"}>Media</option>
+            <option value={"baja"}>Baja</option>
           </select>
         </label>
 
