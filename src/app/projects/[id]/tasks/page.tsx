@@ -45,7 +45,7 @@ export default async function TaskGrid({ params }: { params: { id: string } }) {
         {tasks.length === 0 ? (
           <p className="px-6 py-3 text-l text-center text-gray-700">
             Este proyecto no tiene tareas. Puedes crear una tarea clickeando en
-            el botón 'Crear nueva tarea' arriba a la derecha.
+            el botón arriba a la derecha.
           </p>
         ) : (
           <table className="min-w-full shadow-lg">

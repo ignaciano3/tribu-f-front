@@ -1,6 +1,6 @@
 import { revalidateTag } from "next/cache";
 import useFetch from "@/hooks/useFetch";
-import { CreateTicket, CreateTicketParams } from "@/types/types";
+import { CreateTicketParams } from "@/types/types";
 
 export async function GetClients(){
   const url = "client/";
@@ -93,3 +93,5 @@ export async function CreateTicket(params : CreateTicketParams, formData: FormDa
   });
   revalidateTag("tickets");
 }
+
+
