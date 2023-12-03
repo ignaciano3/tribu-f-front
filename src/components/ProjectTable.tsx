@@ -73,21 +73,32 @@ export default function ProjectTable(props: any) {
           </div>
         </div>
         <div className="flex flex-col">
-          <table className="min-w-full">
-            <thead>
-              <tr>
-                <HeaderItem title="ID" />
-                <HeaderItem title="Nombre" />
-                <HeaderItem title="Estado" />
-                <HeaderItem title="Fecha de creación" />
-              </tr>
-            </thead>
-            <tbody>
-              {filteredProjects.map((project: Project) => (
-                <ProjectGridRow key={project.id} project={project} />
-              ))}
-            </tbody>
-          </table>
+          {projects.length === 0 ? (
+            <p className="px-6 py-3 text-l text-center text-gray-700">
+              Aún no hay proyectos creados. Puedes crear un proyecto clickeando
+              en el botón 'Crear nuevo proyecto' arriba a la derecha.
+            </p>
+          ) : filteredProjects.length === 0 ? (
+            <p className="px-6 py-3 text-l text-center text-gray-700">
+              No se encontraron proyectos con ese nombre.
+            </p>
+          ) : (
+            <table className="min-w-full">
+              <thead>
+                <tr>
+                  <HeaderItem title="ID" />
+                  <HeaderItem title="Nombre" />
+                  <HeaderItem title="Estado" />
+                  <HeaderItem title="Fecha de creación" />
+                </tr>
+              </thead>
+              <tbody>
+                {filteredProjects.map((project: Project) => (
+                  <ProjectGridRow key={project.id} project={project} />
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </>
