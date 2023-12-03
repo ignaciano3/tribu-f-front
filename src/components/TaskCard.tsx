@@ -3,7 +3,7 @@ import Button from "@/components/button";
 import React, { useState } from "react";
 import Modal from "react-modal";
 import Link from "next/link";
-import { deleteTask } from "@/api/proyectos";
+import { DeleteTask } from "@/api/proyectos";
 
 const TaskCard = (props: any) => {
   const { task, employee } = props;
@@ -14,7 +14,7 @@ const TaskCard = (props: any) => {
 
   const handleDelete = async () => {
     try {
-      const response = await deleteTask(task.id);
+      const response = await DeleteTask(task.id);
       window.location.href = "/projects/" + task.project_id + "/tasks";
     } catch (error) {
       console.error("Error al crear el proyecto:", error);

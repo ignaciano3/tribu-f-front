@@ -1,5 +1,5 @@
 import TaskCard from "@/components/TaskCard";
-import { getTask, getUsuario } from "@/api/proyectos";
+import { GetTask, GetUsuario } from "@/api/proyectos";
 
 export default async function TaskCardPage({
   params,
@@ -7,8 +7,8 @@ export default async function TaskCardPage({
   params: { id: string; taskId: string };
 }) {
   const taskId = params.taskId;
-  const task = await getTask(taskId);
-  const employee = await getUsuario(task?.responsible_id || "");
+  const task = await GetTask(taskId);
+  const employee = await GetUsuario(task?.responsible_id || "");
   return (
     <>
       <TaskCard task={task} employee={employee} />

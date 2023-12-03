@@ -1,5 +1,5 @@
 "use client";
-import { editProject } from "@/api/proyectos";
+import { EditProject } from "@/api/proyectos";
 import Button from "@/components/button";
 import React, { FormEvent, useState } from "react";
 
@@ -34,7 +34,7 @@ const EditProjectForm = (props: any) => {
     e.preventDefault();
     try {
       console.log("editProject data: ", projectData);
-      const data = await editProject(projectData);
+      const data = await EditProject(projectData);
       console.log("editProject data: ", data);
       window.location.href = "/projects/" + project.id;
     } catch (error) {

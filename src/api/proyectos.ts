@@ -1,8 +1,7 @@
 import { Project } from "@/types/types";
-import { revalidateTag } from "next/cache";
 import useFetch from "@/hooks/useFetch";
 
-export async function getProjects() {
+export async function GetProjects() {
   const url = "projects/get_projects/";
   return await useFetch({
     url: url,
@@ -13,7 +12,7 @@ export async function getProjects() {
   });
 }
 
-export const getProject = async (id: string): Promise<Project> => {
+export const GetProject = async (id: string): Promise<Project> => {
   const url = "projects/get_project/" + id;
   return await useFetch({
     url: url,
@@ -24,7 +23,7 @@ export const getProject = async (id: string): Promise<Project> => {
   });
 };
 
-export const deleteProject = async (id: any) => {
+export const DeleteProject = async (id: any) => {
   const url = "projects/delete_project/" + id;
   const data = await useFetch({
     url: url,
@@ -37,7 +36,7 @@ export const deleteProject = async (id: any) => {
   return data;
 };
 
-export const getTasks = async (id: string) => {
+export const GetTasks = async (id: string) => {
   const url = "tasks/get_tasks_by_project_id/{id}?project_id=" + id;
   return await useFetch({
     url: url,
@@ -47,7 +46,7 @@ export const getTasks = async (id: string) => {
   });
 };
 
-export const getTask = async (id: string) => {
+export const GetTask = async (id: string) => {
   const url = "tasks/get_task/" + id;
   const data = await useFetch({
     url: url,
@@ -60,7 +59,7 @@ export const getTask = async (id: string) => {
   return data;
 };
 
-export const getUsuarios = async () => {
+export const GetUsuarios = async () => {
   const url = "employees/get_employees";
   return await useFetch({
     url: url,
@@ -70,7 +69,7 @@ export const getUsuarios = async () => {
   });
 };
 
-export const getUsuario = async (id: string) => {
+export const GetUsuario = async (id: string) => {
   const url = "employees/get_employee/" + id;
   return await useFetch({
     url: url,
@@ -80,7 +79,7 @@ export const getUsuario = async (id: string) => {
   });
 };
 
-export const createProject = async (projectData: any) => {
+export const CreateProject = async (projectData: any) => {
   const url = "projects/create_project";
   const data = await useFetch({
     url: url,
@@ -95,7 +94,7 @@ export const createProject = async (projectData: any) => {
   return data;
 };
 
-export const editProject = async (projectData: any) => {
+export const EditProject = async (projectData: any) => {
   const url = "projects/update_project/" + projectData.id;
   const data = await useFetch({
     url: url,
@@ -111,7 +110,7 @@ export const editProject = async (projectData: any) => {
   return data;
 };
 
-export const createTask = async (taskData: any) => {
+export const CreateTask = async (taskData: any) => {
   const url = "tasks/create_task/";
   const data = await useFetch({
     url: url,
@@ -126,7 +125,7 @@ export const createTask = async (taskData: any) => {
   return data;
 };
 
-export const editTask = async (taskData: any) => {
+export const EditTask = async (taskData: any) => {
   const url = "tasks/update_task/" + taskData.id;
   const data = await useFetch({
     url: url,
@@ -140,7 +139,7 @@ export const editTask = async (taskData: any) => {
   return data;
 };
 
-export const deleteTask = async (id: any) => {
+export const DeleteTask = async (id: any) => {
   const url = "tasks/delete_task/" + id;
   const data = await useFetch({
     url: url,

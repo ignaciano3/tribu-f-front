@@ -1,5 +1,5 @@
 import ProjectCard from "@/components/ProjectCard";
-import { getProject, getUsuario } from "@/api/proyectos";
+import { GetProject, GetUsuario } from "@/api/proyectos";
 
 export default async function ProjectPage({
   params,
@@ -7,9 +7,9 @@ export default async function ProjectPage({
   params: { id: string };
 }) {
   const id = params.id;
-  const project = await getProject(id);
+  const project = await GetProject(id);
   console.log("project en ProjectPage: ", project);
-  const employee = await getUsuario(project?.project_leader_id ?? "");
+  const employee = await GetUsuario(project?.project_leader_id ?? "");
   return (
     <>
       <ProjectCard project={project} employee={employee} />

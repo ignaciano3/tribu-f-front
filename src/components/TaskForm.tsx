@@ -1,7 +1,7 @@
 "use client";
 import Button from "@/components/button";
 import { FormEvent, useState } from "react";
-import { createTask } from "@/api/proyectos";
+import { CreateTask } from "@/api/proyectos";
 
 const getUsuarios = async () => {
   const response = await fetch(
@@ -33,7 +33,7 @@ const TaskForm = (props: any) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const data = await createTask(taskData);
+      const data = await CreateTask(taskData);
       window.location.href = "/projects/" + project_id + "/tasks";
     } catch (error) {
       console.error("Error al crear la tarea:", error);

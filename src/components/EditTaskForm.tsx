@@ -1,7 +1,7 @@
 "use client";
 import Button from "@/components/button";
 import React, { FormEvent, useState } from "react";
-import { editTask } from "@/api/proyectos";
+import { EditTask } from "@/api/proyectos";
 
 const EditTaskForm = (props: any) => {
   const { task, employees } = props;
@@ -9,7 +9,7 @@ const EditTaskForm = (props: any) => {
   console.log("EditTaskForm props: ", props);
   console.log("EditTaskForm -> task.name: ", task.name);
   const [taskData, setTaskData] = useState({
-    id:task.id,
+    id: task.id,
     name: task.name,
     state: task.state,
     description: task.description,
@@ -30,8 +30,9 @@ const EditTaskForm = (props: any) => {
     e.preventDefault();
     try {
       console.log("data en task data", taskData);
-      const data = await editTask(taskData);
-      window.location.href ="/projects/" + task.project_id + "/tasks/" + task.id;
+      const data = await EditTask(taskData);
+      window.location.href =
+        "/projects/" + task.project_id + "/tasks/" + task.id;
       console.log("respuesta del backend al editar una task", data);
     } catch (error) {
       console.error("Error al editar tarea:", error);

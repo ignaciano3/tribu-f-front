@@ -1,5 +1,5 @@
 import KanbanBoard from "@/components/KanbanBoard";
-import { getTasks } from "@/api/proyectos";
+import { GetTasks } from "@/api/proyectos";
 
 export default async function KanbanPage({
   params,
@@ -7,7 +7,7 @@ export default async function KanbanPage({
   params: { id: string };
 }) {
   const id = params.id;
-  const tasks = await getTasks(id);
+  const tasks = await GetTasks(id);
   console.log("ID: ", id);
   //const tasks = await getTasks(params.id);
   return (
