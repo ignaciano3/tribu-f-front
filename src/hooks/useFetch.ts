@@ -41,7 +41,7 @@ export default async function useFetch(props: FetchProps) {
   } else if (response.status == 500) {
     throw new Error("Hubo un error en el back");
   } else if (response.status == 404) {
-    throw new Error("No existe el endpoint");
+    throw new Error(`No existe el endpoint ${api_url+url}`);
   } else {
     throw new Error("Hubo un error desconocido");
   }

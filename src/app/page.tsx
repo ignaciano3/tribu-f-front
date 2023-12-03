@@ -1,8 +1,10 @@
+import Title from "@/components/Title";
 
 export default function Home() {
   return (
-    <>
-      <h1 className="mb-2">Bienvenido</h1>
-    </>
+    <div >
+      <Title title="Bienvenido a PSA" />
+      <Title title="Sistema de gestion"/>
+    </div>
   );
 }

@@ -11,9 +11,9 @@ export default async function ProductDetails({
   params: { idProd: string };
 }) {
   const product = await getProduct(params.idProd);
-  const tickets = await getTickets(params.idProd);
   const versions = await getVersionsOfProduct(params.idProd);
-  
+  const tickets = await getTickets(versions[0].id);
+
   return (
     <>
       <Title title={product.name} />

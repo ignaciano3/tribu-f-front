@@ -2,8 +2,8 @@ import { CreateTicket } from "@/types/types";
 import { revalidateTag } from "next/cache";
 import useFetch from "@/hooks/useFetch";
 
-export async function getTickets(idProd: string) {
-  const url = `product/${idProd}/ticket`;
+export async function getTickets(versionId: string) {
+  const url = `ticket/version/${versionId}`;
   return await useFetch({
     url: url,
     soporte: true,
@@ -39,6 +39,7 @@ export async function getProduct(idProd: string) {
     soporte: true,
     revalidate: true,
     tags: ["products"],
+    cache: "no-cache"
   });
 }
 
