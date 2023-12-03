@@ -42,22 +42,29 @@ export default async function TaskGrid({ params }: { params: { id: string } }) {
       {/*<Table data={tasks} headers={headers} RowItem={TaskGridRow} />*/}
       {/* pongo la grid de antes */}
       <div className="flex flex-col rounded">
-        <table className="min-w-full shadow-lg">
-          <thead>
-            <tr>
-              <HeaderItem title="ID" />
-              <HeaderItem title="Nombre" />
-              <HeaderItem title="Estado" />
-              <HeaderItem title="Responsable" />
-              <HeaderItem title="Fecha de creación" />
-            </tr>
-          </thead>
-          <tbody>
-            {tasks.map((task: Task) => (
-              <TaskGridRow key={task.name} task={task} />
-            ))}
-          </tbody>
-        </table>
+        {tasks.length === 0 ? (
+          <p className="px-6 py-3 text-l text-center text-gray-700">
+            Este proyecto no tiene tareas. Puedes crear una tarea clickeando en
+            el botón 'Crear nueva tarea' arriba a la derecha.
+          </p>
+        ) : (
+          <table className="min-w-full shadow-lg">
+            <thead>
+              <tr>
+                <HeaderItem title="ID" />
+                <HeaderItem title="Nombre" />
+                <HeaderItem title="Estado" />
+                <HeaderItem title="Responsable" />
+                <HeaderItem title="Fecha de creación" />
+              </tr>
+            </thead>
+            <tbody>
+              {tasks.map((task: Task) => (
+                <TaskGridRow key={task.name} task={task} />
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </>
   );
