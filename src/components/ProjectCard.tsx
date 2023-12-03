@@ -1,6 +1,6 @@
 "use client";
 import Button from "@/components/button";
-import { DeleteProject } from "@/api/proyectos";
+import { DeleteProject, GetTasks, DeleteTask } from "@/api/proyectos";
 import { useState } from "react";
 import Modal from "react-modal";
 import Link from "next/link";
@@ -16,6 +16,10 @@ export default function ProjectCard(props: any) {
   const handleDelete = async () => {
     try {
       console.log("DELETEPROJECT -> project id: ", project.id);
+      const tasks = await GetTasks(project.id);
+      for (const task of tasks) {
+        await DeleteTask(task.id);
+      }
       const data = await DeleteProject(project.id);
       console.log("DELETEPROJECT -> RESPUESTA DEL BACKEND", data);
       window.location.href = "/projects";
