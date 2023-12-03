@@ -3,7 +3,7 @@ import Button from "@/components/button";
 import React, { useState } from "react";
 import Modal from "react-modal";
 import Link from "next/link";
-import { DeleteTask } from "@/api/proyectos";
+import { DeleteTask, EditTask } from "@/api/proyectos";
 
 const TaskCard = (props: any) => {
   const { task, employee } = props;
@@ -22,6 +22,31 @@ const TaskCard = (props: any) => {
     closeModal();
   };
 
+  const handleFinish = async () => {
+    try {
+      const current = new Date();
+      const date = `${current.getFullYear()}-${
+        current.getMonth() + 1
+      }-${current.getDate()}`;
+      const taskData = {
+        id: task.id,
+        name: task.name,
+        state: "finalizada",
+        description: task.description,
+        project_id: task.project_id,
+        end_date: date,
+        priority: task.priority,
+        responsible_id: task.responsible_id,
+      };
+      console.log("taskData en handleFinish: ", taskData);
+      const data = await EditTask(taskData);
+      console.log("respuesta del backend: ", data);
+      window.location.href =
+        "/projects/" + task.project_id + "/tasks/" + task.id;
+    } catch (error) {
+      console.error("Error al finalizar la tarea:", error);
+    }
+  };
   return (
     <div className="max-w-4xl mx-auto mt-8">
       <div className="bg-slate-100 p-8 rounded-lg shadow-lg">
@@ -56,6 +81,12 @@ const TaskCard = (props: any) => {
           <p className="mb-5">
             <strong>Fecha de creación:</strong> {task.creation_date}
           </p>
+          {task.end_date !== null && task.end_date !== undefined && (
+            <p className="mb-5">
+              <strong>Fecha de finalización:</strong> {task.end_date}
+            </p>
+          )}
+
           <p className="mb-5">
             <strong>Descripción:</strong> {task.description}
           </p>
@@ -64,7 +95,12 @@ const TaskCard = (props: any) => {
           <Button href={`/projects/${task.project_id}/tasks/`}>
             Volver a tareas
           </Button>
-
+          <button
+            className="bg-gray-700 text-white mt-15 py-2 px-4 rounded mr-2"
+            onClick={handleFinish}
+          >
+            Finalizar tarea
+          </button>
           <div className="mr-2 cursor-pointer mt-2" onClick={openModal}>
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -1,6 +1,11 @@
 "use client";
 import Button from "@/components/button";
-import { DeleteProject, GetTasks, DeleteTask } from "@/api/proyectos";
+import {
+  DeleteProject,
+  GetTasks,
+  DeleteTask,
+  EditProject,
+} from "@/api/proyectos";
 import { useState } from "react";
 import Modal from "react-modal";
 import Link from "next/link";
@@ -31,6 +36,30 @@ export default function ProjectCard(props: any) {
     console.log("Eliminar proyecto:", project.id);
     // Simulación de éxito; deberías realizar la lógica del backend aquí
     //closeModal();
+  };
+
+  const handleFinish = async () => {
+    try {
+      const current = new Date();
+      const date = `${current.getDate()}/${
+        current.getMonth() + 1
+      }/${current.getFullYear()}`;
+      const projectData = {
+        id: project.id,
+        name: project.name,
+        project_leader_id: project.project_leader_id,
+        description: project.description,
+        expected_duration_days: project.expected_duration_days,
+        state: "finalizado",
+        creation_date: project.creation_date,
+        end_date: date,
+      };
+      console.log("projectData en handleFinish: ", projectData);
+      const data = await EditProject(projectData);
+      console.log("respuesta del backend: ", data);
+    } catch (error) {
+      console.error("Error al crear el proyecto:", error);
+    }
   };
 
   return (
@@ -66,6 +95,9 @@ export default function ProjectCard(props: any) {
             <strong>Fecha de creación:</strong> {project.creation_date || ""}
           </p>
           <p className="mb-5">
+            <strong>Fecha de finalización:</strong> {project.end_date || ""}
+          </p>
+          <p className="mb-5">
             <strong>Duración estimada:</strong>{" "}
             {project.expected_duration_days || ""} {"días"}
           </p>
@@ -78,6 +110,12 @@ export default function ProjectCard(props: any) {
             <Button href={`/projects/${project.id}/tasks`}>Ver tareas</Button>
             <Button href={`/projects/${project.id}/kanban`}>Ver kanban</Button>
             <Button href={`/projects/`}>Volver a proyectos</Button>
+            <button
+              className="bg-gray-700 text-white mt-15 py-2 px-4 rounded mr-2"
+              onClick={handleFinish}
+            >
+              Finalizar proyecto
+            </button>
           </div>
 
           <div className="mr-2 cursor-pointer" onClick={openModal}>
