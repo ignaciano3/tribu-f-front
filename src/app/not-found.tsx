@@ -1,11 +1,12 @@
-import Link from "next/link";
+import Title from "@/components/Title";
+import ReturnButton from "@/components/forms/ReturnButton";
 
 const NotFound = () => {
   return (
-    <div>
-      <h1>404</h1>
-      <h2>Página no encotrada</h2>
-      <Link href="/">Volver al inicio</Link>
+    <div className="text-center justify-center min-h-screen items-center flex flex-col">
+      <Title title="404" />
+      <h2 className="text-lg">Página no encotrada</h2>
+      <ReturnButton href="/" />
     </div>
   );
 };

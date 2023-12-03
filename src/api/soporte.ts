@@ -1,6 +1,26 @@
 import { revalidateTag } from "next/cache";
 import useFetch from "@/hooks/useFetch";
-import { CreateTicket } from "@/types/types";
+import { CreateTicket, CreateTicketParams } from "@/types/types";
+
+export async function GetClients(){
+  const url = "client/";
+  return await useFetch({
+    url: url,
+    soporte: true,
+    revalidate: true,
+    tags: ["clients"],
+  });
+}
+
+export async function GetUsers() {
+  const url = "user/";
+  return await useFetch({
+    url: url,
+    soporte: true,
+    revalidate: true,
+    tags: ["users"],
+  });
+}
 
 export async function GetTickets(versionId: string) {
   const url = `ticket/version/${versionId}`;
@@ -13,7 +33,7 @@ export async function GetTickets(versionId: string) {
 }
 
 export async function GetVersionsOfProduct(idProd: string) {
-  const url = `product/${idProd}/version`;
+  const url = `version/product/${idProd}`;
   return await useFetch({
     url: url,
     soporte: true,
@@ -53,9 +73,9 @@ export async function GetTicket(idProd: Number) {
   });
 }
 
-export async function CreateTicket(product_id: string, formData: FormData) {
+export async function CreateTicket(params : CreateTicketParams, formData: FormData) {
   "use server";
-  const url = `product/${product_id}/version/${1}/ticket/client/${1}`;
+  const url = `ticket/version/${params.version_id}/client/${params.client_id}`;
   const ticket: CreateTicket = {
     title: formData.get("title") as string,
     severity: formData.get("severity") as string,

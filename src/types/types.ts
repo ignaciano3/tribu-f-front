@@ -10,6 +10,12 @@ export interface Cliente {
   cuit: number;
 }
 
+export interface Version {
+  product_id: string;
+  version : string;
+  id: string;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -60,3 +66,9 @@ export interface CreateTicket {
   state: string;
   description: string;
 }
+
+export interface CreateTicketParams {
+  version_id: string;
+  client_id: string;
+}
+
