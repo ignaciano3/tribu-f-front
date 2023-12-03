@@ -1,5 +1,7 @@
+"use client";
 import Button from "@/components/button";
-import React, { FormEvent, useState } from "react";
+import { FormEvent, useState } from "react";
+import { createTask } from "@/api/proyectos";
 
 const getUsuarios = async () => {
   const response = await fetch(
@@ -31,18 +33,8 @@ const TaskForm = (props: any) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        process.env.proyectosApiUrl + "tasks/create_task",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(taskData),
-          next: { tags: ["projects"] },
-        }
-      );
-      window.location.href = "/projects/"+project_id+"/tasks";
+      const data = await createTask(taskData);
+      window.location.href = "/projects/" + project_id + "/tasks";
     } catch (error) {
       console.error("Error al crear la tarea:", error);
     }
@@ -73,7 +65,6 @@ const TaskForm = (props: any) => {
         <label>
           Responsable de la tarea:
           <select
-            type="number"
             name="responsible_id"
             value={taskData.responsible_id}
             onChange={handleChange}

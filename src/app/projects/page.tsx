@@ -13,8 +13,9 @@ function HeaderItem({ title }: { title: string }) {
   );
 }
 
-const ProjectGrid = () => {
-  const [originalProjects, setOriginalProjects] = useState([]);
+export default async function ProjectGrid() {
+  const projects = await getProjects();
+  /*const [originalProjects, setOriginalProjects] = useState([]);
   const [filteredProjects, setFilteredProjects] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -28,9 +29,10 @@ const ProjectGrid = () => {
     }
   };
 
-  useEffect(() => {
-    loadProjects();
-  }, []);
+  // useEffect(() => {
+  //   loadProjects();
+  // }, []);
+  const loadedProjects = await getProjects();
 
   const handleSearchChange = (e: any) => {
     setSearch(e.target.value);
@@ -48,7 +50,7 @@ const ProjectGrid = () => {
     setSearch("");
     setFilteredProjects(originalProjects);
   };
-
+  */
   return (
     <>
       <div className="container max-w-7xl mx-auto mt-8">
@@ -58,13 +60,13 @@ const ProjectGrid = () => {
             <input
               className="mr-5 rounded-lg bg-gray-100 p-4"
               type="text"
-              value={search}
-              onChange={handleSearchChange}
+              //value={search}
+              //onChange={handleSearchChange}
               placeholder="Buscar proyecto"
             />
             <button
               className="mr-8 border border-gray-700 px-4 py-2 rounded bg-gray-100 dark:bg-gray-700 dark:text-white ,hover:bg-gray-800 dark:text-white dark:hover:bg-gray-800"
-              onClick={handleSearchButtonClick}
+              //onClick={handleSearchButtonClick}
             >
               Buscar
             </button>
@@ -83,7 +85,7 @@ const ProjectGrid = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredProjects.map((project: Project) => (
+              {projects.map((project: Project) => (
                 <ProjectGridRow key={project.name} project={project} />
               ))}
             </tbody>
@@ -92,6 +94,4 @@ const ProjectGrid = () => {
       </div>
     </>
   );
-};
-
-export default ProjectGrid;
+}

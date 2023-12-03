@@ -29,7 +29,7 @@ export default function Sidebar() {
 
       <aside className={`${!open && "hidden"}`}>
         <div
-          className="min-h-screen w-full fixed top-0 left-0 right-0 backdrop-blur-sm"
+          className="min-h-screen w-full fixed top-0 left-0 right-0 backdrop-blur-sm "
           onClick={() => setOpen(!open)}
         ></div>
 
@@ -53,7 +53,6 @@ export default function Sidebar() {
               />
             </svg>
           </button>
-
           <div className="h-full overflow-y-auto text-center text-lg">
             <ul className="space-y-8 w-full">
               <span className="ms-3 dark:text-white">PSA</span>

@@ -1,7 +1,10 @@
+"use client";
 import Button from "@/components/button";
 import React, { FormEvent, useState } from "react";
+import { revalidateTag } from "next/cache";
+import { createProject } from "@/api/proyectos";
 
-const ProjectForm = (props: any) => {
+export default function ProjectForm(props: any) {
   const { employees } = props;
   const [isProjectCreated, setIsProjectCreated] = useState(false);
   const [projectData, setProjectData] = useState({
@@ -22,18 +25,7 @@ const ProjectForm = (props: any) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        process.env.proyectosApiUrl + "projects/create_project",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(projectData),
-          next: { tags: ["projects"] },
-        }
-      );
-      const data = await response.json();
+      const data = await createProject(projectData);
       console.log("Data del proyecto creado: ", data);
       window.location.href = "/projects/" + data.id;
     } catch (error) {
@@ -155,9 +147,7 @@ const ProjectForm = (props: any) => {
       </form>
     </>
   );
-};
-
-export default ProjectForm;
+}
 
 // //export default ProjectForm;
 

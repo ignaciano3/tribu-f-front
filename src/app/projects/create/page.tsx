@@ -1,4 +1,3 @@
-"use client";
 import ProjectForm from "@/components/projectForm";
 import { getUsuarios } from "@/api/proyectos";
 

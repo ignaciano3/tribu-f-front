@@ -1,3 +1,5 @@
+"use client";
+import { editProject } from "@/api/proyectos";
 import Button from "@/components/button";
 import React, { FormEvent, useState } from "react";
 
@@ -30,17 +32,8 @@ const EditProjectForm = (props: any) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        process.env.proyectosApiUrl + "projects/update_project/" + project.id,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(projectData),
-          next: { tags: ["projects"] },
-        }
-      );
+      const data = editProject(projectData);
+      console.log("editProject data: ", data);
       window.location.href = "/projects/" + project.id;
     } catch (error) {
       console.error("Error al crear el proyecto:", error);

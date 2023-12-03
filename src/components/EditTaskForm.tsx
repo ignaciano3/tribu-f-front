@@ -1,5 +1,6 @@
 import Button from "@/components/button";
 import React, { FormEvent, useState } from "react";
+import { editTask } from "@/api/proyectos";
 
 
 const getUsuarios = async () => {
@@ -35,19 +36,20 @@ const EditTaskForm = (props: any) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        process.env.proyectosApiUrl + "tasks/update_task/" + task.id,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(taskData),
-          next: { tags: ["tasks"] },
-        }
-      );
+      const data = await editTask(taskData);
+      // const response = await fetch(
+      //   process.env.proyectosApiUrl + "tasks/update_task/" + task.id,
+      //   {
+      //     method: "PATCH",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify(taskData),
+      //     next: { tags: ["tasks"] },
+      //   }
+      // );
       window.location.href = "/projects/" + task.project_id+"/tasks/"+task.id;
-      console.log("response.ok?", response.ok);
+      //console.log("response.ok?", response.ok);
     } catch (error) {
       console.error("Error al editar tarea:", error);
     }
