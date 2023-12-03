@@ -1,5 +1,5 @@
 import { Project } from "@/types/types";
-import { revalidateTag, revalidatePath } from "next/cache";
+import { revalidateTag } from "next/cache";
 import useFetch from "@/hooks/useFetch";
 
 export async function getProjects() {
@@ -82,7 +82,7 @@ export const getUsuario = async (id: string) => {
 
 export const createProject = async (projectData: any) => {
   const url = "projects/create_project";
-  await useFetch({
+  const data = await useFetch({
     url: url,
     soporte: false,
     revalidate: true,
@@ -91,7 +91,8 @@ export const createProject = async (projectData: any) => {
     method: "POST",
     data: projectData,
   });
-  revalidateTag("projects");
+  //revalidateTag("projects");
+  return data;
 };
 
 export const editProject = async (projectData: any) => {
