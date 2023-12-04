@@ -26,6 +26,7 @@ export async function GetTickets(versionId: string) {
     soporte: true,
     revalidate: true,
     tags: ["tickets"],
+    cache: "no-cache",
   });
 }
 
@@ -36,6 +37,8 @@ export async function GetVersionsOfProduct(idProd: string) {
     soporte: true,
     revalidate: true,
     tags: ["versions"],
+
+    cache: "no-cache",
   });
 }
 
@@ -46,6 +49,8 @@ export async function GetProducts() {
     soporte: true,
     revalidate: true,
     tags: ["products"],
+
+    cache: "no-cache",
   });
 }
 
@@ -67,19 +72,19 @@ export async function GetTicket(idTicket: number) {
     soporte: true,
     revalidate: false,
     tags: ["tickets"],
+    cache: "no-cache",
   });
 }
 
-export async function DeleteTicket(idTicket: string) {
+export async function DeleteTicket(idTicket: number) {
   const url = `ticket/${idTicket}`;
   await useFetch({
     url: url,
     soporte: true,
     revalidate: true,
     tags: ["tickets"],
-    method: "DELETE",
+    method: "DELETE",    
   });
-  revalidateTag("tickets");
   
 }
 
@@ -91,6 +96,8 @@ export async function GetAssignmentTask(idTask: string) {
     soporte: true,
     revalidate: true,
     tags: ["tickets"],
+
+    cache: "no-cache",
   });
 }
 
@@ -117,11 +124,13 @@ export async function LinkTicketWithTask(ticketId: string, taskId: string) {
     revalidate: true,
     method: "POST",
     tags: ["tickets"],
+
+    cache: "no-cache",
   });
   console.log("assignment creada: ", assignment);
   // linkeo el ticket y la tarea pasandole el id de la tarea
   // al assignment
-  const task = { task_id: taskId };
+  const task = {task_id: taskId} ;
   const updateUrl = `assignment/${assignment.id}`;
   await useFetch({
     url: updateUrl,
@@ -129,6 +138,6 @@ export async function LinkTicketWithTask(ticketId: string, taskId: string) {
     revalidate: true,
     method: "PUT",
     tags: ["tickets"],
-    data: task,
+    data: task, // sera que hay q mandarlo como json?
   });
 }

@@ -13,7 +13,6 @@ import { CreateTicketParams } from "@/types/types";
 
 const headers = [
   "Título",
-  "Descripción",
   "Severidad",
   "Prioridad",
   "Estado",
