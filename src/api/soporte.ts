@@ -1,6 +1,11 @@
 import { revalidateTag } from "next/cache";
 import useFetch from "@/hooks/useFetch";
-import { CreateTicket, CreateTicketParams, Ticket, UpdateTicket } from "@/types/types";
+import {
+  CreateTicket,
+  CreateTicketParams,
+  Ticket,
+  UpdateTicket,
+} from "@/types/types";
 
 export async function GetClients() {
   const url = "client/";
@@ -13,7 +18,8 @@ export async function GetClients() {
 }
 
 export async function GetUsers() {
-  const url = "https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos";
+  const url =
+    "https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos";
   const data = await fetch(url);
   const users = await data.json();
   return users;
@@ -83,9 +89,8 @@ export async function DeleteTicket(idTicket: number) {
     soporte: true,
     revalidate: true,
     tags: ["tickets"],
-    method: "DELETE",    
+    method: "DELETE",
   });
-  
 }
 
 export async function GetAssignmentTask(idTask: string) {
@@ -101,7 +106,6 @@ export async function GetAssignmentTask(idTask: string) {
   });
 }
 
-
 export async function GetAssignmentTicket(ticketId: string) {
   const url = `assignment/ticket/${ticketId}`;
   revalidateTag("tickets");
@@ -113,24 +117,25 @@ export async function GetAssignmentTicket(ticketId: string) {
   });
 }
 
-
-
 export async function LinkTicketWithTask(ticketId: string, taskId: string) {
   const url = `assignment/ticket/${ticketId}`;
   // creo el assignment pasandole el id del ticket
+  console.log("url en LinkTicketWithTask: ", url);
+  const assignmentData = {};
   const assignment = await useFetch({
     url: url,
     soporte: true,
-    revalidate: true,
+    //revalidate: true,
     method: "POST",
     tags: ["tickets"],
-
+    data: assignmentData,
     cache: "no-cache",
   });
   console.log("assignment creada: ", assignment);
   // linkeo el ticket y la tarea pasandole el id de la tarea
   // al assignment
-  const task = {task_id: taskId} ;
+  const task = { task_id: taskId };
+  console.log("task corte json: ", task);
   const updateUrl = `assignment/${assignment.id}`;
   await useFetch({
     url: updateUrl,
