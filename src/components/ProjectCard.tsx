@@ -142,6 +142,7 @@ export default function ProjectCard(props: any) {
       {/* Modal */}
       <Modal
         isOpen={isModalOpen}
+        ariaHideApp={false}
         onRequestClose={closeModal}
         style={{
           content: {
