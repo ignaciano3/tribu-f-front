@@ -2,11 +2,13 @@ export default function TextAreaField({
   name,
   label,
   placeholder,
+  defaultValue,
   ...props
 }: {
   name: string;
   label: string;
   placeholder?: string;
+  defaultValue?: string;
 }) {
   return (
     <div className="mb-4">
@@ -23,6 +25,7 @@ export default function TextAreaField({
         {...props}
         placeholder={placeholder ?? ""}
         rows={5}
+        defaultValue={defaultValue ?? ""}
       />
     </div>
   );

@@ -46,6 +46,17 @@ export const GetTasks = async (id: string) => {
   });
 };
 
+
+export const GetAllTasks = async () => {
+  const url = "tasks/get_tasks/";
+  return await useFetch({
+    url: url,
+    soporte: false,
+    tags: ["tasks"],
+    cache: "no-cache",
+  });
+};
+
 export const GetTask = async (id: string) => {
   const url = "tasks/get_task/" + id;
   const data = await useFetch({

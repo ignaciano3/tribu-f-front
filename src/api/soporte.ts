@@ -1,6 +1,6 @@
 import { revalidateTag } from "next/cache";
 import useFetch from "@/hooks/useFetch";
-import { CreateTicketParams } from "@/types/types";
+import { CreateTicket, CreateTicketParams, Ticket, UpdateTicket } from "@/types/types";
 
 export async function GetClients() {
   const url = "client/";
@@ -63,8 +63,8 @@ export async function GetProduct(idProd: string) {
   });
 }
 
-export async function GetTicket(idProd: Number) {
-  const url = `ticket/${idProd}`;
+export async function GetTicket(idTicket: number) {
+  const url = `ticket/${idTicket}`;
   return await useFetch({
     url: url,
     soporte: true,
@@ -73,28 +73,17 @@ export async function GetTicket(idProd: Number) {
   });
 }
 
-export async function CreateTicket(
-  params: CreateTicketParams,
-  formData: FormData
-) {
-  "use server";
-  const url = `ticket/version/${params.version_id}/client/${params.client_id}`;
-  const ticket: CreateTicket = {
-    title: formData.get("title") as string,
-    severity: formData.get("severity") as string,
-    priority: formData.get("priority") as string,
-    state: formData.get("state") as string,
-    description: formData.get("description") as string,
-  };
+export async function DeleteTicket(idTicket: string) {
+  const url = `ticket/${idTicket}`;
   await useFetch({
     url: url,
     soporte: true,
     revalidate: true,
     tags: ["tickets"],
-    method: "POST",
-    data: ticket,
+    method: "DELETE",
   });
   revalidateTag("tickets");
+  
 }
 
 export async function GetAssignmentTask(idTask: string) {
@@ -108,6 +97,20 @@ export async function GetAssignmentTask(idTask: string) {
   });
 }
 
+
+export async function GetAssignmentTicket(ticketId: string) {
+  const url = `assignment/ticket/${ticketId}`;
+  revalidateTag("tickets");
+  return await useFetch({
+    url: url,
+    soporte: true,
+    revalidate: true,
+    tags: ["tickets"],
+  });
+}
+
+
+
 export async function LinkTicketWithTask(ticketId: string, taskId: string) {
   const url = `assignment/ticket/${ticketId}`;
   // creo el assignment pasandole el id del ticket
@@ -118,7 +121,7 @@ export async function LinkTicketWithTask(ticketId: string, taskId: string) {
     method: "POST",
     tags: ["tickets"],
   });
-
+  console.log("assignment creada: ", assignment);
   // linkeo el ticket y la tarea pasandole el id de la tarea
   // al assignment
   const task = { task_id: taskId };

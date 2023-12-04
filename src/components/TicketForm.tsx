@@ -3,7 +3,7 @@ import SelectField from "./forms/SelectField";
 import SubmitButton from "./forms/SubmitButton";
 import TextAreaField from "./forms/TextAreaField";
 import Title from "./Title";
-import { CreateTicket } from "@/api/soporte";
+import { CreateTicket } from "@/api/soporteServer";
 import { CreateTicketParams } from "@/types/types";
 import { priorities, severities, state } from "@/constants/constants";
 
