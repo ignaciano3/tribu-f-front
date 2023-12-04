@@ -8,8 +8,6 @@ export default async function KanbanPage({
 }) {
   const id = params.id;
   const tasks = await GetTasks(id);
-  console.log("ID: ", id);
-  //const tasks = await getTasks(params.id);
   return (
     <>
       <KanbanBoard project_id={id} tasks={tasks} />

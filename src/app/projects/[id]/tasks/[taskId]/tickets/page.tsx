@@ -1,5 +1,4 @@
 import { GetTicket, GetAssignmentTask } from "@/api/soporte";
-import { GetTask } from "@/api/proyectos";
 import Table from "@/components/Table/Table";
 import Title from "@/components/Title";
 import Button from "@/components/button";
@@ -19,7 +18,6 @@ export default async function Tickets({
   params: { id: string; taskId: string };
 }) {
   const assignments = await GetAssignmentTask(params.taskId);
-  //const tickets = GetTicketsTask(assignments);
 
   const tickets = await Promise.all(
     assignments.map(async (assignment: any) => {
@@ -27,7 +25,6 @@ export default async function Tickets({
       return ticket;
     })
   );
-  ////const task = await GetTask(params.taskId);
 
   return (
     <>
