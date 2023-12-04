@@ -2,7 +2,7 @@ import { revalidateTag } from "next/cache";
 import useFetch from "@/hooks/useFetch";
 import { CreateTicketParams } from "@/types/types";
 
-export async function GetClients(){
+export async function GetClients() {
   const url = "client/";
   return await useFetch({
     url: url,
@@ -59,7 +59,7 @@ export async function GetProduct(idProd: string) {
     soporte: true,
     revalidate: true,
     tags: ["products"],
-    cache: "no-cache"
+    cache: "no-cache",
   });
 }
 
@@ -73,7 +73,10 @@ export async function GetTicket(idProd: Number) {
   });
 }
 
-export async function CreateTicket(params : CreateTicketParams, formData: FormData) {
+export async function CreateTicket(
+  params: CreateTicketParams,
+  formData: FormData
+) {
   "use server";
   const url = `ticket/version/${params.version_id}/client/${params.client_id}`;
   const ticket: CreateTicket = {
@@ -94,4 +97,13 @@ export async function CreateTicket(params : CreateTicketParams, formData: FormDa
   revalidateTag("tickets");
 }
 
-
+export async function GetAssignmentTask(idTask: string) {
+  const url = `assignment/task/${idTask}`;
+  revalidateTag("tickets");
+  return await useFetch({
+    url: url,
+    soporte: true,
+    revalidate: true,
+    tags: ["tickets"],
+  });
+}

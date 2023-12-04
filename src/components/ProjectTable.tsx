@@ -51,7 +51,7 @@ export default function ProjectTable(props: any) {
   };
   return (
     <>
-      <div className="container max-w-7xl mx-auto mt-8">
+      <div className="container min-h-screen max-w-7xl mx-auto mt-8">
         <div className="flex justify-between mb-8 max-h-10">
           <h1 className="text-3xl font-bold decoration-gray-400">Proyectos</h1>
           <div className="flex">

@@ -1,39 +1,43 @@
-import { GetTickets } from "@/api/soporte";
+import { GetTicket, GetAssignmentTask } from "@/api/soporte";
 import { GetTask } from "@/api/proyectos";
 import Table from "@/components/Table/Table";
 import Title from "@/components/Title";
 import Button from "@/components/button";
+import TicketsRow from "@/components/Table/Rows/TicketsRow";
 
 const headers = [
-  "ID ticket",
   "Título",
-  "Estado",
-  "Actualizado",
-  "Cliente",
-  "Prioridad",
+  "Descripción",
   "Severidad",
-  "Ver más",
+  "Prioridad",
+  "Estado",
+  "Fecha creación",
 ];
-
 export default async function Tickets({
   params,
 }: {
-  params: { taskId: string };
+  params: { id: string; taskId: string };
 }) {
-  //const assignments = await getAssignmentByTask(params.task.id);
-  //const tickets = getTicketsTask(assignments);
-  const tickets = await GetTickets(params.taskId);
-  const task = await GetTask(params.taskId);
-  //const tickets = {};
+  const assignments = await GetAssignmentTask(params.taskId);
+  //const tickets = GetTicketsTask(assignments);
+
+  const tickets = await Promise.all(
+    assignments.map(async (assignment: any) => {
+      const ticket = await GetTicket(assignment.ticket_id);
+      return ticket;
+    })
+  );
+  ////const task = await GetTask(params.taskId);
+
   return (
     <>
       <div className="flex justify-between">
         <Title title="Tickets" className="inline" />
-        <Button href={`/projects/${task.project_id}/tasks/${task.id}`}>
+        <Button href={`/projects/${params.id}/tasks/${params.taskId}`}>
           Volver a la tarea
         </Button>
       </div>
-      <Table data={tickets} headers={headers} />
+      <Table data={tickets} RowItem={TicketsRow} headers={headers} />
     </>
   );
 }

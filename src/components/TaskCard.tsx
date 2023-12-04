@@ -101,6 +101,11 @@ const TaskCard = (props: any) => {
           >
             Finalizar tarea
           </button>
+          <Button
+            href={`/projects/${task.project_id}/tasks/${task.id}/tickets`}
+          >
+            Ver tickets
+          </Button>
           <div className="mr-2 cursor-pointer mt-2" onClick={openModal}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -131,14 +136,7 @@ const TaskCard = (props: any) => {
             maxHeight: "35%",
           },
         }}
-        overlayStyle={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: "rgba(0, 0, 0, 0)",
-        }}
+        overlayClassName="fixed top-0 left-0 right-0 bottom-0"
       >
         <div className="text-l font-bold mb-4 p-4 bg-white">
           ¿Está seguro de que quiere eliminar la tarea?

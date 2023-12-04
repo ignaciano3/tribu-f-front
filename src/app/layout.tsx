@@ -20,8 +20,10 @@ export default function RootLayout({
     <html lang="es">
       <body className={montserrat.className}>
         <SideBar />
-        <main className="px-10 my-10">{children}</main>
-        <Footer />
+        <div className="flex flex-col justify-between max-h-screen min-h-screen">
+          <main className="px-10 my-10">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

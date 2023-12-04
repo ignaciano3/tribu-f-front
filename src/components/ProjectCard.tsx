@@ -41,9 +41,9 @@ export default function ProjectCard(props: any) {
   const handleFinish = async () => {
     try {
       const current = new Date();
-      const date = `${current.getDate()}/${
+      const date = `${current.getFullYear()}-${
         current.getMonth() + 1
-      }/${current.getFullYear()}`;
+      }-${current.getDate()}`;
       const projectData = {
         id: project.id,
         name: project.name,
@@ -94,9 +94,13 @@ export default function ProjectCard(props: any) {
           <p className="mb-5">
             <strong>Fecha de creación:</strong> {project.creation_date || ""}
           </p>
-          <p className="mb-5">
-            <strong>Fecha de finalización:</strong> {project.end_date || ""}
-          </p>
+
+          {project.end_date !== null && project.end_date !== undefined && (
+            <p className="mb-5">
+              <strong>Fecha de finalización:</strong> {project.end_date || ""}
+            </p>
+          )}
+
           <p className="mb-5">
             <strong>Duración estimada:</strong>{" "}
             {project.expected_duration_days || ""} {"días"}
@@ -148,14 +152,15 @@ export default function ProjectCard(props: any) {
             maxHeight: "35%",
           },
         }}
-        overlayStyle={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: "rgba(0, 0, 0, 0)",
-        }}
+        overlayClassName="fixed top-0 left-0 right-0 bottom-0"
+        // overlayStyle={{
+        //   position: "fixed",
+        //   top: 0,
+        //   left: 0,
+        //   right: 0,
+        //   bottom: 0,
+        //   backgroundColor: "rgba(0, 0, 0, 0)",
+        // }}
       >
         <div className="text-l font-bold mb-4 p-4 bg-white">
           ¿Está seguro de que quiere eliminar el proyecto?
