@@ -107,3 +107,28 @@ export async function GetAssignmentTask(idTask: string) {
     tags: ["tickets"],
   });
 }
+
+export async function LinkTicketWithTask(ticketId: string, taskId: string) {
+  const url = `assignment/ticket/${ticketId}`;
+  // creo el assignment pasandole el id del ticket
+  const assignment = await useFetch({
+    url: url,
+    soporte: true,
+    revalidate: true,
+    method: "POST",
+    tags: ["tickets"],
+  });
+
+  // linkeo el ticket y la tarea pasandole el id de la tarea
+  // al assignment
+  const task = { task_id: taskId };
+  const updateUrl = `assignment/${assignment.id}`;
+  await useFetch({
+    url: updateUrl,
+    soporte: true,
+    revalidate: true,
+    method: "PUT",
+    tags: ["tickets"],
+    data: task,
+  });
+}
