@@ -4,15 +4,23 @@ import SubmitButton from "./forms/SubmitButton";
 import TextAreaField from "./forms/TextAreaField";
 import Title from "./Title";
 import { CreateTicket } from "@/api/soporteServer";
-import { CreateTicketParams } from "@/types/types";
+import { Cliente, CreateTicketParams } from "@/types/types";
 import { priorities, severities, state } from "@/constants/constants";
 
 export default async function TicketForm({
   params,
+  clients,
 }: {
   params: CreateTicketParams;
+  clients: Cliente[];
 }) {
   const createTicketOnProject = CreateTicket.bind(null, params);
+  const clientOptions = clients.map((client) => {
+    return {
+      value: client.id,
+      label: client["razon social"],
+    };
+  });
 
   return (
     <div className="flex overflow-y-auto outline-none focus:outline-none mt-8">
@@ -31,7 +39,7 @@ export default async function TicketForm({
             label="Descripción"
             placeholder="Descripción del ticket"
           />
-          <div className="flex justify-between space-x-2 pb-4">
+          <div className="flex justify-between space-x-2">
             <SelectField
               name="severity"
               label="Severidad"
@@ -44,7 +52,12 @@ export default async function TicketForm({
             />
             <SelectField name="state" label="Estado" options={state} />
           </div>
-          <div className="float-right pb-4">
+          <SelectField
+            label="Cliente"
+            name="client_id"
+            options={clientOptions}
+          />
+          <div className="float-right pt-8 pb-4">
             <SubmitButton label="Crear" />
           </div>
         </form>

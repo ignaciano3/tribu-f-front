@@ -52,7 +52,7 @@ export default async function ProductDetails({
         <div className="flex-1 mr-4">
           <Table data={tickets} headers={headers} RowItem={TicketsRow} />
         </div>
-        <TicketForm params={ticketParams} />
+        <TicketForm params={ticketParams} clients={clients} />
       </section>
     </>
   );

@@ -63,7 +63,7 @@ export default function ProjectTable(props: any) {
               placeholder="Buscar proyecto"
             />
             <button
-              className="mr-8 border border-gray-700 px-4 py-2 rounded bg-gray-100 dark:bg-gray-700 dark:text-white ,hover:bg-gray-800 dark:text-white dark:hover:bg-gray-800"
+              className="mr-8 border border-gray-700 px-4 py-2 rounded bg-gray-100 dark:bg-gray-700 hover:bg-gray-800 dark:text-white dark:hover:bg-gray-800"
               onClick={handleSearchButtonClick}
             >
               Buscar
