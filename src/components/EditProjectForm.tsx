@@ -58,49 +58,49 @@ const EditProjectForm = (props: any) => {
           <input
             type="text"
             name="name"
-            defaultValue={project.name}
             value={projectData.name}
             onChange={handleChange}
             required
           />
         </label>
 
-        <label>
-          Líder del proyecto:
-          <select
-            name="project_leader_id"
-            defaultValue={projectData.project_leader_id}
-            onChange={handleChange}
-            required
-          >
-            <option value="" disabled>
-              Seleccionar líder
-            </option>
-            {employees.map((employee: any) => (
-              <option key={employee.legajo} value={employee.legajo}>
-                {employee.name} {employee.last_name}
+        <div className="flex gap-5">
+          <label>
+            Líder del proyecto:
+            <select
+              name="project_leader_id"
+              value={projectData.project_leader_id}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled>
+                Seleccionar líder
               </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Estado del proyecto:
-          <select
-            name="state"
-            defaultValue={projectData.state}
-            onChange={handleChange}
-            required
-          >
-            <option value="" disabled>
-              Seleccionar estado
-            </option>
-            <option value="no iniciado">No iniciado</option>
-            <option value="en proceso">En proceso</option>
-            <option value="bloqueado">Bloqueado</option>
-            <option value="finalizado">Finalizado</option>
-          </select>
-        </label>
-
+              {employees.map((employee: any) => (
+                <option key={employee.legajo} value={employee.legajo}>
+                  {employee.name} {employee.last_name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Estado del proyecto:
+            <select
+              name="state"
+              defaultValue={projectData.state}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled>
+                Seleccionar estado
+              </option>
+              <option value="no iniciado">No iniciado</option>
+              <option value="en proceso">En proceso</option>
+              <option value="bloqueado">Bloqueado</option>
+              <option value="finalizado">Finalizado</option>
+            </select>
+          </label>
+        </div>
         <label>
           Descripción del proyecto:
           <textarea
@@ -112,7 +112,7 @@ const EditProjectForm = (props: any) => {
         </label>
 
         <label>
-          Duración estimada del proyecto:
+          {"Duración estimada del proyecto (en días):"}
           <input
             type="number"
             name="expected_duration_days"
@@ -128,7 +128,9 @@ const EditProjectForm = (props: any) => {
             {/*IMPORTANTE: NO PASAR CHILDREN COMO PROP*/}
             Volver
           </Button>
-          <button type="submit">Guardar cambios</button>
+          <button type="submit">
+            <strong>Guardar cambios</strong>
+          </button>
         </div>
         <style jsx>{`
           .project-form {

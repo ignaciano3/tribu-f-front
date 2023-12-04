@@ -57,50 +57,48 @@ const EditTaskForm = (props: any) => {
           <input
             type="text"
             name="name"
-            defaultValue={task.name}
             value={taskData.name}
             onChange={handleChange}
             required
           />
         </label>
-
-        <label>
-          Responsable de la tarea:
-          <select
-            name="responsible_id"
-            value={taskData.responsible_id}
-            onChange={handleChange}
-            required
-          >
-            <option value="" disabled>
-              Seleccionar responsable
-            </option>
-            {employees.map((employee: any) => (
-              <option key={employee.legajo} value={employee.legajo}>
-                {employee.name} {employee.last_name}
+        <div className="flex gap-5">
+          <label>
+            Responsable de la tarea:
+            <select
+              name="responsible_id"
+              value={taskData.responsible_id}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled>
+                Seleccionar responsable
               </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Estado de la tarea:
-          <select
-            name="state"
-            value={taskData.state}
-            onChange={handleChange}
-            required
-          >
-            <option value="" disabled>
-              Seleccionar estado
-            </option>
-            <option value="no iniciada">No iniciada</option>
-            <option value="en proceso">En proceso</option>
-            <option value="bloqueada">Bloqueada</option>
-            <option value="en tests">En tests</option>
-            <option value="finalizada">Finalizada</option>
-          </select>
-        </label>
-
+              {employees.map((employee: any) => (
+                <option key={employee.legajo} value={employee.legajo}>
+                  {employee.name} {employee.last_name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Estado de la tarea:
+            <select
+              name="state"
+              value={taskData.state}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled>
+                Seleccionar estado
+              </option>
+              <option value="no iniciada">No iniciada</option>
+              <option value="en proceso">En proceso</option>
+              <option value="en tests">En tests</option>
+              <option value="finalizada">Finalizada</option>
+            </select>
+          </label>
+        </div>
         <label>
           Prioridad de la tarea:
           <select
@@ -145,11 +143,13 @@ const EditTaskForm = (props: any) => {
             {/*IMPORTANTE: NO PASAR CHILDREN COMO PROP*/}
             Volver
           </Button>
-          <button type="submit">Guardar cambios</button>
+          <button type="submit">
+            <strong>Guardar cambios</strong>
+          </button>
         </div>
         <style jsx>{`
           .task-form {
-            max-width: 400px;
+            max-width: 500px;
             margin: 0 auto;
             padding: 20px;
             border: 1px solid #ccc;

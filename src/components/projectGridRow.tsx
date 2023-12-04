@@ -17,7 +17,10 @@ export default function ProjectGridRow({ project }: { project: any }) {
       </td>
 
       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-        <div className="text-sm leading-5 text-gray-900">
+        <div
+          className="text-sm leading-5 text-gray-900"
+          style={{ textTransform: "capitalize" }}
+        >
           {project["state"]}
         </div>
       </td>

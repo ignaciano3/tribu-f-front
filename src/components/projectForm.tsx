@@ -8,7 +8,7 @@ export default function ProjectForm(props: any) {
   const [isProjectCreated, setIsProjectCreated] = useState(false);
   const [projectData, setProjectData] = useState({
     name: "",
-    state: "no iniciado",
+    state: "",
     description: "",
     project_leader_id: "",
     expected_duration_days: "",
@@ -53,26 +53,43 @@ export default function ProjectForm(props: any) {
             required
           />
         </label>
-
-        <label>
-          Líder del proyecto:
-          <select
-            name="project_leader_id"
-            value={projectData.project_leader_id}
-            onChange={handleChange}
-            required
-          >
-            <option value="" disabled>
-              Seleccionar líder
-            </option>
-            {employees.map((employee: any) => (
-              <option key={employee.legajo} value={employee.legajo}>
-                {employee.name} {employee.last_name}
+        <div className="flex gap-5">
+          <label>
+            Líder del proyecto:
+            <select
+              name="project_leader_id"
+              value={projectData.project_leader_id}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled>
+                Seleccionar líder
               </option>
-            ))}
-          </select>
-        </label>
-
+              {employees.map((employee: any) => (
+                <option key={employee.legajo} value={employee.legajo}>
+                  {employee.name} {employee.last_name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Estado del proyecto:
+            <select
+              name="state"
+              defaultValue={projectData.state}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled>
+                Seleccionar estado
+              </option>
+              <option value="no iniciado">No iniciado</option>
+              <option value="en proceso">En proceso</option>
+              <option value="bloqueado">Bloqueado</option>
+              <option value="finalizado">Finalizado</option>
+            </select>
+          </label>
+        </div>
         <label>
           Descripción del proyecto:
           <textarea
@@ -84,7 +101,7 @@ export default function ProjectForm(props: any) {
         </label>
 
         <label>
-          Duración estimada del proyecto:
+          {"Duración estimada del proyecto (en días):"}
           <input
             type="number"
             name="expected_duration_days"
@@ -101,11 +118,16 @@ export default function ProjectForm(props: any) {
             Volver
           </Button>
 
-          <button type="submit">Crear proyecto</button>
+          <button
+            type="submit"
+            className="border border-gray-700 px-4 py-2 rounded bg-gray-100 dark:bg-gray-700 ,hover:bg-gray-800 dark:text-white dark:hover:bg-gray-800"
+          >
+            <strong>Crear proyecto</strong>
+          </button>
         </div>
         <style jsx>{`
           .project-form {
-            max-width: 400px;
+            max-width: 500px;
             margin: 0 auto;
             padding: 20px;
             border: 1px solid #ccc;

@@ -36,7 +36,12 @@ export default async function TaskGridRow({ task }: { task: any }) {
       </td>
 
       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-        <div className="text-sm leading-5 text-gray-900">{task.state}</div>
+        <div
+          className="text-sm leading-5 text-gray-900"
+          style={{ textTransform: "capitalize" }}
+        >
+          {task.state}
+        </div>
       </td>
 
       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">

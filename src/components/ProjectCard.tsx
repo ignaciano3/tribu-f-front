@@ -56,6 +56,7 @@ export default function ProjectCard(props: any) {
       };
       console.log("projectData en handleFinish: ", projectData);
       const data = await EditProject(projectData);
+      window.location.href = "/projects/" + project.id;
       console.log("respuesta del backend: ", data);
     } catch (error) {
       console.error("Error al crear el proyecto:", error);
@@ -82,8 +83,8 @@ export default function ProjectCard(props: any) {
           </div>
         </div>
 
-        <div className="project-details mb-6">
-          <p className="mb-5">
+        <div className="project-details">
+          <p className="mb-5" style={{ textTransform: "capitalize" }}>
             <strong>Estado:</strong> {project.state}
           </p>
 
@@ -111,14 +112,15 @@ export default function ProjectCard(props: any) {
         </div>
         <div className="project-actions flex space-x-4 items-center">
           <div className="flex space-x-4">
+            <Button href={`/projects/`}>Volver a proyectos</Button>
             <Button href={`/projects/${project.id}/tasks`}>Ver tareas</Button>
             <Button href={`/projects/${project.id}/kanban`}>Ver kanban</Button>
-            <Button href={`/projects/`}>Volver a proyectos</Button>
+
             <button
-              className="bg-gray-700 text-white mt-15 py-2 px-4 rounded mr-2"
+              className="border border-gray-700 px-4 py-2 rounded bg-gray-100 dark:bg-gray-700 ,hover:bg-gray-800 dark:text-white dark:hover:bg-gray-800"
               onClick={handleFinish}
             >
-              Finalizar proyecto
+              <strong>Finalizar proyecto</strong>
             </button>
           </div>
 
@@ -163,22 +165,24 @@ export default function ProjectCard(props: any) {
         //   backgroundColor: "rgba(0, 0, 0, 0)",
         // }}
       >
-        <div className="text-l font-bold mb-4 p-4 bg-white">
-          ¿Está seguro de que quiere eliminar el proyecto?
-        </div>
-        <div className="flex justify-end p-4 bg-white">
-          <button
-            className="bg-red-500 text-white mt-15 py-2 px-4 rounded mr-2"
-            onClick={handleDelete}
-          >
-            Eliminar
-          </button>
-          <button
-            className="bg-gray-300 text-gray-700 mt-15 py-2 px-4 rounded"
-            onClick={closeModal}
-          >
-            Cancelar
-          </button>
+        <div className="flex flex-col gap-7">
+          <div className="text-l font-bold mb-4 p-4 bg-white">
+            ¿Está seguro de que quiere eliminar el proyecto?
+          </div>
+          <div className="flex justify-around p-4 bg-white">
+            <button
+              className="bg-red-500 text-white mt-15 py-2 px-4 rounded mr-2 hover:bg-red-700"
+              onClick={handleDelete}
+            >
+              <strong>Eliminar</strong>
+            </button>
+            <button
+              className="bg-gray-300 text-gray-700 mt-15 py-2 px-4 rounded hover:bg-gray-400"
+              onClick={closeModal}
+            >
+              <strong>Cancelar</strong>
+            </button>
+          </div>
         </div>
       </Modal>
     </div>

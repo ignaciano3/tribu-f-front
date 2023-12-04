@@ -67,7 +67,7 @@ const TaskCard = (props: any) => {
           </div>
         </div>
         <div className="project-details mb-4">
-          <p className="mb-5">
+          <p className="mb-5" style={{ textTransform: "capitalize" }}>
             <strong>Estado:</strong> {task.state}
           </p>
           <p className="mb-5">
@@ -87,7 +87,7 @@ const TaskCard = (props: any) => {
             </p>
           )}
 
-          <p className="mb-5">
+          <p className="mb-5 max-w-md">
             <strong>Descripción:</strong> {task.description}
           </p>
         </div>
@@ -95,17 +95,17 @@ const TaskCard = (props: any) => {
           <Button href={`/projects/${task.project_id}/tasks/`}>
             Volver a tareas
           </Button>
-          <button
-            className="bg-gray-700 text-white mt-15 py-2 px-4 rounded mr-2"
-            onClick={handleFinish}
-          >
-            Finalizar tarea
-          </button>
           <Button
             href={`/projects/${task.project_id}/tasks/${task.id}/tickets`}
           >
             Ver tickets
           </Button>
+          <button
+            className="border border-gray-700 px-4 py-2 rounded bg-gray-100 dark:bg-gray-700 ,hover:bg-gray-800 dark:text-white dark:hover:bg-gray-800"
+            onClick={handleFinish}
+          >
+            <strong>Finalizar tarea</strong>
+          </button>
           <div className="mr-2 cursor-pointer mt-2" onClick={openModal}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -139,22 +139,24 @@ const TaskCard = (props: any) => {
         }}
         overlayClassName="fixed top-0 left-0 right-0 bottom-0"
       >
-        <div className="text-l font-bold mb-4 p-4 bg-white">
-          ¿Está seguro de que quiere eliminar la tarea?
-        </div>
-        <div className="flex justify-end p-4 bg-white">
-          <button
-            className="bg-red-500 text-white mt-15 py-2 px-4 rounded mr-2"
-            onClick={handleDelete}
-          >
-            Eliminar
-          </button>
-          <button
-            className="bg-gray-300 text-gray-700 mt-15 py-2 px-4 rounded"
-            onClick={closeModal}
-          >
-            Cancelar
-          </button>
+        <div className="flex flex-col gap-7">
+          <div className="text-l font-bold mb-4 p-4 bg-white">
+            ¿Está seguro de que quiere eliminar la tarea?
+          </div>
+          <div className="flex justify-around p-4 bg-white">
+            <button
+              className="bg-red-500 text-white mt-15 py-2 px-4 rounded mr-2 hover:bg-red-700"
+              onClick={handleDelete}
+            >
+              <strong>Eliminar</strong>
+            </button>
+            <button
+              className="bg-gray-300 text-gray-700 mt-15 py-2 px-4 rounded hover:bg-gray-400"
+              onClick={closeModal}
+            >
+              <strong>Cancelar</strong>
+            </button>
+          </div>
         </div>
       </Modal>
     </div>
@@ -162,38 +164,3 @@ const TaskCard = (props: any) => {
 };
 
 export default TaskCard;
-
-/*
-export default function TaskCard({ task }: { task: any }) {
-  console.log("TaskCard -> task: ", task);
-  return (
-    <div className="max-w-4xl mx-auto mt-8">
-      <div className="bg-gray-200 p-8 rounded-lg shadow-lg">
-        <h2 className="text-xl font-bold mb-4">{task.name}</h2>
-        <div className="project-details mb-4">
-          <p>
-            <strong>Fecha de creación:</strong> {task.creation_date}
-          </p>
-          <p>
-            <strong>Duración estimada:</strong> {task.expected_duration_days}
-          </p>
-          <p>
-            <strong>Descripción:</strong> {task.description}
-          </p>
-        </div>
-        <div className="project-actions flex space-x-4">
-          <Button
-            href={
-              "/projects/" + task.project_id + "/tasks/" + task.id + "/edit"
-            }
-          >
-            Editar tarea
-          </Button>
-
-          <button className="delete-button">Borrar tarea</button>
-        </div>
-      </div>
-    </div>
-  );
-}
-*/

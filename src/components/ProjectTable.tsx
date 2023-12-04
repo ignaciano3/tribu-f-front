@@ -78,12 +78,12 @@ export default function ProjectTable(props: any) {
               Aún no hay proyectos creados. Puedes crear un proyecto clickeando
               en el botón arriba a la derecha.
             </p>
-          ) : filteredProjects.length === 0 ? (
+          ) : filteredProjects.length === 0 && projects.length > 0 ? (
             <p className="px-6 py-3 text-l text-center text-gray-700">
               No se encontraron proyectos con ese nombre.
             </p>
           ) : (
-            <table className="min-w-full">
+            <table className="min-w-full shadow-lg">
               <thead>
                 <tr>
                   <HeaderItem title="ID" />
