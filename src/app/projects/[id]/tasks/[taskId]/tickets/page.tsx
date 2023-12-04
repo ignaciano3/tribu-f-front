@@ -2,7 +2,7 @@ import { GetTicket, GetAssignmentTask } from "@/api/soporte";
 import Table from "@/components/Table/Table";
 import Title from "@/components/Title";
 import Button from "@/components/button";
-import TicketsRow from "@/components/Table/Rows/TicketsRow";
+import TicketsRowTask from "@/components/Table/Rows/TicketsRowTask";
 
 const headers = [
   "Título",
@@ -34,7 +34,7 @@ export default async function Tickets({
           Volver a la tarea
         </Button>
       </div>
-      <Table data={tickets} RowItem={TicketsRow} headers={headers} />
+      <Table data={tickets} RowItem={TicketsRowTask} headers={headers} />
     </>
   );
 }

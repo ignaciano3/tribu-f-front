@@ -36,7 +36,6 @@ export default async function ProductDetails({
     client_id: idCliente,
     version_id: idVersion,
   };
-
   return (
     <>
       <Title title={product.name} />
