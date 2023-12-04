@@ -5,25 +5,7 @@ import TextAreaField from "./forms/TextAreaField";
 import Title from "./Title";
 import { CreateTicket } from "@/api/soporte";
 import { CreateTicketParams } from "@/types/types";
-
-const severities = [
-  { value: "s1", label: "S1" },
-  { value: "s2", label: "S2" },
-  { value: "s3", label: "S3" },
-  { value: "s4", label: "S4" },
-];
-
-const priorities = [
-  { value: "alta", label: "Alta" },
-  { value: "media", label: "Media" },
-  { value: "baja", label: "Baja" },
-];
-
-const state = [
-  { value: "abierto", label: "Abierto" },
-  { value: "en_proceso", label: "En proceso" },
-  { value: "cerrado", label: "Cerrado" },
-];
+import { priorities, severities, state } from "@/constants/constants";
 
 export default async function TicketForm({
   params,

@@ -6,7 +6,7 @@ export interface Usuario {
 
 export interface Cliente {
   id: string;
-  razon_social: string;
+  "razon social": string;
   cuit: number;
 }
 
@@ -24,16 +24,14 @@ export interface Product {
 
 export interface Ticket {
   id: number;
-  title: String;
+  title: string;
+  description: string;
   severity: string;
   priority: string;
   state: string;
-  client_id: number;
-  product_id: number;
-  description: string;
-
-  createdAt?: Date;
-  updatedAt?: Date;
+  version_id: number;
+  date_creacion: string;
+  client_id: string;
 }
 
 export interface Project {
@@ -60,6 +58,14 @@ export interface Task {
 }
 
 export interface CreateTicket {
+  title: string;
+  severity: string;
+  priority: string;
+  state: string;
+  description: string;
+}
+
+export interface UpdateTicket {
   title: string;
   severity: string;
   priority: string;
